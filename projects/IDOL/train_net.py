@@ -25,8 +25,8 @@ from detectron2.solver.build import maybe_add_gradient_clipping
 
 from detectron2.projects.idol import add_idol_config, build_detection_train_loader, build_detection_test_loader
 from detectron2.projects.idol.data import (
-    YTVISDatasetMapper, YTVISEvaluator, get_detection_dataset_dicts,DetrDatasetMapper,
-  COCO_CLIP_DatasetMapper
+    YTVISDatasetMapper, YTVISEvaluator, get_detection_dataset_dicts, DetrDatasetMapper,
+    COCO_CLIP_DatasetMapper
 
 )
 from detectron2.data.datasets import register_coco_instances
@@ -42,6 +42,7 @@ register_coco_instances("all_frames_roi_g2_0_38-val", {},
 register_coco_instances("all_frames_roi_g2_39_53", {},
                         "/data/ipsc/well3/all_frames_roi/all_frames_roi_g2_39_53.json",
                         "/data//ipsc/well_3/all_frames_roi")
+
 
 class Trainer(DefaultTrainer):
     """
@@ -65,7 +66,10 @@ class Trainer(DefaultTrainer):
             evaluator_list.append(COCOEvaluator(dataset_name, cfg, True, output_folder))
         elif evaluator_type == "ytvis":
             evaluator_list.append(YTVISEvaluator(dataset_name, cfg, True, output_folder))
-
+        elif evaluator_type == "ipsc":
+            evaluator_list.append(COCOEvaluator(dataset_name, cfg, True, output_folder))
+        else:
+            raise AssertionError(f'invalid dataset_name: {dataset_name}')
         if len(evaluator_list) == 0:
             raise NotImplementedError(
                 "no Evaluator for the dataset {} with the type {}".format(
@@ -83,7 +87,10 @@ class Trainer(DefaultTrainer):
             mapper = COCO_CLIP_DatasetMapper(cfg, is_train=True)
         elif dataset_name.startswith('ytvis'):
             mapper = YTVISDatasetMapper(cfg, is_train=True)
-
+        elif dataset_name.startswith('ipsc'):
+            mapper = COCO_CLIP_DatasetMapper(cfg, is_train=True)
+        else:
+            raise AssertionError(f'invalid dataset_name: {dataset_name}')
         dataset_dict = get_detection_dataset_dicts(
             dataset_name,
             filter_empty=cfg.DATALOADER.FILTER_EMPTY_ANNOTATIONS,
@@ -100,6 +107,11 @@ class Trainer(DefaultTrainer):
             mapper = DetrDatasetMapper(cfg, is_train=False)
         elif dataset_name.startswith('ytvis'):
             mapper = YTVISDatasetMapper(cfg, is_train=False)
+        elif dataset_name.startswith('ipsc'):
+            mapper = DetrDatasetMapper(cfg, is_train=False)
+        else:
+            raise AssertionError(f'invalid dataset_name: {dataset_name}')
+
         return build_detection_test_loader(cfg, dataset_name, mapper=mapper)
 
     @classmethod
@@ -123,9 +135,9 @@ class Trainer(DefaultTrainer):
             # detectron2 doesn't have full model gradient clipping now
             clip_norm_val = cfg.SOLVER.CLIP_GRADIENTS.CLIP_VALUE
             enable = (
-                cfg.SOLVER.CLIP_GRADIENTS.ENABLED
-                and cfg.SOLVER.CLIP_GRADIENTS.CLIP_TYPE == "full_model"
-                and clip_norm_val > 0.0
+                    cfg.SOLVER.CLIP_GRADIENTS.ENABLED
+                    and cfg.SOLVER.CLIP_GRADIENTS.CLIP_TYPE == "full_model"
+                    and clip_norm_val > 0.0
             )
 
             class FullModelGradientClippingOptimizer(optim):
