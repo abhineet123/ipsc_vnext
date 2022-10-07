@@ -1,3 +1,6 @@
+detectron2/projects/seqformer
+detectron2/projects/idol
+
 # Byte-compiled / optimized / DLL files
 .idea/
 __pycache__/
@@ -8,6 +11,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+vnext/
 build/
 develop-eggs/
 dist/
