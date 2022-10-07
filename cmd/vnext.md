@@ -36,8 +36,15 @@ pip install -e .
 pip install shapely==1.7.1
 pip install git+https://github.com/youtubevos/cocoapi.git#"egg=pycocotools&subdirectory=PythonAPI"
 
+python3 -m pip install pycocotools
+
+## cuda_operators       @ install-->vnext
 cd projects/IDOL/idol/models/ops/
-sh make.sh
+python3 setup.py build install
+
+git clone https://github.com/youtubevos/cocoapi
+cd cocoapi/PythonAPI
+
 
 # idol
 
