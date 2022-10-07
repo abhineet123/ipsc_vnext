@@ -1,6 +1,6 @@
 MODEL:
   META_ARCHITECTURE: "IDOL"
-  WEIGHTS: "cocopretrain_SWINL.pth"
+  WEIGHTS: "pretrained/cocopretrain_SWINL.pth"
   PIXEL_MEAN: [116.613, 116.613, 116.613]
   PIXEL_STD: [21.463, 21.463, 21.463]
   MASK_ON: True
