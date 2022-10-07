@@ -49,7 +49,7 @@ python3 setup.py build_ext install
 
 # idol
 ## all_frames_roi_g2_0_38_swinL       @ idol-->vnext
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/all_frames_roi_g2_0_38_swinL.yaml --num-gpus 3 
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_swinL.yaml --num-gpus 3 
 
 
 
