@@ -39,6 +39,9 @@ pip install git+https://github.com/youtubevos/cocoapi.git#"egg=pycocotools&subdi
 cd projects/IDOL/idol/models/ops/
 sh make.sh
 
+# idol
+
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/all_frames_roi_g2_0_38_swinL.yaml --num-gpus 3 
 
 
 

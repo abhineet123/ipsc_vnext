@@ -29,7 +29,16 @@ from detectron2.projects.idol.data import (
   COCO_CLIP_DatasetMapper
 
 )
+from detectron2.data.datasets import register_coco_instances
 
+register_coco_instances("all_frames_roi_g2_0_38-train", {}, "all_frames_roi_g2_0_38-train.json",
+                        "/data//ipsc/well_3/all_frames_roi")
+
+register_coco_instances("all_frames_roi_g2_0_38-val", {}, "all_frames_roi_g2_0_38-val.json",
+                        "/data//ipsc/well_3/all_frames_roi")
+
+register_coco_instances("all_frames_roi_g2_39_53", {}, "all_frames_roi_g2_39_53.json",
+                        "/data//ipsc/well_3/all_frames_roi")
 
 class Trainer(DefaultTrainer):
     """
