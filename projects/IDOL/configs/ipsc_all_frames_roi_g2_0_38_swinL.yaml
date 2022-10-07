@@ -19,8 +19,8 @@ MODEL:
     NUM_CLASSES: 3
     MULTI_CLS_ON: True
 DATASETS:
-  TRAIN: ("all_frames_roi_g2_0_38-train",)
-  TEST: ("all_frames_roi_g2_0_38-val",)
+  TRAIN: ("ipsc-all_frames_roi_g2_0_38-train",)
+  TEST: ("ipsc-all_frames_roi_g2_0_38-val",)
 SOLVER:
   IMS_PER_BATCH: 32
   BASE_LR: 0.0001
