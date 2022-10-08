@@ -61,6 +61,9 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_
 scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/all_frames_roi_grs_221007.zip ./
 scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:pretrained_cocopretrain_SWINL_pth_grs_221007_224219.zip ./
 
+## db3_2_to_17_except_6_swinL       @ idol-->vnext
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_swinL.yaml --num-gpus 2 
+
 
 
 
