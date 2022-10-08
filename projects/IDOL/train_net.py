@@ -18,6 +18,7 @@ import torch
 import detectron2.utils.comm as comm
 from detectron2.checkpoint import DetectionCheckpointer
 from detectron2.config import get_cfg
+from detectron2.data.datasets import ipsc
 from detectron2.data import MetadataCatalog
 from detectron2.engine import DefaultTrainer, default_argument_parser, default_setup, launch
 from detectron2.evaluation import COCOEvaluator, verify_results, DatasetEvaluators
@@ -179,6 +180,8 @@ def main(args):
 
 
 if __name__ == "__main__":
+    ipsc.register_as_coco()
+    
     args = default_argument_parser().parse_args()
     print("Command Line Args:", args)
     launch(
