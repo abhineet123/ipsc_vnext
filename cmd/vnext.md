@@ -34,18 +34,18 @@ python3 -m pip install torch==1.10.2+cu113 torchvision==0.11.3+cu113 torchaudio=
 pip install -r requirements.txt
 pip install -e .
 pip install shapely==1.7.1
-pip install git+https://github.com/youtubevos/cocoapi.git#"egg=pycocotools&subdirectory=PythonAPI"
 
+## cocoapi       @ install-->vnext
+git clone https://github.com/youtubevos/cocoapi
+cd cocoapi/PythonAPI
+python3 setup.py build_ext install
+__buggy__
+pip install git+https://github.com/youtubevos/cocoapi.git#"egg=pycocotools&subdirectory=PythonAPI"
 python3 -m pip install pycocotools
 
 ## cuda_operators       @ install-->vnext
 cd projects/IDOL/idol/models/ops/
 python3 setup.py build install
-
-git clone https://github.com/youtubevos/cocoapi
-cd cocoapi/PythonAPI
-python3 setup.py build_ext install
-
 
 # idol
 ## all_frames_roi_g2_0_38_swinL       @ idol-->vnext
