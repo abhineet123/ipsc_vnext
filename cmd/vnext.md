@@ -36,6 +36,7 @@ pip install -e .
 pip install shapely==1.7.1
 
 ## cocoapi       @ install-->vnext
+python3 -m pip uninstall pycocotools
 git clone https://github.com/youtubevos/cocoapi
 cd cocoapi/PythonAPI
 python3 setup.py build_ext install
@@ -53,7 +54,6 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_
 
 ## on_mj2       @ idol-->vnext
 scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/all_frames_roi_grs_221007.zip ./
-
 
 scp -r -i ~/.ssh/id_rsa -P 9738 abhineet@greyshark.cs.ualberta.ca:"/home/abhineet/all_frames_roi_grs_221007.zip" "/home/Tommy"
 
