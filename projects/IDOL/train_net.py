@@ -75,8 +75,8 @@ class Trainer(DefaultTrainer):
             evaluator_list.append(COCOEvaluator(dataset_name, cfg, True, output_folder))
         elif evaluator_type == "ytvis":
             evaluator_list.append(YTVISEvaluator(dataset_name, cfg, True, output_folder))
-        elif evaluator_type == "ipsc":
-            evaluator_list.append(COCOEvaluator(dataset_name, cfg, True, output_folder))
+        # elif evaluator_type == "ipsc":
+        #     evaluator_list.append(COCOEvaluator(dataset_name, cfg, True, output_folder))
         else:
             raise AssertionError(f'invalid dataset_name: {dataset_name}')
         if len(evaluator_list) == 0:
@@ -96,7 +96,7 @@ class Trainer(DefaultTrainer):
             mapper = COCO_CLIP_DatasetMapper(cfg, is_train=True)
         elif dataset_name.startswith('ytvis'):
             mapper = YTVISDatasetMapper(cfg, is_train=True)
-        elif dataset_name.startswith('ipsc'):
+        elif dataset_name.startswith('ipsc') or dataset_name.startswith('db3'):
             mapper = COCO_CLIP_DatasetMapper(cfg, is_train=True)
         else:
             raise AssertionError(f'invalid dataset_name: {dataset_name}')
@@ -116,7 +116,7 @@ class Trainer(DefaultTrainer):
             mapper = DetrDatasetMapper(cfg, is_train=False)
         elif dataset_name.startswith('ytvis'):
             mapper = YTVISDatasetMapper(cfg, is_train=False)
-        elif dataset_name.startswith('ipsc'):
+        elif dataset_name.startswith('ipsc') or dataset_name.startswith('db3'):
             mapper = DetrDatasetMapper(cfg, is_train=False)
         else:
             raise AssertionError(f'invalid dataset_name: {dataset_name}')
