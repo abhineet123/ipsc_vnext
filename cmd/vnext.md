@@ -44,7 +44,12 @@ __buggy__
 pip install git+https://github.com/youtubevos/cocoapi.git#"egg=pycocotools&subdirectory=PythonAPI"
 python3 -m pip install pycocotools
 
-## cuda_operators       @ install-->vnext
+# bugs
+`AttributeError: module 'distutils' has no attribute 'version'`
+python3 -m pip install setuptools==59.5.0
+
+
+## cuda_operators       @ bugs-->vnext
 cd projects/IDOL/idol/models/ops/
 python3 setup.py build install
 
@@ -54,8 +59,8 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_
 
 ## on_mj2       @ idol-->vnext
 scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/all_frames_roi_grs_221007.zip ./
+scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:pretrained_cocopretrain_SWINL_pth_grs_221007_224219.zip ./
 
-scp -r -i ~/.ssh/id_rsa -P 9738 abhineet@greyshark.cs.ualberta.ca:"/home/abhineet/all_frames_roi_grs_221007.zip" "/home/Tommy"
 
 
 

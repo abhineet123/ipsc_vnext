@@ -44,6 +44,15 @@ register_coco_instances("ipsc-all_frames_roi_g2_39_53", {},
                         "/home/abhineet/data/ipsc/well3/all_frames_roi/all_frames_roi_g2_39_53.json",
                         "/home/abhineet/data/ipsc/well3/all_frames_roi")
 
+register_coco_instances("db3_2_to_17_except_6-train.json", {},
+                        "/home/abhineet/data/mojow_rock/rock_dataset3/db3_2_to_17_except_6-train.json",
+                        "/home/abhineet/data/mojow_rock/rock_dataset3")
+
+register_coco_instances("db3_2_to_17_except_6-val.json", {},
+                        "/home/abhineet/data/mojow_rock/rock_dataset3/db3_2_to_17_except_6-val.json",
+                        "/home/abhineet/data/mojow_rock/rock_dataset3")
+
+
 class Trainer(DefaultTrainer):
     """
     Extension of the Trainer class adapted to YTVIS.
