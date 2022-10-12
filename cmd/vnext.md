@@ -31,9 +31,10 @@ nvcc --version
 
 python3 -m pip install torch==1.10.2+cu113 torchvision==0.11.3+cu113 torchaudio===0.10.2+cu113 -f https://download.pytorch.org/whl/torch_stable.html
 
-pip install -r requirements.txt
-pip install -e .
-pip install shapely==1.7.1
+python3 -m pip install -r requirements.txt
+python3 -m pip install -e .
+python3 -m pip install imagesize
+python3 -m pip install shapely==1.7.1
 
 ## cocoapi       @ install-->vnext
 python3 -m pip uninstall pycocotools
@@ -66,10 +67,10 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_
 
 ## db3_2_to_17_except_6_swinL       @ idol-->vnext
 ln -s ~/data/mojow_rock ./datasets/mojow_rock
-ln -s ~/data/mojow_rock/rock_dataset3 ~/data/mojow_rock/mojow_rock/rock_dataset3/ytvis19/JPEGImages ./datasets/mojow_rock
+ln -s ~/data/mojow_rock/rock_dataset3 ~/data/mojow_rock/rock_dataset3/ytvis19/JPEGImages
 
 
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_part12_ytvis_swinL.yaml --num-gpus 2 
+CUDA_VISIBLE_DEVICES=1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_part12_ytvis_swinL.yaml --num-gpus 1 
 
 
 
