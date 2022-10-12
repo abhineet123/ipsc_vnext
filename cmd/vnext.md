@@ -64,6 +64,10 @@ scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:pretrained_cocopretrain_SWINL_p
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_swinL.yaml --num-gpus 2 
 
 
+## db3_2_to_17_except_6_swinL       @ idol-->vnext
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_part12_ytvis_swinL.yaml --num-gpus 2 
+
+
 
 
 
