@@ -4,21 +4,22 @@ import os
 
 from .ytvis import (
     register_ytvis_instances,
-    _get_ytvis_2019_instances_meta,
+    _get_ytvis_mj_rocks_2019_instances_meta,
+    # _get_ytvis_2019_instances_meta,
     _get_ytvis_2021_instances_meta,
     _get_ovis_instances_meta,
 )
 
 # ==== Predefined splits for YTVIS 2019 ===========
 _PREDEFINED_SPLITS_YTVIS_2019 = {
-    "ytvis_2019_train": ("ytvis_2019/train/JPEGImages",
-                         "ytvis_2019/annotations/instances_train_sub.json"),
-    "ytvis_2019_val": ("ytvis_2019/val/JPEGImages",
-                       "ytvis_2019/annotations/instances_val_sub.json"),
-    "ytvis_2019_test": ("ytvis_2019/test/JPEGImages",
-                        "ytvis_2019/test.json"),
-    "ytvis_2019_dev": ("ytvis_2019/train/JPEGImages",
-                       "ytvis_2019/instances_train_sub.json"),
+    # "ytvis_2019_train": ("ytvis_2019/train/JPEGImages",
+    #                      "ytvis_2019/annotations/instances_train_sub.json"),
+    # "ytvis_2019_val": ("ytvis_2019/val/JPEGImages",
+    #                    "ytvis_2019/annotations/instances_val_sub.json"),
+    # "ytvis_2019_test": ("ytvis_2019/test/JPEGImages",
+    #                     "ytvis_2019/test.json"),
+    # "ytvis_2019_dev": ("ytvis_2019/train/JPEGImages",
+    #                    "ytvis_2019/instances_train_sub.json"),
     "ytvis-mj_rock-db3-part12-train": ("mojow_rock/rock_dataset3/ytvis19/JPEGImages",
                                        "mojow_rock/rock_dataset3/ytvis19/mj_rock-db3-part12-train.json"),
     "ytvis-mj_rock-db3-part12-val": ("mojow_rock/rock_dataset3/ytvis19/JPEGImages",
@@ -58,7 +59,8 @@ def register_all_ytvis_2019(root):
         # Assume pre-defined datasets live in `./datasets`.
         register_ytvis_instances(
             key,
-            _get_ytvis_2019_instances_meta(),
+            _get_ytvis_mj_rocks_2019_instances_meta(),
+            # _get_ytvis_2019_instances_meta(),
             os.path.join(root, json_file) if "://" not in json_file else json_file,
             os.path.join(root, image_root),
         )

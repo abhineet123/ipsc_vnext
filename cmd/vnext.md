@@ -65,6 +65,10 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_
 
 
 ## db3_2_to_17_except_6_swinL       @ idol-->vnext
+ln -s ~/data/mojow_rock ./datasets/mojow_rock
+ln -s ~/data/mojow_rock/rock_dataset3 ~/data/mojow_rock/mojow_rock/rock_dataset3/ytvis19/JPEGImages ./datasets/mojow_rock
+
+
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_part12_ytvis_swinL.yaml --num-gpus 2 
 
 
