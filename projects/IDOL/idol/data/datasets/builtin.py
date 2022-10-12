@@ -19,12 +19,11 @@ _PREDEFINED_SPLITS_YTVIS_2019 = {
                         "ytvis_2019/test.json"),
     "ytvis_2019_dev": ("ytvis_2019/train/JPEGImages",
                        "ytvis_2019/instances_train_sub.json"),
-    "ytvis-mj_rock-db3-part12-train": ("/data/mojow_rock/rock_dataset3",
-                       "/data/mojow_rock/rock_dataset3\mj_rock-db3-part12-train.json"),
-    "ytvis-mj_rock-db3-part12-val": ("/data/mojow_rock/rock_dataset3/ytvis19/JPEGImages",
-                                       "/data/mojow_rock/rock_dataset3/ytvis19/mj_rock-db3-part12-val.json"),
+    "ytvis-mj_rock-db3-part12-train": ("~/data/mojow_rock/rock_dataset3/ytvis19/JPEGImages",
+                                       "~/data/mojow_rock/rock_dataset3/ytvis19/mj_rock-db3-part12-train.json"),
+    "ytvis-mj_rock-db3-part12-val": ("~/data/mojow_rock/rock_dataset3/ytvis19/JPEGImages",
+                                     "~/data/mojow_rock/rock_dataset3/ytvis19/mj_rock-db3-part12-val.json"),
 }
-
 
 # ==== Predefined splits for YTVIS 2021 ===========
 _PREDEFINED_SPLITS_YTVIS_2021 = {
@@ -37,11 +36,10 @@ _PREDEFINED_SPLITS_YTVIS_2021 = {
     "ytvis_2021_dev": ("ytvis_2021/train/JPEGImages",
                        "ytvis_2021/instances_train_sub.json"),
     "ytvis_2022_val_full": ("ytvis_2022/val/JPEGImages",
-                        "ytvis_2022/instances.json"),
+                            "ytvis_2022/instances.json"),
     "ytvis_2022_val_sub": ("ytvis_2022/val/JPEGImages",
-                       "ytvis_2022/instances_sub.json"),
+                           "ytvis_2022/instances_sub.json"),
 }
-
 
 _PREDEFINED_SPLITS_OVIS = {
     "ytvis_ovis_train": ("ovis/train",
@@ -49,11 +47,10 @@ _PREDEFINED_SPLITS_OVIS = {
     "ytvis_ovis_val": ("ovis/valid",
                        "ovis/annotations_valid.json"),
     "ytvis_ovis_train_sub": ("ovis/train",
-                         "ovis/ovis_sub_train.json"),
+                             "ovis/ovis_sub_train.json"),
     "ytvis_ovis_val_sub": ("ovis/train",
-                       "ovis/ovis_sub_val.json"),
+                           "ovis/ovis_sub_val.json"),
 }
-
 
 
 def register_all_ytvis_2019(root):
@@ -87,7 +84,6 @@ def register_all_ovis(root):
             os.path.join(root, json_file) if "://" not in json_file else json_file,
             os.path.join(root, image_root),
         )
-
 
 
 if __name__.endswith(".builtin"):
