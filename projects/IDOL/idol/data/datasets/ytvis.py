@@ -164,7 +164,7 @@ def _get_ytvis_mj_rocks_2019_instances_meta():
     assert len(thing_ids) == 2, len(thing_ids)
     # Mapping from the incontiguous YTVIS category id to an id in [0, 1]
     thing_dataset_id_to_contiguous_id = {k: i for i, k in enumerate(thing_ids)}
-    thing_classes = [k["name"] for k in YTVIS_CATEGORIES_2019 if k["isthing"] == 1]
+    thing_classes = [k["name"] for k in YTVIS_MJ_ROCKS_CATEGORIES_2019 if k["isthing"] == 1]
     ret = {
         "thing_dataset_id_to_contiguous_id": thing_dataset_id_to_contiguous_id,
         "thing_classes": thing_classes,
