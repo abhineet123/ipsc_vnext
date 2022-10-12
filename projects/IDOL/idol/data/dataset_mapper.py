@@ -116,18 +116,18 @@ class YTVISDatasetMapper:
 
     @configurable
     def __init__(
-        self,
-        is_train: bool,
-        *,
-        augmentations: List[Union[T.Augmentation, T.Transform]],
-        augmentations_nocrop = None,
-        image_format: str,
-        use_instance_mask: bool = False,
-        sampling_frame_num: int = 2,
-        sampling_frame_range: int = 5,
-        sampling_interval: int = 1,
-        sampling_frame_shuffle: bool = False,
-        num_classes: int = 40,
+            self,
+            is_train: bool,
+            *,
+            augmentations: List[Union[T.Augmentation, T.Transform]],
+            augmentations_nocrop=None,
+            image_format: str,
+            use_instance_mask: bool = False,
+            sampling_frame_num: int = 2,
+            sampling_frame_range: int = 5,
+            sampling_interval: int = 1,
+            sampling_frame_shuffle: bool = False,
+            num_classes: int = 40,
     ):
         """
         NOTE: this interface is experimental.
@@ -138,19 +138,19 @@ class YTVISDatasetMapper:
             use_instance_mask: whether to process instance segmentation annotations, if available
         """
         # fmt: off
-        self.is_train               = is_train
-        self.augmentations          = T.AugmentationList(augmentations)
+        self.is_train = is_train
+        self.augmentations = T.AugmentationList(augmentations)
         if augmentations_nocrop is not None:
-            self.augmentations_nocrop   = T.AugmentationList(augmentations_nocrop)
+            self.augmentations_nocrop = T.AugmentationList(augmentations_nocrop)
         else:
-            self.augmentations_nocrop   = None
-        self.image_format           = image_format
-        self.use_instance_mask      = use_instance_mask
-        self.sampling_frame_num     = sampling_frame_num
-        self.sampling_frame_range   = sampling_frame_range
-        self.sampling_interval      = sampling_interval
+            self.augmentations_nocrop = None
+        self.image_format = image_format
+        self.use_instance_mask = use_instance_mask
+        self.sampling_frame_num = sampling_frame_num
+        self.sampling_frame_range = sampling_frame_range
+        self.sampling_interval = sampling_interval
         self.sampling_frame_shuffle = sampling_frame_shuffle
-        self.num_classes            = num_classes
+        self.num_classes = num_classes
         # fmt: on
         logger = logging.getLogger(__name__)
         mode = "training" if is_train else "inference"
@@ -199,11 +199,11 @@ class YTVISDatasetMapper:
         if self.is_train:
             ref_frame = random.randrange(video_length)
 
-            start_idx = max(0, ref_frame-self.sampling_frame_range)
-            start_interval = max(0, ref_frame-self.sampling_interval+1)
-            end_idx = min(video_length, ref_frame+self.sampling_frame_range + 1)
-            end_interval = min(video_length, ref_frame+self.sampling_interval )
-            
+            start_idx = max(0, ref_frame - self.sampling_frame_range)
+            start_interval = max(0, ref_frame - self.sampling_interval + 1)
+            end_idx = min(video_length, ref_frame + self.sampling_frame_range + 1)
+            end_interval = min(video_length, ref_frame + self.sampling_interval)
+
             selected_idx = np.random.choice(
                 np.array(list(range(start_idx, start_interval)) + list(range(end_interval, end_idx))),
                 self.sampling_frame_num - 1,
@@ -229,7 +229,7 @@ class YTVISDatasetMapper:
         dataset_dict["image"] = []
         dataset_dict["instances"] = []
         dataset_dict["file_names"] = []
-        
+
         if self.augmentations_nocrop is not None and self.is_train:
             if np.random.rand() > 0.5:
                 selected_augmentations = self.augmentations_nocrop
@@ -288,4 +288,3 @@ class YTVISDatasetMapper:
             dataset_dict["instances"].append(instances)
 
         return dataset_dict
-

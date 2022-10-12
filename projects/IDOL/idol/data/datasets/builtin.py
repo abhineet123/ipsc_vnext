@@ -19,6 +19,10 @@ _PREDEFINED_SPLITS_YTVIS_2019 = {
                         "ytvis_2019/test.json"),
     "ytvis_2019_dev": ("ytvis_2019/train/JPEGImages",
                        "ytvis_2019/instances_train_sub.json"),
+    "ytvis-mj_rock-db3-part12-train": ("/data/mojow_rock/rock_dataset3",
+                       "/data/mojow_rock/rock_dataset3\mj_rock-db3-part12-train.json"),
+    "ytvis-mj_rock-db3-part12-val": ("/data/mojow_rock/rock_dataset3/ytvis19/JPEGImages",
+                                       "/data/mojow_rock/rock_dataset3/ytvis19/mj_rock-db3-part12-val.json"),
 }
 
 

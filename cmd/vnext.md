@@ -48,7 +48,6 @@ python3 -m pip install pycocotools
 `AttributeError: module 'distutils' has no attribute 'version'`
 python3 -m pip install setuptools==59.5.0
 
-
 ## cuda_operators       @ bugs-->vnext
 cd projects/IDOL/idol/models/ops/
 python3 setup.py build install
