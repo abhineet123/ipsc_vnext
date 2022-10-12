@@ -61,17 +61,20 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_
 scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/all_frames_roi_grs_221007.zip ./
 scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:pretrained_cocopretrain_SWINL_pth_grs_221007_224219.zip ./
 
-## db3_2_to_17_except_6_swinL       @ idol-->vnext
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_swinL.yaml --num-gpus 2 
 
-
-## db3_2_to_17_except_6_swinL       @ idol-->vnext
+## db3_part12_ytvis_swinL       @ idol-->vnext
 ln -s ~/data/mojow_rock ./datasets/mojow_rock
 ln -s ~/data/mojow_rock/rock_dataset3 ~/data/mojow_rock/rock_dataset3/ytvis19/JPEGImages
 
 
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_part12_ytvis_swinL.yaml --num-gpus 2
+
 CUDA_VISIBLE_DEVICES=1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_part12_ytvis_swinL.yaml --num-gpus 1 
 
+
+## db3_2_to_17_except_6_with_syn_ytvis_swinL       @ idol-->vnext
+
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_with_syn_ytvis_swinL.yaml --num-gpus 2
 
 
 
