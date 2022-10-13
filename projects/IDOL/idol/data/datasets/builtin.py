@@ -47,6 +47,14 @@ _PREDEFINED_SPLITS_YTVIS_2019 = {
         "mojow_rock/rock_dataset3/ytvis19/mj_rock-db3_2_to_17_except_6-val.json"
     ),
 
+    "ytvis-ipsc-all_frames_roi_g2_0_38-train": (
+        "ipsc/well3/all_frames_roi/ytvis19/JPEGImages",
+        "ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_38-train.json"
+    ),
+    "ytvis-ipsc-all_frames_roi_g2_0_38-val": (
+        "ipsc/well3/all_frames_roi/ytvis19/JPEGImages",
+        "ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_38-val.json"
+    ),
 }
 
 # ==== Predefined splits for YTVIS 2021 ===========
