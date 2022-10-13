@@ -22,7 +22,7 @@ DATASETS:
   TRAIN: ("ytvis-ipsc-all_frames_roi_g2_0_38-train",)
   TEST: ("ytvis-ipsc-all_frames_roi_g2_0_38-val",)
 SOLVER:
-  IMS_PER_BATCH: 4
+  IMS_PER_BATCH: 2
   BASE_LR: 0.0001
   STEPS: (8000,)
   MAX_ITER: 500

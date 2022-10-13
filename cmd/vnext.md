@@ -44,6 +44,7 @@ alias vnxt='workon vnext'
  scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/all_frames_roi_grs_221007.zip ./
  scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19 ./
  scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/scripts ~/
+ scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/ipsc_vnext/pretrained ./
 
 module load python/3.8
 module load gcc cuda cudnn
