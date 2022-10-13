@@ -43,12 +43,15 @@ alias vnxt='workon vnext'
 
  scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/all_frames_roi_grs_221007.zip ./
  scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19 ./
+ scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/scripts ~/
 
 module load python/3.8
 module load gcc cuda cudnn
 virtualenv vnext
 source vnext/bin/activate
 deactivate
+
+alias vnxt='source vnext/bin/activate'
 
 diskusage_report
 
@@ -129,6 +132,8 @@ mv ipsc/well3/all_frames_roi/ytvis19/all_frames_roi_g2_0_38-val.json ipsc/well3/
 ```
 
 CUDA_VISIBLE_DEVICES=0,1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2 
+
+sbatch cmd/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.sh
 
 <a id="mj_rocks___idol_"></a>
 ## mj_rocks       @ idol-->vnext
