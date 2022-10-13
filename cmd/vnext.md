@@ -106,7 +106,6 @@ https://github.com/pytorch/pytorch/issues/973
 torch.multiprocessing.set_sharing_strategy('file_system')
 https://github.com/pytorch/pytorch/issues/973#issuecomment-459398189
 
-
 <a id="ido_l_"></a>
 # idol
 
@@ -130,18 +129,21 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_
 mv ipsc/well3/all_frames_roi/ytvis19/all_frames_roi_g2_0_38-train.json ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_38-train.json
 
 mv ipsc/well3/all_frames_roi/ytvis19/all_frames_roi_g2_0_38-val.json ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_38-val.json
-```
-CUDA_VISIBLE_DEVICES=0,1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2 
-```
-salloc --nodes=1 --time=0:15:0 --account=def-nilanjan --gpus-per-node=1
-module load python/3.8
-module load cuda cudnn
+
+salloc --nodes=1 --time=0:15:0 --account=def-nilanjan --gpus-per-node=1 --mem=16000M --cpus-per-task=4
+
+module load cuda cudnn gcc python/3.8
 source ~/vnext/bin/activate
-cd projects/IDOL/idol/models/ops/
+cp -r projects/IDOL/idol/models/ops ~/
+cd ~/ops/
 python3 setup.py build install
 
 sbatch cmd/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.sh
+MAX_JOBS=1
 
+```
+CUDA_VISIBLE_DEVICES=0,1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2 
+```
 
 <a id="mj_rocks___idol_"></a>
 ## mj_rocks       @ idol-->vnext
