@@ -112,27 +112,27 @@ https://github.com/pytorch/pytorch/issues/973#issuecomment-459398189
 
 <a id="ipsc___idol_"></a>
 ## ipsc       @ idol-->vnext
-```
 scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/all_frames_roi_grs_221007.zip ./
 scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:pretrained_cocopretrain_SWINL_pth_grs_221007_224219.zip ./
 
 ln -s /data/ipsc ./datasets/ipsc
 ln -s /data/ipsc/well3/all_frames_roi /data/ipsc/well3/all_frames_roi/ytvis19/JPEGImages
-```
+__cc__
+ln -s ~/projects/def-nilanjan/asingh1/data/ipsc ./datasets/ipsc
+ln -s  ~/projects/def-nilanjan/asingh1/data/ipsc/well3/all_frames_roi  ~/projects/def-nilanjan/asingh1/data/ipsc/well3/all_frames_roi/ytvis19/JPEGImages
+
 <a id="all_frames_roi_g2_0_38_swinl___ipsc_ido_l_"></a>
 ### all_frames_roi_g2_0_38_swinL       @ ipsc/idol-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_swinL.yaml --num-gpus 2 
 
 <a id="ytvis___all_frames_roi_g2_0_38_swinl_ipsc_idol_"></a>
 #### ytvis       @ all_frames_roi_g2_0_38_swinL/ipsc/idol-->vnext
-```
 mv ipsc/well3/all_frames_roi/ytvis19/all_frames_roi_g2_0_38-train.json ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_38-train.json
 
 mv ipsc/well3/all_frames_roi/ytvis19/all_frames_roi_g2_0_38-val.json ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_38-val.json
 ```
-
 CUDA_VISIBLE_DEVICES=0,1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2 
-
+```
 sbatch cmd/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.sh
 
 <a id="mj_rocks___idol_"></a>
@@ -143,10 +143,13 @@ ln -s ~/data/mojow_rock/rock_dataset3 ~/data/mojow_rock/rock_dataset3/ytvis19/JP
 ```
 <a id="db3_part12_ytvis_swinl___mj_rocks_ido_l_"></a>
 ### db3_part12_ytvis_swinL       @ mj_rocks/idol-->vnext
+```
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_part12_ytvis_swinL.yaml --num-gpus 2
+```
 
+```
 CUDA_VISIBLE_DEVICES=1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_part12_ytvis_swinL.yaml --num-gpus 1 
-
+```
 <a id="db3_2_to_17_except_6_with_syn_ytvis_swinl___mj_rocks_ido_l_"></a>
 ### db3_2_to_17_except_6_with_syn_ytvis_swinL       @ mj_rocks/idol-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_with_syn_ytvis_swinL.yaml --num-gpus 2
