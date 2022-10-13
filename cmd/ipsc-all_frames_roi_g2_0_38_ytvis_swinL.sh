@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --mem=16000M
 #SBATCH --gpus-per-node=2
-#SBATCH --cpus-per-task=1
+#SBATCH --cpus-per-task=4
 
 #SBATCH --job-name=ipsc-all_frames_roi_g2_0_38_ytvis_swinL
 #SBATCH --output=%x_%j.out
