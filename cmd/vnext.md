@@ -49,6 +49,11 @@ python3 -m pip install pycocotools
 `AttributeError: module 'distutils' has no attribute 'version'`
 python3 -m pip install setuptools==59.5.0
 
+`RuntimeError: received 0 items of ancdata`
+https://github.com/pytorch/pytorch/issues/973
+torch.multiprocessing.set_sharing_strategy('file_system')
+
+
 ## cuda_operators       @ bugs-->vnext
 cd projects/IDOL/idol/models/ops/
 python3 setup.py build install
