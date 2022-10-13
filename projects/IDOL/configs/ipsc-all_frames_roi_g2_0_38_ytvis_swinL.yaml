@@ -19,8 +19,8 @@ MODEL:
     NUM_CLASSES: 2
     MULTI_CLS_ON: True
 DATASETS:
-  TRAIN: ("ytvis-mj_rock-db3_2_to_17_except_6-train",)
-  TEST: ("ytvis-mj_rock-db3_2_to_17_except_6-val",)
+  TRAIN: ("ytvis-ipsc-all_frames_roi_g2_0_38-train",)
+  TEST: ("ytvis-ipsc-all_frames_roi_g2_0_38-val",)
 SOLVER:
   IMS_PER_BATCH: 2
   BASE_LR: 0.0001
@@ -58,4 +58,4 @@ DATALOADER:
   FILTER_EMPTY_ANNOTATIONS: False
   NUM_WORKERS: 2
 VERSION: 2
-OUTPUT_DIR: ./idol-ytvis-mj_rock-db3_2_to_17_except_6
+OUTPUT_DIR: ./idol-ipsc-mj_rock-all_frames_roi_g2_0_38
