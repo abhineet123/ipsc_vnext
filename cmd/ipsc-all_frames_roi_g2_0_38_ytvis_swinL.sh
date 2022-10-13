@@ -8,7 +8,7 @@
 #SBATCH --job-name=ipsc-all_frames_roi_g2_0_38_ytvis_swinL
 #SBATCH --output=%x_%j.out
 
-#SBATCH --time=0-00:02            # time (DD-HH:MM)
+#SBATCH --time=0-00:15            # time (DD-HH:MM)
 
 #SBATCH --mail-user=asingh1@ualberta.ca
 #SBATCH --mail-type=ALL
