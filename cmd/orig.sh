@@ -24,5 +24,5 @@ nvidia-smi
 
 #python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1
 
-python3 setup.py build install
+cd projects/IDOL/idol/models/ops/ && python3 setup.py build install
 
