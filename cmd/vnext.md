@@ -133,7 +133,15 @@ mv ipsc/well3/all_frames_roi/ytvis19/all_frames_roi_g2_0_38-val.json ipsc/well3/
 ```
 CUDA_VISIBLE_DEVICES=0,1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2 
 ```
+salloc --nodes=1 --time=0:15:0 --account=def-nilanjan --gpus-per-node=1
+module load python/3.8
+module load cuda cudnn
+source ~/vnext/bin/activate
+cd projects/IDOL/idol/models/ops/
+python3 setup.py build install
+
 sbatch cmd/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.sh
+
 
 <a id="mj_rocks___idol_"></a>
 ## mj_rocks       @ idol-->vnext

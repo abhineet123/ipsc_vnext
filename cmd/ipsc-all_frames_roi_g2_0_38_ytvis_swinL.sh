@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --account=def-nilanjan
 #SBATCH --nodes=1
-#SBATCH --mem=500M
+#SBATCH --mem=4000M
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=1
 
@@ -15,6 +15,7 @@
 
 module load python/3.8
 module load cuda cudnn
+module load gcc
 
 source ~/vnext/bin/activate
 nvidia-smi
