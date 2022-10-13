@@ -6,8 +6,8 @@
     - [cuda_version       @ virtualenv](#cuda_version___virtualenv_)
 - [install](#install_)
     - [cocoapi       @ install](#cocoapi___instal_l_)
+    - [cuda_operators       @ install](#cuda_operators___instal_l_)
 - [bugs](#bug_s_)
-    - [cuda_operators       @ bugs](#cuda_operators___bugs_)
 - [idol](#ido_l_)
     - [ipsc       @ idol](#ipsc___idol_)
         - [all_frames_roi_g2_0_38_swinL       @ ipsc/idol](#all_frames_roi_g2_0_38_swinl___ipsc_ido_l_)
@@ -45,7 +45,7 @@ alias vnxt='workon vnext'
  scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19 ./
 
 module load python/3.8
-module load cuda
+module load gcc cuda cudnn
 virtualenv vnext
 source vnext/bin/activate
 deactivate
@@ -81,6 +81,11 @@ __buggy__
 pip install git+https://github.com/youtubevos/cocoapi.git#"egg=pycocotools&subdirectory=PythonAPI"
 python3 -m pip install pycocotools
 
+<a id="cuda_operators___instal_l_"></a>
+## cuda_operators       @ install-->vnext
+cd projects/IDOL/idol/models/ops/
+python3 setup.py build install
+
 <a id="bug_s_"></a>
 # bugs
 `AttributeError: module 'distutils' has no attribute 'version'`
@@ -89,13 +94,8 @@ python3 -m pip install setuptools==59.5.0
 `RuntimeError: received 0 items of ancdata`
 https://github.com/pytorch/pytorch/issues/973
 torch.multiprocessing.set_sharing_strategy('file_system')
-
 https://github.com/pytorch/pytorch/issues/973#issuecomment-459398189
 
-<a id="cuda_operators___bugs_"></a>
-## cuda_operators       @ bugs-->vnext
-cd projects/IDOL/idol/models/ops/
-python3 setup.py build install
 
 <a id="ido_l_"></a>
 # idol
