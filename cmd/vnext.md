@@ -1,6 +1,7 @@
 <!-- MarkdownTOC -->
 
 - [virtualenv](#virtualen_v_)
+    - [cc       @ virtualenv](#cc___virtualenv_)
     - [windows       @ virtualenv](#windows___virtualenv_)
     - [cuda_version       @ virtualenv](#cuda_version___virtualenv_)
 - [install](#install_)
@@ -37,6 +38,19 @@ workon vnext
 
 alias vnxt='workon vnext'
 
+<a id="cc___virtualenv_"></a>
+## cc       @ virtualenv-->vnext
+
+ scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/all_frames_roi_grs_221007.zip ./
+ scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19 ./
+
+module load python/3.8
+module load cuda
+virtualenv vnext
+source vnext/bin/activate
+deactivate
+
+diskusage_report
 
 <a id="windows___virtualenv_"></a>
 ## windows       @ virtualenv-->vnext
@@ -55,8 +69,7 @@ python3 -m pip install torch==1.10.2+cu113 torchvision==0.11.3+cu113 torchaudio=
 
 python3 -m pip install -r requirements.txt
 python3 -m pip install -e .
-python3 -m pip install imagesize
-python3 -m pip install shapely==1.7.1
+python3 -m pip install imagesize shapely==1.7.1
 
 <a id="cocoapi___instal_l_"></a>
 ## cocoapi       @ install-->vnext
