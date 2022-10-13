@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=1
 
 #SBATCH --job-name=ipsc-all_frames_roi_g2_0_38_ytvis_swinL
-#SBATCH --output=%x_%j.out
+#SBATCH --output=~/%x_%j.out
 
 #SBATCH --time=0-00:02            # time (DD-HH:MM)
 
