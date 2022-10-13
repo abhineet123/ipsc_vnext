@@ -1,14 +1,14 @@
 #!/bin/bash
 #SBATCH --account=def-nilanjan
 #SBATCH --nodes=1
-#SBATCH --mem=4000M
-#SBATCH --gres=gpu:1
+#SBATCH --mem=16000M
+#SBATCH --gpus-per-node=2
 #SBATCH --cpus-per-task=1
 
 #SBATCH --job-name=ipsc-all_frames_roi_g2_0_38_ytvis_swinL
 #SBATCH --output=%x_%j.out
 
-#SBATCH --time=0-00:15            # time (DD-HH:MM)
+#SBATCH --time=0-15:00            # time (DD-HH:MM)
 
 #SBATCH --mail-user=asingh1@ualberta.ca
 #SBATCH --mail-type=ALL
