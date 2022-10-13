@@ -67,6 +67,13 @@ nvcc --version
 # install
 python3 -m pip install torch==1.10.2+cu113 torchvision==0.11.3+cu113 torchaudio===0.10.2+cu113 -f https://download.pytorch.org/whl/torch_stable.html
 
+python3 -m pip install torch==1.10.2+cu114 torchvision==0.11.3+cu114 torchaudio===0.10.2+cu114 -f https://download.pytorch.org/whl/torch_stable.html
+
+python3 -m pip uninstall -y torch torchvision torchaudio
+
+python3 -m pip install --no-index torch torchvision torchaudio
+
+
 python3 -m pip install -r requirements.txt
 python3 -m pip install -e .
 python3 -m pip install imagesize shapely==1.7.1
