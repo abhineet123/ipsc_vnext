@@ -55,7 +55,7 @@ CUDA_VISIBLE_DEVICES=0,1 python3 projects/IDOL/train_net.py --config-file projec
 #### on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/idol-->vnext
 mv ipsc-all_frames_roi_g2_39_53-train.json ipsc-all_frames_roi_g2_39_53-test.json
 ```
-CUDA_VISIBLE_DEVICES=0,1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only
 
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_39_53_ytvis_swinL.yaml --num-gpus 1 --eval-only
 ```
