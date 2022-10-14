@@ -19,9 +19,7 @@ source ~/vnext/bin/activate
 
 nvidia-smi
 
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2
-
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_39_53_ytvis_swinL.yaml --num-gpus 2 --eval-only
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2 --resume
 
 
 

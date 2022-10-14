@@ -48,7 +48,7 @@ sbatch cmd/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.sh
 MAX_JOBS=1
 
 ```
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2 --resume
 ```
 
 <a id="on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_idol_"></a>
