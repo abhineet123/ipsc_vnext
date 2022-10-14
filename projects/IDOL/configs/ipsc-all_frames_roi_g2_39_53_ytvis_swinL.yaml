@@ -58,4 +58,4 @@ DATALOADER:
   FILTER_EMPTY_ANNOTATIONS: False
   NUM_WORKERS: 2
 VERSION: 2
-OUTPUT_DIR: ./idol-ipsc-all_frames_roi_g2_0_38
+OUTPUT_DIR: ./idol-ipsc-all_frames_roi_g2_39_53
