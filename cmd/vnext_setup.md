@@ -38,6 +38,7 @@ alias vnxt='workon vnext'
  scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19 ./
  scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/scripts ~/
  scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/ipsc_vnext/pretrained ./
+ scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19 ./
 
 module load python/3.8
 module load gcc cuda cudnn
@@ -69,7 +70,6 @@ python3 -m pip install torch==1.10.2+cu114 torchvision==0.11.3+cu114 torchaudio=
 python3 -m pip uninstall -y torch torchvision torchaudio
 
 python3 -m pip install --no-index torch torchvision torchaudio
-
 
 python3 -m pip install -r requirements.txt
 python3 -m pip install -e .
