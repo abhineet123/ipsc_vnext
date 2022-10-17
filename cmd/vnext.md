@@ -45,10 +45,11 @@ salloc --nodes=1 --time=0:15:0 --account=def-nilanjan --gpus-per-node=2 --mem=16
 ln -s ~/scratch/ipsc_vnext_log/idol-ipsc-all_frames_roi_g2_0_38/ .
 
 sbatch cmd/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.sh
+
 MAX_JOBS=1
 
 ```
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2 --resume
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --resume
 ```
 
 <a id="on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_idol_"></a>
