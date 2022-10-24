@@ -75,6 +75,8 @@ class IDOL(nn.Module):
 
         self.num_frames = cfg.INPUT.SAMPLING_FRAME_NUM
 
+        self.cfg = cfg
+
         self.device = torch.device(cfg.MODEL.DEVICE)
         self.clip_stride = cfg.MODEL.IDOL.CLIP_STRIDE
 
@@ -264,6 +266,7 @@ class IDOL(nn.Module):
             else:
                 images = self.preprocess_image(batched_inputs)
                 output = self.detr.inference_forward(images)
+
             idol_tracker = IDOL_Tracker(
                 init_score_thr=0.2,
                 obj_score_thr=0.1,
@@ -417,7 +420,7 @@ class IDOL(nn.Module):
                 logits_i = logits_i.max(0)[0]
             else:
                 print('non valid temporal_score_type')
-                import sys;
+                import sys
                 sys.exit(0)
             logits_list.append(logits_i)
 
@@ -435,6 +438,7 @@ class IDOL(nn.Module):
                     masks_list_i.append(pred_mask_i)
             masks_list_i = torch.cat(masks_list_i, dim=1)
             masks_list.append(masks_list_i)
+
         if len(logits_list) > 0:
             pred_cls = torch.stack(logits_list)
             pred_masks = torch.cat(masks_list, dim=0)
