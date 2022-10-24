@@ -253,6 +253,7 @@ class IDOL(nn.Module):
                     embed_list.append(clip_output['pred_inst_embed'])
                     # points_list.append(clip_output['reference_points'])
                     masks_list.append(clip_output['pred_masks'].to(self.merge_device))
+                    pause=1
                 output = {
                     'pred_logits': torch.cat(logits_list, dim=0),
                     'pred_boxes': torch.cat(boxes_list, dim=0),
