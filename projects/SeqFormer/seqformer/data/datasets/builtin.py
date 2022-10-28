@@ -4,6 +4,8 @@ import os
 
 from .ytvis import (
     register_ytvis_instances,
+    _get_ytvis_2019_ipsc_instances_meta,
+    _get_ytvis_2019_mj_rocks_instances_meta,
     _get_ytvis_2019_instances_meta,
     _get_ytvis_2021_instances_meta,
 )
@@ -62,7 +64,6 @@ _PREDEFINED_SPLITS_YTVIS_2019 = {
 
 }
 
-
 # ==== Predefined splits for YTVIS 2021 ===========
 _PREDEFINED_SPLITS_YTVIS_2021 = {
     "ytvis_2021_train": ("ytvis_2021/train/JPEGImages",
@@ -74,13 +75,10 @@ _PREDEFINED_SPLITS_YTVIS_2021 = {
     "ytvis_2021_dev": ("ytvis_2021/train/JPEGImages",
                        "ytvis_2021/instances_train_sub.json"),
     "ytvis_2022_val_full": ("ytvis_2022/val/JPEGImages",
-                        "ytvis_2022/instances.json"),
+                            "ytvis_2022/instances.json"),
     "ytvis_2022_val_sub": ("ytvis_2022/val/JPEGImages",
-                       "ytvis_2022/instances_sub.json"),
+                           "ytvis_2022/instances_sub.json"),
 }
-
-
-
 
 
 def register_all_ytvis_2019(root):
