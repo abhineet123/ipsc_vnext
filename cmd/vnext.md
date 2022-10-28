@@ -98,6 +98,7 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_
 ## ipsc       @ seqformer-->vnext
 <a id="all_frames_roi_g2_0_38_swinl_ytvis___ipsc_seqformer_"></a>
 ### all_frames_roi_g2_0_38_swinL-ytvis       @ ipsc/seqformer-->vnext
+sbatch cmd/seqformer-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.sh
 ```
 python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2
 ```
