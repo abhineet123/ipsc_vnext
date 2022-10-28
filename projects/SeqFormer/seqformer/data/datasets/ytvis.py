@@ -21,6 +21,15 @@ logger = logging.getLogger(__name__)
 
 __all__ = ["load_ytvis_json", "register_ytvis_instances"]
 
+YTVIS_MJ_ROCKS_CATEGORIES_2019 = [
+    {"color": [0, 255, 0], "isthing": 1, "id": 1, "name": "rock"},
+    {"color": [255, 0, 0], "isthing": 1, "id": 2, "name": "syn"},
+]
+
+YTVIS_IPSC_CATEGORIES_2019 = [
+    {"color": [0, 255, 0], "isthing": 1, "id": 1, "name": "ipsc"},
+    {"color": [255, 0, 0], "isthing": 1, "id": 2, "name": "diff"},
+]
 
 YTVIS_CATEGORIES_2019 = [
     {"color": [220, 20, 60], "isthing": 1, "id": 1, "name": "person"},
@@ -108,6 +117,35 @@ YTVIS_CATEGORIES_2021 = [
     {"color": [0, 228, 0], "isthing": 1, "id": 39, "name": "whale"},
     {"color": [199, 100, 0], "isthing": 1, "id": 40, "name": "zebra"},
 ]
+
+
+def _get_ytvis_2019_mj_rocks_instances_meta():
+    thing_ids = [k["id"] for k in YTVIS_MJ_ROCKS_CATEGORIES_2019 if k["isthing"] == 1]
+    thing_colors = [k["color"] for k in YTVIS_MJ_ROCKS_CATEGORIES_2019 if k["isthing"] == 1]
+    assert len(thing_ids) == 2, len(thing_ids)
+    # Mapping from the incontiguous YTVIS category id to an id in [0, 1]
+    thing_dataset_id_to_contiguous_id = {k: i for i, k in enumerate(thing_ids)}
+    thing_classes = [k["name"] for k in YTVIS_MJ_ROCKS_CATEGORIES_2019 if k["isthing"] == 1]
+    ret = {
+        "thing_dataset_id_to_contiguous_id": thing_dataset_id_to_contiguous_id,
+        "thing_classes": thing_classes,
+        "thing_colors": thing_colors,
+    }
+    return ret
+
+def _get_ytvis_2019_ipsc_instances_meta():
+    thing_ids = [k["id"] for k in YTVIS_IPSC_CATEGORIES_2019 if k["isthing"] == 1]
+    thing_colors = [k["color"] for k in YTVIS_IPSC_CATEGORIES_2019 if k["isthing"] == 1]
+    assert len(thing_ids) == 2, len(thing_ids)
+    # Mapping from the incontiguous YTVIS category id to an id in [0, 1]
+    thing_dataset_id_to_contiguous_id = {k: i for i, k in enumerate(thing_ids)}
+    thing_classes = [k["name"] for k in YTVIS_IPSC_CATEGORIES_2019 if k["isthing"] == 1]
+    ret = {
+        "thing_dataset_id_to_contiguous_id": thing_dataset_id_to_contiguous_id,
+        "thing_classes": thing_classes,
+        "thing_colors": thing_colors,
+    }
+    return ret
 
 
 def _get_ytvis_2019_instances_meta():

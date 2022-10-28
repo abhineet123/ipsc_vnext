@@ -19,6 +19,7 @@
         - [cc       @ cuda_operators/install](#cc___cuda_operators_install_)
 - [bugs](#bug_s_)
 - [new_dataset](#new_dataset_)
+    - [ytvis19       @ new_dataset](#ytvis19___new_datase_t_)
 
 <!-- /MarkdownTOC -->
 
@@ -181,8 +182,13 @@ https://github.com/pytorch/pytorch/issues/973#issuecomment-459398189
 
 <a id="new_dataset_"></a>
 # new_dataset
+<a id="ytvis19___new_datase_t_"></a>
+## ytvis19       @ new_dataset-->vnext_setup
 "C:\UofA\PhD\ipsc_cell_tracking\ipsc_vnext\projects\IDOL\idol\data\datasets\builtin.py"
 "C:\UofA\PhD\ipsc_cell_tracking\ipsc_vnext\projects\SeqFormer\seqformer\data\datasets\builtin.py"
+`_PREDEFINED_SPLITS_YTVIS_2019`
+`register_all_ytvis_2019`
+
 
 
 
