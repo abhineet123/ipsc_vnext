@@ -9,15 +9,57 @@ from .ytvis import (
 )
 
 # ==== Predefined splits for YTVIS 2019 ===========
+
+# ==== Predefined splits for YTVIS 2019 ===========
 _PREDEFINED_SPLITS_YTVIS_2019 = {
-    "ytvis_2019_train": ("ytvis_2019/train/JPEGImages",
-                         "ytvis_2019/annotations/instances_train_sub.json"),
-    "ytvis_2019_val": ("ytvis_2019/val/JPEGImages",
-                       "ytvis_2019/annotations/instances_val_sub.json"),
-    "ytvis_2019_test": ("ytvis_2019/test/JPEGImages",
-                        "ytvis_2019/test.json"),
-    "ytvis_2019_dev": ("ytvis_2019/train/JPEGImages",
-                       "ytvis_2019/instances_train_sub.json"),
+    # "ytvis_2019_train": ("ytvis_2019/train/JPEGImages",
+    #                      "ytvis_2019/annotations/instances_train_sub.json"),
+    # "ytvis_2019_val": ("ytvis_2019/val/JPEGImages",
+    #                    "ytvis_2019/annotations/instances_val_sub.json"),
+    # "ytvis_2019_test": ("ytvis_2019/test/JPEGImages",
+    #                     "ytvis_2019/test.json"),
+    # "ytvis_2019_dev": ("ytvis_2019/train/JPEGImages",
+    #                    "ytvis_2019/instances_train_sub.json"),
+    "ytvis-mj_rock-db3-part12-train": (
+        "mojow_rock/rock_dataset3/ytvis19/JPEGImages",
+        "mojow_rock/rock_dataset3/ytvis19/mj_rock-db3-part12-train.json"
+    ),
+    "ytvis-mj_rock-db3-part12-val": (
+        "mojow_rock/rock_dataset3/ytvis19/JPEGImages",
+        "mojow_rock/rock_dataset3/ytvis19/mj_rock-db3-part12-val.json"
+    ),
+
+    "ytvis-mj_rock-db3_2_to_17_except_6_with_syn-train": (
+        "mojow_rock/rock_dataset3/ytvis19/JPEGImages",
+        "mojow_rock/rock_dataset3/ytvis19/mj_rock-db3_2_to_17_except_6_with_syn-train.json"
+    ),
+    "ytvis-mj_rock-db3_2_to_17_except_6_with_syn-val": (
+        "mojow_rock/rock_dataset3/ytvis19/JPEGImages",
+        "mojow_rock/rock_dataset3/ytvis19/mj_rock-db3_2_to_17_except_6_with_syn-val.json"
+    ),
+
+    "ytvis-mj_rock-db3_2_to_17_except_6-train": (
+        "mojow_rock/rock_dataset3/ytvis19/JPEGImages",
+        "mojow_rock/rock_dataset3/ytvis19/mj_rock-db3_2_to_17_except_6-train.json"
+    ),
+    "ytvis-mj_rock-db3_2_to_17_except_6-val": (
+        "mojow_rock/rock_dataset3/ytvis19/JPEGImages",
+        "mojow_rock/rock_dataset3/ytvis19/mj_rock-db3_2_to_17_except_6-val.json"
+    ),
+
+    "ytvis-ipsc-all_frames_roi_g2_0_38-train": (
+        "ipsc/well3/all_frames_roi/ytvis19/JPEGImages",
+        "ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_38-train.json"
+    ),
+    "ytvis-ipsc-all_frames_roi_g2_0_38-val": (
+        "ipsc/well3/all_frames_roi/ytvis19/JPEGImages",
+        "ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_38-val.json"
+    ),
+    "ytvis-ipsc-all_frames_roi_g2_39_53-test": (
+        "ipsc/well3/all_frames_roi/ytvis19/JPEGImages",
+        "ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_39_53-test.json"
+    ),
+
 }
 
 

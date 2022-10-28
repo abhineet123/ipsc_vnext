@@ -181,6 +181,9 @@ https://github.com/pytorch/pytorch/issues/973#issuecomment-459398189
 
 <a id="new_dataset_"></a>
 # new_dataset
+"C:\UofA\PhD\ipsc_cell_tracking\ipsc_vnext\projects\IDOL\idol\data\datasets\builtin.py"
+"C:\UofA\PhD\ipsc_cell_tracking\ipsc_vnext\projects\SeqFormer\seqformer\data\datasets\builtin.py"
+
 
 
 
