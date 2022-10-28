@@ -11,6 +11,10 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+idol-ipsc-all_frames_roi_g2_0_38/
+datasets/ipsc
+datasets/ipsc/
+dcocoapi/
 log/
 pretrained/
 vnext/

@@ -138,6 +138,14 @@ def get_model_zoo_configs() -> List[str]:
 
 # For projects that are relative small and provide features that are very close
 # to detectron2's core functionalities, we install them under detectron2.projects
+
+"""for windows"""
+# PROJECTS = {
+#     "detectron2.projects.idol": "projects/IDOL/idol",
+#     "detectron2.projects.seqformer": "projects/SeqFormer/seqformer",
+#
+# }
+
 PROJECTS = {
     "detectron2.projects.idol": "projects/IDOL",
     "detectron2.projects.seqformer": "projects/SeqFormer",

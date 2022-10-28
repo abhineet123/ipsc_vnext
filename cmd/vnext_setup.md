@@ -8,7 +8,13 @@
     - [windows       @ virtualenv](#windows___virtualenv_)
     - [cuda_version       @ virtualenv](#cuda_version___virtualenv_)
 - [install](#install_)
+    - [pytorch       @ install](#pytorch___instal_l_)
+    - [requirements       @ install](#requirements___instal_l_)
+    - [detectron2       @ install](#detectron2___instal_l_)
+        - [windows       @ detectron2/install](#windows___detectron2_install_)
+    - [misc       @ install](#misc___instal_l_)
     - [cocoapi       @ install](#cocoapi___instal_l_)
+        - [windows       @ cocoapi/install](#windows___cocoapi_instal_l_)
     - [cuda_operators       @ install](#cuda_operators___instal_l_)
         - [cc       @ cuda_operators/install](#cc___cuda_operators_install_)
 - [bugs](#bug_s_)
@@ -17,7 +23,7 @@
 
 <a id="virtualen_v_"></a>
 # virtualenv
-sudo pip3 install virtualenv virtualenvwrapper
+python3 -m pip install virtualenv virtualenvwrapper
 
 nano ~/.bashrc
 
@@ -70,8 +76,7 @@ ln -s /data/vnxt_log/idol-ipsc-all_frames_roi_g2_0_38 ./
 <a id="windows___virtualenv_"></a>
 ## windows       @ virtualenv-->vnext_setup
 virtualenv vnext
-cd vnext/Scripts
-activate
+vnext\Scripts\activate
 
 <a id="cuda_version___virtualenv_"></a>
 ## cuda_version       @ virtualenv-->vnext_setup
@@ -80,32 +85,76 @@ nvcc --version
 
 <a id="install_"></a>
 # install
-python3 -m pip install torch==1.10.2+cu113 torchvision==0.11.3+cu113 torchaudio===0.10.2+cu113 -f https://download.pytorch.org/whl/torch_stable.html
+<a id="pytorch___instal_l_"></a>
+## pytorch       @ install-->vnext_setup
+python -m pip install torch==1.10.2+cu113 torchvision==0.11.3+cu113 torchaudio===0.10.2+cu113 -f https://download.pytorch.org/whl/torch_stable.html
 
-python3 -m pip install torch==1.10.2+cu114 torchvision==0.11.3+cu114 torchaudio===0.10.2+cu114 -f https://download.pytorch.org/whl/torch_stable.html
-python3 -m pip uninstall -y torch torchvision torchaudio
-python3 -m pip install --no-index torch torchvision torchaudio
+python -m pip install torch==1.10.2+cu114 torchvision==0.11.3+cu114 torchaudio===0.10.2+cu114 -f https://download.pytorch.org/whl/torch_stable.html
+python -m pip uninstall -y torch torchvision torchaudio
+python -m pip install --no-index torch torchvision torchaudio
 
-python3 -m pip install -r requirements.txt
-python3 -m pip install -e .
-python3 -m pip install imagesize shapely==1.7.1
+<a id="requirements___instal_l_"></a>
+## requirements       @ install-->vnext_setup
+python -m pip install -r requirements.txt
+
+<a id="detectron2___instal_l_"></a>
+## detectron2       @ install-->vnext_setup
+python -m pip install -e .
+
+<a id="windows___detectron2_install_"></a>
+### windows       @ detectron2/install-->vnext_setup
+change in `setup.py`
+```
+PROJECTS = {
+    "detectron2.projects.idol": "projects/IDOL/idol",
+     "detectron2.projects.seqformer": "projects/SeqFormer/seqformer",
+
+}
+```
+change in `detectron2\layers\csrc\nms_rotated\nms_rotated_cuda.cu`
+```
+/*
+#ifdef WITH_CUDA
+#include "../box_iou_rotated/box_iou_rotated_utils.h"
+#endif
+// TODO avoid this when pytorch supports "same directory" hipification
+#ifdef WITH_HIP
+/\#include "box_iou_rotated/box_iou_rotated_utils.h"
+#endif
+*/
+#include "box_iou_rotated/box_iou_rotated_utils.h"
+```
+<a id="misc___instal_l_"></a>
+## misc       @ install-->vnext_setup
+python -m pip install imagesize shapely==1.7.1
+
 
 <a id="cocoapi___instal_l_"></a>
 ## cocoapi       @ install-->vnext_setup
-python3 -m pip uninstall pycocotools
+python -m pip uninstall pycocotools
 git clone https://github.com/youtubevos/cocoapi
 cd cocoapi/PythonAPI
-python3 setup.py build_ext install
+python setup.py build_ext install
 cd -
 
+<a id="windows___cocoapi_instal_l_"></a>
+### windows       @ cocoapi/install-->vnext_setup
+change line 12 from:
+```
+extra_compile_args=['-Wno-cpp', '-Wno-unused-function', '-std=c99'],
+```
+to
+```
+extra_compile_args={'gcc': ['/Qstd=c99']},
+```
 __buggy__
 pip install git+https://github.com/youtubevos/cocoapi.git#"egg=pycocotools&subdirectory=PythonAPI"
-python3 -m pip install pycocotools
+python -m pip install pycocotools
 
 <a id="cuda_operators___instal_l_"></a>
 ## cuda_operators       @ install-->vnext_setup
 cd projects/IDOL/idol/models/ops/
-python3 setup.py build install
+python setup.py build install
 cd -
 
 <a id="cc___cuda_operators_install_"></a>
