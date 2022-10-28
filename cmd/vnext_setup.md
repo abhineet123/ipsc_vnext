@@ -20,6 +20,10 @@
 - [bugs](#bug_s_)
 - [new_dataset](#new_dataset_)
     - [ytvis19       @ new_dataset](#ytvis19___new_datase_t_)
+    - [ipsc       @ new_dataset](#ipsc___new_datase_t_)
+        - [all_frames_roi_g2_0_38_swinL-ytvis       @ ipsc/new_dataset](#all_frames_roi_g2_0_38_swinl_ytvis___ipsc_new_dataset_)
+            - [on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/new_dataset](#on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_new_datase_t_)
+    - [mj_rocks       @ new_dataset](#mj_rocks___new_datase_t_)
 
 <!-- /MarkdownTOC -->
 
@@ -126,6 +130,7 @@ change in `detectron2\layers\csrc\nms_rotated\nms_rotated_cuda.cu`
 */
 #include "box_iou_rotated/box_iou_rotated_utils.h"
 ```
+
 <a id="misc___instal_l_"></a>
 ## misc       @ install-->vnext_setup
 python -m pip install imagesize shapely==1.7.1
@@ -189,11 +194,32 @@ https://github.com/pytorch/pytorch/issues/973#issuecomment-459398189
 `_PREDEFINED_SPLITS_YTVIS_2019`
 `register_all_ytvis_2019`
 
+<a id="ipsc___new_datase_t_"></a>
+## ipsc       @ new_dataset-->vnext_setup
+scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/all_frames_roi_grs_221007.zip ./
+scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:pretrained_cocopretrain_SWINL_pth_grs_221007_224219.zip ./
 
+ln -s /data/ipsc ./datasets/ipsc
+ln -s /data/ipsc/well3/all_frames_roi /data/ipsc/well3/all_frames_roi/ytvis19/JPEGImages
+__cc__
+ln -s ~/projects/def-nilanjan/asingh1/data/ipsc ./datasets/ipsc
+ln -s  ~/projects/def-nilanjan/asingh1/data/ipsc/well3/all_frames_roi  ~/projects/def-nilanjan/asingh1/data/ipsc/well3/all_frames_roi/ytvis19/JPEGImages
+Running scp -r -i ~/.ssh/id_rsa -P 22 asingh1@narval.computecanada.ca:"/home/asingh1/ipsc-all_frames_roi_g2_0_38_ytvis_swinL_10278087.out" "/home/Tommy"
 
+<a id="all_frames_roi_g2_0_38_swinl_ytvis___ipsc_new_dataset_"></a>
+### all_frames_roi_g2_0_38_swinL-ytvis       @ ipsc/new_dataset-->vnext_setup
+mv ipsc/well3/all_frames_roi/ytvis19/all_frames_roi_g2_0_38-train.json ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_38-train.json
 
+mv ipsc/well3/all_frames_roi/ytvis19/all_frames_roi_g2_0_38-val.json ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_38-val.json
 
+<a id="on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_new_datase_t_"></a>
+#### on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/new_dataset-->vnext_setup
+mv ipsc-all_frames_roi_g2_39_53-train.json ipsc-all_frames_roi_g2_39_53-test.json
 
+<a id="mj_rocks___new_datase_t_"></a>
+## mj_rocks       @ new_dataset-->vnext_setup
+ln -s ~/data/mojow_rock ./datasets/mojow_rock
+ln -s ~/data/mojow_rock/rock_dataset3 ~/data/mojow_rock/rock_dataset3/ytvis19/JPEGImages
 
 
 
