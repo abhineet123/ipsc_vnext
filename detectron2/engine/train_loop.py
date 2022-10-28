@@ -146,7 +146,7 @@ class TrainerBase:
             try:
                 self.before_train()
                 for self.iter in range(start_iter, max_iter):
-                    if self.iter % 100 == 0:
+                    if self.iter % 10 == 0:
                         print('\n\n')
                         os.system("nvidia-smi")
                         print('\n\n')
