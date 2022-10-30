@@ -51,11 +51,11 @@ alias vnxt='workon vnext'
 
 module load python/3.8
 module load gcc cuda cudnn
-virtualenv vnext
-source vnext/bin/activate
+virtualenv ~/venv_vnext
+source ~/venv_vnext/bin/activate
 deactivate
 
-alias vnxt='source vnext/bin/activate'
+alias vnxt='source ~/venv_vnext/bin/activate'
 
 diskusage_report
 
