@@ -15,7 +15,7 @@
 
 module load cuda cudnn gcc python/3.8
 
-source ~/vnext/bin/activate
+source ~/venv/vnext/bin/activate
 
 nvidia-smi
 

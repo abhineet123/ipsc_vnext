@@ -51,11 +51,11 @@ alias vnxt='workon vnext'
 
 module load python/3.8
 module load gcc cuda cudnn
-virtualenv ~/venv_vnext
-source ~/venv_vnext/bin/activate
+virtualenv ~/venv/vnext
+source ~/venv/vnext/bin/activate
 deactivate
 
-alias vnxt='source ~/venv_vnext/bin/activate'
+alias vnxt='source ~/venv/vnext/bin/activate'
 
 diskusage_report
 
@@ -96,6 +96,8 @@ nvcc --version
 python -m pip install torch==1.10.2+cu113 torchvision==0.11.3+cu113 torchaudio===0.10.2+cu113 -f https://download.pytorch.org/whl/torch_stable.html
 
 python -m pip install torch==1.10.2+cu114 torchvision==0.11.3+cu114 torchaudio===0.10.2+cu114 -f https://download.pytorch.org/whl/torch_stable.html
+
+python -m pip install torch==1.10.2+cu114 torchvision==0.11.3+cu114 torchaudio===0.10.2+cu114
 python -m pip uninstall -y torch torchvision torchaudio
 python -m pip install --no-index torch torchvision torchaudio
 
@@ -138,7 +140,7 @@ python -m pip install imagesize shapely==1.7.1
 
 <a id="cocoapi___instal_l_"></a>
 ## cocoapi       @ install-->vnext_setup
-python -m pip uninstall pycocotools
+python -m pip -y uninstall pycocotools
 git clone https://github.com/youtubevos/cocoapi
 cd cocoapi/PythonAPI
 python setup.py build_ext install
@@ -169,7 +171,7 @@ cd -
 salloc --nodes=1 --time=0:15:0 --account=def-nilanjan --gpus-per-node=1 --mem=4000M --cpus-per-task=4
 
 module load cuda cudnn gcc python/3.8
-source ~/vnext/bin/activate
+source ~/venv/vnext/bin/activate
 
 cp -r projects/IDOL/idol/models/ops ~/
 cd ~/ops/

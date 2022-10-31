@@ -15,11 +15,11 @@
 
 module load cuda cudnn gcc python/3.8
 
-source ~/venv_vnext/bin/activate
+source ~/venv/vnext/bin/activate
 
 nvidia-smi
 
-python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2 --resume MODEL.WEIGHTS seqformer-ipsc-all_frames_roi_g2_0_38/model_0012999.pth
+python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2
 
 
 
