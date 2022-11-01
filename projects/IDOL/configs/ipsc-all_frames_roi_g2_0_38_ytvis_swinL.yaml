@@ -1,8 +1,8 @@
 MODEL:
   META_ARCHITECTURE: "IDOL"
-  # WEIGHTS: "pretrained/cocopretrain_SWINL.pth"
+  WEIGHTS: "pretrained/cocopretrain_SWINL.pth"
   # WEIGHTS: "idol-ipsc-all_frames_roi_g2_0_38/model_0012999.pth"
-  WEIGHTS: "idol-ipsc-all_frames_roi_g2_0_38/model_0099999.pth"
+  # WEIGHTS: "idol-ipsc-all_frames_roi_g2_0_38/model_0099999.pth"
   PIXEL_MEAN: [143.12, 137.32, 138.46]
   PIXEL_STD: [38.39, 41.68, 41.96]
   MASK_ON: True
