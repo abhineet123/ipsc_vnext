@@ -68,7 +68,7 @@ YTVIS_CATEGORIES_2019 = [
 
 YTVIS_MJ_ROCKS_CATEGORIES_2019 = [
     {"color": [0, 255, 0], "isthing": 1, "id": 1, "name": "rock"},
-    {"color": [255, 0, 0], "isthing": 1, "id": 2, "name": "syn"},
+    # {"color": [255, 0, 0], "isthing": 1, "id": 2, "name": "syn"},
 ]
 
 YTVIS_IPSC_CATEGORIES_2019 = [
