@@ -14,7 +14,7 @@ __pycache__/
 idol-ipsc-all_frames_roi_g2_0_38/
 datasets/ipsc
 datasets/ipsc/
-dcocoapi/
+cocoapi/
 log/
 pretrained/
 vnext/

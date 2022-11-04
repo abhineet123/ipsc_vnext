@@ -31,13 +31,13 @@ class YTVISEvaluator(DatasetEvaluator):
     """
 
     def __init__(
-        self,
-        dataset_name,
-        tasks=None,
-        distributed=True,
-        output_dir=None,
-        *,
-        use_fast_impl=True,
+            self,
+            dataset_name,
+            tasks=None,
+            distributed=True,
+            output_dir=None,
+            *,
+            use_fast_impl=True,
     ):
         """
         Args:
@@ -193,12 +193,20 @@ def instances_to_coco_json_video(inputs, outputs):
 
     ytvis_results = []
     for instance_id, (s, l, m) in enumerate(zip(scores, labels, masks)):
-        segms = [
-            mask_util.encode(np.array(_mask[:, :, None], order="F", dtype="uint8"))[0]
-            for _mask in m
-        ]
+        segms = []
+        for _mask in m:
+            mask_bool = np.array(_mask[:, :, None], order="F", dtype="uint8")
+            mask_encoded_out = mask_util.encode(mask_bool)[0]
+            mask_encoded = mask_encoded_out[0]
+            segms.append(mask_encoded)
+
+            print()
+
         for rle in segms:
-            rle["counts"] = rle["counts"].decode("utf-8")
+            rle_orig = rle["counts"]
+            rle_decoded = rle_orig.decode("utf-8")
+
+            rle["counts"] = rle_decoded
 
         res = {
             "video_id": video_id,

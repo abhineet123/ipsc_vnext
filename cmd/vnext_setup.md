@@ -15,6 +15,7 @@
     - [cuda_operators       @ install](#cuda_operators___instal_l_)
         - [cc       @ cuda_operators/install](#cc___cuda_operators_install_)
 - [bugs](#bug_s_)
+    - [cocoapi_RLE_encoding       @ bugs](#cocoapi_rle_encoding___bugs_)
 - [new_dataset](#new_dataset_)
     - [ytvis19       @ new_dataset](#ytvis19___new_datase_t_)
     - [ipsc       @ new_dataset](#ipsc___new_datase_t_)
@@ -163,6 +164,12 @@ https://github.com/pytorch/pytorch/issues/973
 torch.multiprocessing.set_sharing_strategy('file_system')
 https://github.com/pytorch/pytorch/issues/973#issuecomment-459398189
 
+<a id="cocoapi_rle_encoding___bugs_"></a>
+## cocoapi_RLE_encoding       @ bugs-->vnext_setup
+https://github.com/cocodataset/cocoapi/issues/492
+https://github.com/cocodataset/cocoapi/issues/386
+
+
 <a id="new_dataset_"></a>
 # new_dataset
 <a id="ytvis19___new_datase_t_"></a>
@@ -212,6 +219,7 @@ ln -s ~/data/mojow_rock/rock_dataset3 ~/data/mojow_rock/rock_dataset3/ytvis19/JP
  scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19 ./
 
  scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3 ./
+ scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/vnext_log/idol-ipsc-all_frames_roi_g2_0_38/model_0056999.pth ./
  scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/vnext_log/idol-ipsc-all_frames_roi_g2_0_38 ./
 
 <a id="from_nrw___sc_p_"></a>
