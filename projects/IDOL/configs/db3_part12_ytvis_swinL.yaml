@@ -58,4 +58,4 @@ DATALOADER:
   FILTER_EMPTY_ANNOTATIONS: False
   NUM_WORKERS: 8
 VERSION: 2
-OUTPUT_DIR: ./idol-ytvis-mj_rock-db3-part12
+OUTPUT_DIR: ./log/idol-ytvis-mj_rock-db3-part12

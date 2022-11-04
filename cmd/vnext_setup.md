@@ -2,9 +2,6 @@
 
 - [virtualenv](#virtualen_v_)
     - [cc       @ virtualenv](#cc___virtualenv_)
-        - [scp       @ cc/virtualenv](#scp___cc_virtualen_v_)
-            - [from_grs       @ scp/cc/virtualenv](#from_grs___scp_cc_virtualen_v_)
-            - [from_nrw       @ scp/cc/virtualenv](#from_nrw___scp_cc_virtualen_v_)
     - [windows       @ virtualenv](#windows___virtualenv_)
     - [cuda_version       @ virtualenv](#cuda_version___virtualenv_)
 - [install](#install_)
@@ -24,6 +21,9 @@
         - [all_frames_roi_g2_0_38_swinL-ytvis       @ ipsc/new_dataset](#all_frames_roi_g2_0_38_swinl_ytvis___ipsc_new_dataset_)
             - [on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/new_dataset](#on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_new_datase_t_)
     - [mj_rocks       @ new_dataset](#mj_rocks___new_datase_t_)
+- [scp       @ cc/virtualenv](#scp___cc_virtualen_v_)
+    - [from_grs       @ scp](#from_grs___sc_p_)
+    - [from_nrw       @ scp](#from_nrw___sc_p_)
 
 <!-- /MarkdownTOC -->
 
@@ -59,26 +59,6 @@ alias vnxt='source ~/venv/vnext/bin/activate'
 
 diskusage_report
 
-<a id="scp___cc_virtualen_v_"></a>
-### scp       @ cc/virtualenv-->vnext_setup
-<a id="from_grs___scp_cc_virtualen_v_"></a>
-#### from_grs       @ scp/cc/virtualenv-->vnext_setup
- scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/all_frames_roi_grs_221007.zip ./
- scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19 ./
- scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/scripts ~/
- scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/ipsc_vnext/pretrained ./
- scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19 ./
-
-<a id="from_nrw___scp_cc_virtualen_v_"></a>
-#### from_nrw       @ scp/cc/virtualenv-->vnext_setup
-mkdir /data/vnxt_log
-cd /data/vnxt_log
-mkdir idol-ipsc-all_frames_roi_g2_0_38
-
-scp -r asingh1@narval.computecanada.ca:~/scratch/ipsc_vnext_log/idol-ipsc-all_frames_roi_g2_0_38/model_0099999.pth ./
-
-ln -s /data/vnxt_log/idol-ipsc-all_frames_roi_g2_0_38 ./
-
 <a id="windows___virtualenv_"></a>
 ## windows       @ virtualenv-->vnext_setup
 virtualenv vnext
@@ -95,9 +75,6 @@ nvcc --version
 ## pytorch       @ install-->vnext_setup
 python -m pip install torch==1.10.2+cu113 torchvision==0.11.3+cu113 torchaudio===0.10.2+cu113 -f https://download.pytorch.org/whl/torch_stable.html
 
-python -m pip install torch==1.10.2+cu114 torchvision==0.11.3+cu114 torchaudio===0.10.2+cu114 -f https://download.pytorch.org/whl/torch_stable.html
-
-python -m pip install torch==1.10.2+cu114 torchvision==0.11.3+cu114 torchaudio===0.10.2+cu114
 python -m pip uninstall -y torch torchvision torchaudio
 python -m pip install --no-index torch torchvision torchaudio
 
@@ -137,10 +114,9 @@ change in `detectron2\layers\csrc\nms_rotated\nms_rotated_cuda.cu`
 ## misc       @ install-->vnext_setup
 python -m pip install imagesize shapely==1.7.1
 
-
 <a id="cocoapi___instal_l_"></a>
 ## cocoapi       @ install-->vnext_setup
-python -m pip -y uninstall pycocotools
+python -m pip uninstall pycocotools
 git clone https://github.com/youtubevos/cocoapi
 cd cocoapi/PythonAPI
 python setup.py build_ext install
@@ -201,11 +177,12 @@ https://github.com/pytorch/pytorch/issues/973#issuecomment-459398189
 scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/all_frames_roi_grs_221007.zip ./
 scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:pretrained_cocopretrain_SWINL_pth_grs_221007_224219.zip ./
 
+
 ln -s /data/ipsc ./datasets/ipsc
-ln -s /data/ipsc/well3/all_frames_roi /data/ipsc/well3/all_frames_roi/ytvis19/JPEGImages
+ln -s /data/ipsc/well3/all_frames_roi /data/ipsc/well3/all_frames_roi
 __cc__
 ln -s ~/projects/def-nilanjan/asingh1/data/ipsc ./datasets/ipsc
-ln -s  ~/projects/def-nilanjan/asingh1/data/ipsc/well3/all_frames_roi  ~/projects/def-nilanjan/asingh1/data/ipsc/well3/all_frames_roi/ytvis19/JPEGImages
+ln -s  ~/projects/def-nilanjan/asingh1/data/ipsc/well3/all_frames_roi  ~/projects/def-nilanjan/asingh1/data/ipsc/well3/all_frames_roi
 Running scp -r -i ~/.ssh/id_rsa -P 22 asingh1@narval.computecanada.ca:"/home/asingh1/ipsc-all_frames_roi_g2_0_38_ytvis_swinL_10278087.out" "/home/Tommy"
 
 <a id="all_frames_roi_g2_0_38_swinl_ytvis___ipsc_new_dataset_"></a>
@@ -222,6 +199,32 @@ mv ipsc-all_frames_roi_g2_39_53-train.json ipsc-all_frames_roi_g2_39_53-test.jso
 ## mj_rocks       @ new_dataset-->vnext_setup
 ln -s ~/data/mojow_rock ./datasets/mojow_rock
 ln -s ~/data/mojow_rock/rock_dataset3 ~/data/mojow_rock/rock_dataset3/ytvis19/JPEGImages
+
+
+<a id="scp___cc_virtualen_v_"></a>
+# scp       @ cc/virtualenv-->vnext_setup
+<a id="from_grs___sc_p_"></a>
+## from_grs       @ scp-->vnext_setup
+ scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/all_frames_roi_grs_221007.zip ./
+ scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19 ./
+ scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/scripts ~/
+ scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/ipsc_vnext/pretrained ./
+ scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19 ./
+
+ scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3 ./
+ scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/vnext_log/idol-ipsc-all_frames_roi_g2_0_38 ./
+
+<a id="from_nrw___sc_p_"></a>
+## from_nrw       @ scp-->vnext_setup
+mkdir /data/vnxt_log
+cd /data/vnxt_log
+mkdir idol-ipsc-all_frames_roi_g2_0_38
+
+scp -r asingh1@narval.computecanada.ca:~/scratch/ipsc_vnext_log/idol-ipsc-all_frames_roi_g2_0_38/model_0099999.pth ./
+
+ln -s /data/vnxt_log/idol-ipsc-all_frames_roi_g2_0_38 ./
+
+scp -r asingh1@narval.computecanada.ca:~/scratch/vnext_log/idol-ipsc-all_frames_roi_g2_0_38/model_0056999.pth ./
 
 
 
