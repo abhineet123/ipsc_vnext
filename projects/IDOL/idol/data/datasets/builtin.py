@@ -56,11 +56,11 @@ _PREDEFINED_SPLITS_YTVIS_2019 = {
         "ipsc/well3/all_frames_roi",
         "ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_38-val.json"
     ),
-    "ytvis-ipsc-all_frames_roi_g2_39_53-test": (
+    "ytvis-ipsc-all_frames_roi_g2_39_53": (
         "ipsc/well3/all_frames_roi",
         "ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_39_53-test.json"
     ),
-    "ytvis-ipsc-all_frames_roi_g2_seq_1_39_53-test": (
+    "ytvis-ipsc-all_frames_roi_g2_seq_1_39_53": (
         "ipsc/well3/all_frames_roi",
         "ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_seq_1_39_53-train.json"
     ),
