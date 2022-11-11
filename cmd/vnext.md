@@ -97,7 +97,7 @@ python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs
 <a id="on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_seqformer_ips_c__1"></a>
 ### on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/seqformer-ipsc-->vnext
 ```
-python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_38/model_0049999.pth
+python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/seqformer-ipsc-all_frames_roi_g2_0_38/model_0049999.pth
 ```
 
 <a id="seqformer_mj_rocks___seqformer_ipsc_"></a>
