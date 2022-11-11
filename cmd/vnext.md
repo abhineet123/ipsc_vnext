@@ -10,13 +10,12 @@
         - [db3_part12_ytvis_swinL       @ mj_rocks/idol](#db3_part12_ytvis_swinl___mj_rocks_ido_l_)
         - [db3_2_to_17_except_6_with_syn_ytvis_swinL       @ mj_rocks/idol](#db3_2_to_17_except_6_with_syn_ytvis_swinl___mj_rocks_ido_l_)
         - [db3_2_to_17_except_6_ytvis_swinL       @ mj_rocks/idol](#db3_2_to_17_except_6_ytvis_swinl___mj_rocks_ido_l_)
-- [seqformer](#seqformer_)
-    - [ipsc       @ seqformer](#ipsc___seqforme_r_)
-        - [all_frames_roi_g2_0_38_swinL-ytvis       @ ipsc/seqformer](#all_frames_roi_g2_0_38_swinl_ytvis___ipsc_seqformer_)
-            - [on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/seqformer](#on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_seqforme_r_)
-            - [on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/seqformer](#on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_seqforme_r__1)
-    - [mj_rocks       @ seqformer](#mj_rocks___seqforme_r_)
-        - [db3_2_to_17_except_6_ytvis_swinL       @ mj_rocks/seqformer](#db3_2_to_17_except_6_ytvis_swinl___mj_rocks_seqformer_)
+- [seqformer-ipsc       @ seqformer](#seqformer_ipsc___seqforme_r_)
+    - [all_frames_roi_g2_0_38_swinL-ytvis       @ seqformer-ipsc](#all_frames_roi_g2_0_38_swinl_ytvis___seqformer_ipsc_)
+        - [on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/seqformer-ipsc](#on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_seqformer_ips_c_)
+        - [on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/seqformer-ipsc](#on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_seqformer_ips_c__1)
+- [seqformer-mj_rocks       @ seqformer-ipsc](#seqformer_mj_rocks___seqformer_ipsc_)
+        - [db3_2_to_17_except_6_ytvis_swinL       @ seqformer-mj_rocks/](#db3_2_to_17_except_6_ytvis_swinl___seqformer_mj_rocks__)
 
 <!-- /MarkdownTOC -->
 <a id="ido_l_"></a>
@@ -80,34 +79,31 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 2
 ```
 
-<a id="seqformer_"></a>
-# seqformer
-
-<a id="ipsc___seqforme_r_"></a>
-## ipsc       @ seqformer-->vnext
-<a id="all_frames_roi_g2_0_38_swinl_ytvis___ipsc_seqformer_"></a>
-### all_frames_roi_g2_0_38_swinL-ytvis       @ ipsc/seqformer-->vnext
+<a id="seqformer_ipsc___seqforme_r_"></a>
+# seqformer-ipsc       @ seqformer-->vnext
+<a id="all_frames_roi_g2_0_38_swinl_ytvis___seqformer_ipsc_"></a>
+## all_frames_roi_g2_0_38_swinL-ytvis       @ seqformer-ipsc-->vnext
 sbatch cmd/seqformer-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.sh
 ```
 python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2
 ```
 
-<a id="on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_seqforme_r_"></a>
-#### on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/seqformer-->vnext
+<a id="on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_seqformer_ips_c_"></a>
+### on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/seqformer-ipsc-->vnext
 ```
 python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only 
 ```
 
-<a id="on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_seqforme_r__1"></a>
-#### on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/seqformer-->vnext
+<a id="on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_seqformer_ips_c__1"></a>
+### on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/seqformer-ipsc-->vnext
 ```
-python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_38/model_0049999.pth
+python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_38/model_0049999.pth
 ```
 
-<a id="mj_rocks___seqforme_r_"></a>
-## mj_rocks       @ seqformer-->vnext
-<a id="db3_2_to_17_except_6_ytvis_swinl___mj_rocks_seqformer_"></a>
-### db3_2_to_17_except_6_ytvis_swinL       @ mj_rocks/seqformer-->vnext
+<a id="seqformer_mj_rocks___seqformer_ipsc_"></a>
+# seqformer-mj_rocks       @ seqformer-ipsc-->vnext
+<a id="db3_2_to_17_except_6_ytvis_swinl___seqformer_mj_rocks__"></a>
+### db3_2_to_17_except_6_ytvis_swinL       @ seqformer-mj_rocks/-->vnext
 ```
 python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 2
 ```

@@ -227,6 +227,8 @@ ln -s ~/data/mojow_rock/rock_dataset3 ~/data/mojow_rock/rock_dataset3/ytvis19/JP
  scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3 ./
  scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/vnext_log/idol-ipsc-all_frames_roi_g2_0_38/model_0056999.pth ./
  scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/vnext_log/idol-ipsc-all_frames_roi_g2_0_38 ./
+ 
+ scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/vnext_log/seqformer-ipsc-all_frames_roi_g2_0_38/model_0049999.pth ./
 
 <a id="from_nrw___sc_p_"></a>
 ## from_nrw       @ scp-->vnext_setup

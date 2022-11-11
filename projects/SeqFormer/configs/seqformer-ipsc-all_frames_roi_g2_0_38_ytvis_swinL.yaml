@@ -26,7 +26,7 @@ MODEL:
     CLIP_STRIDE: 1
 DATASETS:
   TRAIN: ("ytvis-ipsc-all_frames_roi_g2_0_38-train",)
-  TEST: ("ytvis-ipsc-all_frames_roi_g2_39_53-test",)
+  TEST: ("ytvis-ipsc-all_frames_roi_g2_39_53",)
 SOLVER:
   IMS_PER_BATCH: 2
   BASE_LR: 0.0002
