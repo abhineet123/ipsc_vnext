@@ -240,6 +240,8 @@ ln -s /data/vnxt_log/idol-ipsc-all_frames_roi_g2_0_38 ./
 
 scp -r asingh1@narval.computecanada.ca:~/scratch/vnext_log/idol-ipsc-all_frames_roi_g2_0_38/model_0056999.pth ./
 
+scp -r asingh1@narval.computecanada.ca:~/scratch/vnext_log/seqformer-ipsc-all_frames_roi_g2_0_38/model_0049999.pth ./
+
 
 
 
