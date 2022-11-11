@@ -208,7 +208,7 @@ def default_setup(cfg, args):
         # config.yaml in output directory
         path = os.path.join(output_dir, "config.yaml")
         if isinstance(cfg, CfgNode):
-            logger.info("Running with full config:\n{}".format(_highlight(cfg.dump(), ".yaml")))
+            # logger.info("Running with full config:\n{}".format(_highlight(cfg.dump(), ".yaml")))
             with PathManager.open(path, "w") as f:
                 f.write(cfg.dump())
         else:
@@ -513,7 +513,7 @@ class DefaultTrainer(TrainerBase):
         """
         model = build_model(cfg)
         logger = logging.getLogger(__name__)
-        logger.info("Model:\n{}".format(model))
+        # logger.info("Model:\n{}".format(model))
         return model
 
     @classmethod

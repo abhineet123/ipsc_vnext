@@ -169,6 +169,12 @@ https://github.com/pytorch/pytorch/issues/973#issuecomment-459398189
 https://github.com/cocodataset/cocoapi/issues/492
 https://github.com/cocodataset/cocoapi/issues/386
 
+uncompressed / plain text list RLE to compressed / binary RLE
+line 322 of projects\IDOL\idol\data\datasets\ytvis.py
+```
+segm = mask_util.frPyObjects(segm, *segm["size"])
+```
+input json loading works with both uncompressed and compressed RLE
 
 <a id="new_dataset_"></a>
 # new_dataset

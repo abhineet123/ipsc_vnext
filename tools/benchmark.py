@@ -97,7 +97,7 @@ def benchmark_data_advanced(args):
 def benchmark_train(args):
     cfg = setup(args)
     model = build_model(cfg)
-    logger.info("Model:\n{}".format(model))
+    # logger.info("Model:\n{}".format(model))
     if comm.get_world_size() > 1:
         model = DistributedDataParallel(
             model, device_ids=[comm.get_local_rank()], broadcast_buffers=False
@@ -149,7 +149,7 @@ def benchmark_eval(args):
         data_loader = instantiate(cfg.dataloader.test)
 
     model.eval()
-    logger.info("Model:\n{}".format(model))
+    # logger.info("Model:\n{}".format(model))
     dummy_data = DatasetFromList(list(itertools.islice(data_loader, 100)), copy=False)
 
     def f():

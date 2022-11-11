@@ -196,11 +196,11 @@ def instances_to_coco_json_video(inputs, outputs):
         segms = []
         for _mask in m:
             mask_bool = np.array(_mask[:, :, None], order="F", dtype="uint8")
-            mask_encoded_out = mask_util.encode(mask_bool)[0]
+            mask_encoded_out = mask_util.encode(mask_bool)
             mask_encoded = mask_encoded_out[0]
             segms.append(mask_encoded)
 
-            print()
+            # print()
 
         for rle in segms:
             rle_orig = rle["counts"]
