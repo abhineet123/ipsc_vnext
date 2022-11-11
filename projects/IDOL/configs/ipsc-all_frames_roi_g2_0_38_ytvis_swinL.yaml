@@ -22,7 +22,7 @@ MODEL:
     MULTI_CLS_ON: True
 DATASETS:
   TRAIN: ("ytvis-ipsc-all_frames_roi_g2_0_38-train",)
-  TEST: ("ytvis-ipsc-all_frames_roi_g2_seq_1_39_53",)
+  # TEST: ("ytvis-ipsc-all_frames_roi_g2_seq_1_39_53",)
   TEST: ("ytvis-ipsc-all_frames_roi_g2_39_53",)
 SOLVER:
   IMS_PER_BATCH: 4

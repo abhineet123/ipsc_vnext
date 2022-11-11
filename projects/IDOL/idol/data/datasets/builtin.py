@@ -50,11 +50,11 @@ _PREDEFINED_SPLITS_YTVIS_2019 = {
 
     "ytvis-ipsc-all_frames_roi_g2_0_38-train": (
         "ipsc/well3/all_frames_roi",
-        "ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_38-train.json"
+        "ipsc/well3/all_frames_roi/ytvis19/ytvis-ipsc-all_frames_roi_g2_0_38-train.json"
     ),
     "ytvis-ipsc-all_frames_roi_g2_0_38-val": (
         "ipsc/well3/all_frames_roi",
-        "ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_38-val.json"
+        "ipsc/well3/all_frames_roi/ytvis19/ytvis-ipsc-all_frames_roi_g2_0_38-val.json"
     ),
     "ytvis-ipsc-all_frames_roi_g2_39_53": (
         "ipsc/well3/all_frames_roi",
@@ -62,7 +62,7 @@ _PREDEFINED_SPLITS_YTVIS_2019 = {
     ),
     "ytvis-ipsc-all_frames_roi_g2_seq_1_39_53": (
         "ipsc/well3/all_frames_roi",
-        "ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_seq_1_39_53-train.json"
+        "ipsc/well3/all_frames_roi/ytvis19/ytvis-ipsc-all_frames_roi_g2_seq_1_39_53-train.json"
     ),
 
 }
