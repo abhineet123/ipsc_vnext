@@ -6,10 +6,12 @@
     - [cuda_version       @ virtualenv](#cuda_version___virtualenv_)
 - [install](#install_)
     - [pytorch       @ install](#pytorch___instal_l_)
+        - [python_3.10       @ pytorch/install](#python_3_10___pytorch_instal_l_)
     - [requirements       @ install](#requirements___instal_l_)
     - [detectron2       @ install](#detectron2___instal_l_)
         - [windows       @ detectron2/install](#windows___detectron2_install_)
     - [misc       @ install](#misc___instal_l_)
+        - [geos_c       @ misc/install](#geos_c___misc_install_)
     - [cocoapi       @ install](#cocoapi___instal_l_)
         - [windows       @ cocoapi/install](#windows___cocoapi_instal_l_)
     - [cuda_operators       @ install](#cuda_operators___instal_l_)
@@ -79,6 +81,10 @@ python -m pip install torch==1.10.2+cu113 torchvision==0.11.3+cu113 torchaudio==
 python -m pip uninstall -y torch torchvision torchaudio
 python -m pip install --no-index torch torchvision torchaudio
 
+<a id="python_3_10___pytorch_instal_l_"></a>
+### python_3.10       @ pytorch/install-->vnext_setup
+python -m pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 -f https://download.pytorch.org/whl/torch_stable.html
+
 <a id="requirements___instal_l_"></a>
 ## requirements       @ install-->vnext_setup
 python -m pip install -r requirements.txt
@@ -114,6 +120,10 @@ change in `detectron2\layers\csrc\nms_rotated\nms_rotated_cuda.cu`
 <a id="misc___instal_l_"></a>
 ## misc       @ install-->vnext_setup
 python -m pip install imagesize shapely==1.7.1
+
+<a id="geos_c___misc_install_"></a>
+### geos_c       @ misc/install-->vnext_setup
+sudo apt-get install libgeos-dev
 
 <a id="cocoapi___instal_l_"></a>
 ## cocoapi       @ install-->vnext_setup

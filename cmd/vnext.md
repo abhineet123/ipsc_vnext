@@ -10,6 +10,7 @@
         - [db3_part12_ytvis_swinL       @ mj_rocks/idol](#db3_part12_ytvis_swinl___mj_rocks_ido_l_)
         - [db3_2_to_17_except_6_with_syn_ytvis_swinL       @ mj_rocks/idol](#db3_2_to_17_except_6_with_syn_ytvis_swinl___mj_rocks_ido_l_)
         - [db3_2_to_17_except_6_ytvis_swinL       @ mj_rocks/idol](#db3_2_to_17_except_6_ytvis_swinl___mj_rocks_ido_l_)
+            - [on-september_5_2020       @ db3_2_to_17_except_6_ytvis_swinL/mj_rocks/idol](#on_september_5_2020___db3_2_to_17_except_6_ytvis_swinl_mj_rocks_idol_)
 - [seqformer-ipsc       @ seqformer](#seqformer_ipsc___seqforme_r_)
     - [all_frames_roi_g2_0_38_swinL-ytvis       @ seqformer-ipsc](#all_frames_roi_g2_0_38_swinl_ytvis___seqformer_ipsc_)
         - [on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/seqformer-ipsc](#on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_seqformer_ips_c_)
@@ -77,6 +78,12 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_
 ### db3_2_to_17_except_6_ytvis_swinL       @ mj_rocks/idol-->vnext
 ```
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 2
+```
+
+<a id="on_september_5_2020___db3_2_to_17_except_6_ytvis_swinl_mj_rocks_idol_"></a>
+#### on-september_5_2020       @ db3_2_to_17_except_6_ytvis_swinL/mj_rocks/idol-->vnext
+```
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_38/model_0151999.pth DATASETS.TEST ('ytvis-mj_rock-september_5_2020-large_huge',)
 ```
 
 <a id="seqformer_ipsc___seqforme_r_"></a>
