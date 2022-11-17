@@ -83,7 +83,7 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_
 <a id="on_september_5_2020___db3_2_to_17_except_6_ytvis_swinl_mj_rocks_idol_"></a>
 #### on-september_5_2020       @ db3_2_to_17_except_6_ytvis_swinL/mj_rocks/idol-->vnext
 ```
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_38/model_0151999.pth DATASETS.TEST ('ytvis-mj_rock-september_5_2020-large_huge',)
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_38/model_0151999.pth
 ```
 
 <a id="seqformer_ipsc___seqforme_r_"></a>

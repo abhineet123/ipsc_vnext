@@ -42,7 +42,7 @@ _PREDEFINED_SPLITS_YTVIS_2019 = {
         "mojow_rock/rock_dataset3/ytvis19/JPEGImages",
         "mojow_rock/rock_dataset3/ytvis19/mj_rock-september_5_2020.json"
     ),
-    "": (
+    "ytvis-mj_rock-september_5_2020-large_huge": (
         "mojow_rock/rock_dataset3/ytvis19/JPEGImages",
         "mojow_rock/rock_dataset3/ytvis19/mj_rock-september_5_2020-large_huge.json"
     ),
