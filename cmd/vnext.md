@@ -83,7 +83,7 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_
 <a id="on_september_5_2020___db3_2_to_17_except_6_ytvis_swinl_mj_rocks_idol_"></a>
 #### on-september_5_2020       @ db3_2_to_17_except_6_ytvis_swinL/mj_rocks/idol-->vnext
 ```
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ytvis-mj_rock-db3_2_to_17_except_6/model_0151999.pth SOLVER.IMS_PER_BATCH 1
+PYTORCH_NO_CUDA_MEMORY_CACHING=1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ytvis-mj_rock-db3_2_to_17_except_6/model_0151999.pth SOLVER.IMS_PER_BATCH 1
 ```
 
 <a id="seqformer_ipsc___seqforme_r_"></a>
