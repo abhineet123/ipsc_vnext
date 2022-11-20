@@ -46,13 +46,9 @@ _PREDEFINED_SPLITS_YTVIS_2019 = {
         "mojow_rock/rock_dataset3/ytvis19/JPEGImages",
         "mojow_rock/rock_dataset3/ytvis19/mj_rock-september_5_2020-large_huge.json"
     ),
-    "ytvis-mj_rock-db3_2_to_17_except_6-large_huge-train": (
+    "ytvis-mj_rock-db3_2_to_17_except_6-large_huge": (
         "mojow_rock/rock_dataset3/ytvis19/JPEGImages",
-        "mojow_rock/rock_dataset3/ytvis19/mj_rock-db3_2_to_17_except_6-large_huge-train.json"
-    ),
-    "ytvis-mj_rock-db3_2_to_17_except_6-large_huge-val": (
-        "mojow_rock/rock_dataset3/ytvis19/JPEGImages",
-        "mojow_rock/rock_dataset3/ytvis19/mj_rock-db3_2_to_17_except_6-large_huge-val.json"
+        "mojow_rock/rock_dataset3/ytvis19/mj_rock-db3_2_to_17_except_6-large_huge.json"
     ),
     "ytvis-mj_rock-september_5_2020-large_huge-max_length-200": (
         "mojow_rock/rock_dataset3/ytvis19/JPEGImages",
