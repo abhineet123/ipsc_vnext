@@ -29,7 +29,7 @@
 <a id="all_frames_roi_g2_0_38_swinl___ipsc_ido_l_"></a>
 ### all_frames_roi_g2_0_38_swinL       @ ipsc/idol-->vnext
 ```
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_swinL.yaml --num-gpus 2 
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-all_frames_roi_g2_0_38_swinL.yaml --num-gpus 2 
 ```
 <a id="all_frames_roi_g2_0_38_swinl_ytvis___ipsc_ido_l_"></a>
 ### all_frames_roi_g2_0_38_swinL-ytvis       @ ipsc/idol-->vnext
@@ -44,19 +44,19 @@ sbatch cmd/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.sh
 MAX_JOBS=1
 
 ```
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --resume
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --resume
 ```
 
 <a id="on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_idol_"></a>
 #### on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/idol-->vnext
 ```
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_38/model_0056999.pth
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_38/model_0056999.pth
 ```
 
 <a id="on_all_frames_roi_g2_seq_1_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_idol_"></a>
 #### on-all_frames_roi_g2_seq_1_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/idol-->vnext
 ```
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_38/model_0056999.pth DATASETS.TEST ('ytvis-ipsc-all_frames_roi_g2_seq_1_39_53-test',)
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_38/model_0056999.pth DATASETS.TEST ('ytvis-ipsc-all_frames_roi_g2_seq_1_39_53-test',)
 ```
 
 <a id="mj_rocks___idol_"></a>
@@ -65,39 +65,39 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/ipsc-all_
 <a id="db3_part12_ytvis_swinl___mj_rocks_ido_l_"></a>
 ### db3_part12_ytvis_swinL       @ mj_rocks/idol-->vnext
 ```
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_part12_ytvis_swinL.yaml --num-gpus 2
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_part12_ytvis_swinL.yaml --num-gpus 2
 ```
 
 ```
-CUDA_VISIBLE_DEVICES=1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_part12_ytvis_swinL.yaml --num-gpus 1 
+CUDA_VISIBLE_DEVICES=1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_part12_ytvis_swinL.yaml --num-gpus 1 
 ```
 <a id="db3_2_to_17_except_6_with_syn_ytvis_swinl___mj_rocks_ido_l_"></a>
 ### db3_2_to_17_except_6_with_syn_ytvis_swinL       @ mj_rocks/idol-->vnext
 ```
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_with_syn_ytvis_swinL.yaml --num-gpus 2
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_2_to_17_except_6_with_syn_ytvis_swinL.yaml --num-gpus 2
 ```
 <a id="db3_2_to_17_except_6_ytvis_swinl___mj_rocks_ido_l_"></a>
 ### db3_2_to_17_except_6_ytvis_swinL       @ mj_rocks/idol-->vnext
 ```
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 2
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 2
 ```
 
 <a id="on_september_5_2020___db3_2_to_17_except_6_ytvis_swinl_mj_rocks_idol_"></a>
 #### on-september_5_2020       @ db3_2_to_17_except_6_ytvis_swinL/mj_rocks/idol-->vnext
 ```
-PYTORCH_NO_CUDA_MEMORY_CACHING=1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ytvis-mj_rock-db3_2_to_17_except_6/model_0151999.pth SOLVER.IMS_PER_BATCH 1
+PYTORCH_NO_CUDA_MEMORY_CACHING=1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ytvis-mj_rock-db3_2_to_17_except_6/model_0151999.pth SOLVER.IMS_PER_BATCH 1
 ```
 
 <a id="db3_2_to_17_except_6_large_huge_ytvis_swinl___mj_rocks_ido_l_"></a>
 ### db3_2_to_17_except_6_large_huge_ytvis_swinL       @ mj_rocks/idol-->vnext
 ```
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_large_huge_ytvis_swinL.yaml --num-gpus 2
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_2_to_17_except_6_large_huge_ytvis_swinL.yaml --num-gpus 2
 ```
 
 <a id="on_september_5_2020___db3_2_to_17_except_6_large_huge_ytvis_swinl_mj_rocks_ido_l_"></a>
 #### on-september_5_2020       @ db3_2_to_17_except_6_large_huge_ytvis_swinL/mj_rocks/idol-->vnext
 ```
-PYTORCH_NO_CUDA_MEMORY_CACHING=1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/db3_2_to_17_except_6_large_huge_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ytvis-mj_rock-db3_2_to_17_except_6/model_0151999.pth SOLVER.IMS_PER_BATCH 1
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_2_to_17_except_6_large_huge_ytvis_swinL.yaml --num-gpus 2 --eval-only MODEL.WEIGHTS log/idol-ytvis-mj_rock-db3_2_to_17_except_6_large_huge/model_0209999.pth SOLVER.IMS_PER_BATCH 2
 ```
 
 <a id="seqformer_ipsc___seqforme_r_"></a>
