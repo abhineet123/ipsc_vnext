@@ -21,7 +21,7 @@ MODEL:
 DATASETS:
   TRAIN: ("ytvis-mj_rock-db3_2_to_17_except_6-large_huge",)
   # TEST: ("ytvis-mj_rock-db3_2_to_17_except_6-large_huge-val",)
-  TEST: ("ytvis-mj_rock-september_5_2020-large_huge-max_length-200",)
+  TEST: ("ytvis-mj_rock-september_5_2020-large_huge-max_length-50",)
 SOLVER:
   IMS_PER_BATCH: 2
   BASE_LR: 0.0001
