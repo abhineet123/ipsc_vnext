@@ -114,7 +114,10 @@ class YTVISEvaluator(DatasetEvaluator):
                 raise AssertionError('batch idx not found in inputs')
             else:
                 # csv_file_path = os.path.join(self.output_dir, "masks.csv")
-                file_path = os.path.join(self.output_dir, f"results_batch_{idx}.json")
+
+                out_json_dir = os.path.join(self.output_dir, f"json_results")
+                os.makedirs(out_json_dir, exist_ok=1)
+                file_path = os.path.join(out_json_dir, f"batch_{idx}.json")
                 self._logger.info("Saving results to {}".format(file_path))
                 with PathManager.open(file_path, "w") as f:
                     f.write(json.dumps(prediction))
