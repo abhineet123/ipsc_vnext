@@ -37,7 +37,7 @@ class YTVISEvaluator(DatasetEvaluator):
             distributed=True,
             output_dir=None,
             *,
-            use_fast_impl=True,
+            use_fast_impl=False,
     ):
         """
         Args:
@@ -68,7 +68,7 @@ class YTVISEvaluator(DatasetEvaluator):
         """
         self._logger = logging.getLogger(__name__)
         self._distributed = distributed
-        self._output_dir = output_dir
+        self.output_dir = output_dir
         self._use_fast_impl = use_fast_impl
 
         if tasks is not None and isinstance(tasks, CfgNode):
@@ -105,69 +105,83 @@ class YTVISEvaluator(DatasetEvaluator):
                 "instances" that contains :class:`Instances`.
         """
         prediction = instances_to_coco_json_video(inputs, outputs)
-        self._predictions.extend(prediction)
+        # self._predictions.extend(prediction)
+
+        if self.output_dir:
+            try:
+                idx = inputs[0]['idx']
+            except KeyError:
+                raise AssertionError('batch idx not found in inputs')
+            else:
+                # csv_file_path = os.path.join(self.output_dir, "masks.csv")
+                file_path = os.path.join(self.output_dir, f"results_batch_{idx}.json")
+                self._logger.info("Saving results to {}".format(file_path))
+                with PathManager.open(file_path, "w") as f:
+                    f.write(json.dumps(prediction))
+                    f.flush()
 
     def evaluate(self):
         """
         Args:
             img_ids: a list of image IDs to evaluate on. Default to None for the whole dataset
         """
-        if self._distributed:
-            comm.synchronize()
-            predictions = comm.gather(self._predictions, dst=0)
-            predictions = list(itertools.chain(*predictions))
+        return None
 
-            if not comm.is_main_process():
-                return {}
-        else:
-            predictions = self._predictions
-
-        if len(predictions) == 0:
-            self._logger.warning("[COCOEvaluator] Did not receive valid predictions.")
-            return {}
-
-        if self._output_dir:
-            PathManager.mkdirs(self._output_dir)
-            file_path = os.path.join(self._output_dir, "instances_predictions.pth")
-            with PathManager.open(file_path, "wb") as f:
-                torch.save(predictions, f)
-
-        self._results = OrderedDict()
-        self._eval_predictions(predictions)
-        # Copy so the caller can do whatever with results
-        return copy.deepcopy(self._results)
+        # if self._distributed:
+        #     comm.synchronize()
+        #     predictions = comm.gather(self._predictions, dst=0)
+        #     predictions = list(itertools.chain(*predictions))
+        #
+        #     if not comm.is_main_process():
+        #         return {}
+        # else:
+        #     predictions = self._predictions
+        #
+        # if len(predictions) == 0:
+        #     self._logger.warning("[COCOEvaluator] Did not receive valid predictions.")
+        #     return {}
+        #
+        # if self.output_dir:
+        #     PathManager.mkdirs(self.output_dir)
+        #     file_path = os.path.join(self.output_dir, "instances_predictions.pth")
+        #     with PathManager.open(file_path, "wb") as f:
+        #         torch.save(predictions, f)
+        #
+        # self._results = OrderedDict()
+        # self._eval_predictions(predictions)
+        # return copy.deepcopy(self._results)
 
     def _eval_predictions(self, predictions):
         """
         Evaluate predictions. Fill self._results with the metrics of the tasks.
         """
-        self._logger.info("Preparing results for YTVIS format ...")
-
-        # unmap the category ids for COCO
-        if hasattr(self._metadata, "thing_dataset_id_to_contiguous_id"):
-            dataset_id_to_contiguous_id = self._metadata.thing_dataset_id_to_contiguous_id
-            all_contiguous_ids = list(dataset_id_to_contiguous_id.values())
-            num_classes = len(all_contiguous_ids)
-            assert min(all_contiguous_ids) == 0 and max(all_contiguous_ids) == num_classes - 1
-
-            reverse_id_mapping = {v: k for k, v in dataset_id_to_contiguous_id.items()}
-            for result in predictions:
-                category_id = result["category_id"]
-                assert category_id < num_classes, (
-                    f"A prediction has class={category_id}, "
-                    f"but the dataset only has {num_classes} classes and "
-                    f"predicted class id should be in [0, {num_classes - 1}]."
-                )
-                result["category_id"] = reverse_id_mapping[category_id]
-
-        if self._output_dir:
-            file_path = os.path.join(self._output_dir, "results.json")
-            self._logger.info("Saving results to {}".format(file_path))
-            with PathManager.open(file_path, "w") as f:
-                f.write(json.dumps(predictions))
-                f.flush()
-
-        self._logger.info("Annotations are not available for evaluation.")
+        # self._logger.info("Preparing results for YTVIS format ...")
+        #
+        # # unmap the category ids for COCO
+        # if hasattr(self._metadata, "thing_dataset_id_to_contiguous_id"):
+        #     dataset_id_to_contiguous_id = self._metadata.thing_dataset_id_to_contiguous_id
+        #     all_contiguous_ids = list(dataset_id_to_contiguous_id.values())
+        #     num_classes = len(all_contiguous_ids)
+        #     assert min(all_contiguous_ids) == 0 and max(all_contiguous_ids) == num_classes - 1
+        #
+        #     reverse_id_mapping = {v: k for k, v in dataset_id_to_contiguous_id.items()}
+        #     for result in predictions:
+        #         category_id = result["category_id"]
+        #         assert category_id < num_classes, (
+        #             f"A prediction has class={category_id}, "
+        #             f"but the dataset only has {num_classes} classes and "
+        #             f"predicted class id should be in [0, {num_classes - 1}]."
+        #         )
+        #         result["category_id"] = reverse_id_mapping[category_id]
+        #
+        # if self.output_dir:
+        #     file_path = os.path.join(self.output_dir, "results.json")
+        #     self._logger.info("Saving results to {}".format(file_path))
+        #     with PathManager.open(file_path, "w") as f:
+        #         f.write(json.dumps(predictions))
+        #         f.flush()
+        #
+        # self._logger.info("Annotations are not available for evaluation.")
         return
 
 

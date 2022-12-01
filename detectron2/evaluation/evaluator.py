@@ -128,6 +128,7 @@ def inference_on_dataset(
     logger.info("Start inference on {} batches".format(len(data_loader)))
 
     total = len(data_loader)  # inference data loader must have a fixed length
+
     if evaluator is None:
         # create a no-op evaluator
         evaluator = DatasetEvaluators([])
@@ -159,6 +160,8 @@ def inference_on_dataset(
             if torch.cuda.is_available():
                 torch.cuda.synchronize()
             total_compute_time += time.perf_counter() - start_compute_time
+
+            inputs[0]['idx'] = idx
 
             start_eval_time = time.perf_counter()
             evaluator.process(inputs, outputs)
@@ -201,12 +204,12 @@ def inference_on_dataset(
         )
     )
 
-    results = evaluator.evaluate()
+    # results = evaluator.evaluate()
     # An evaluator may return None when not in main process.
     # Replace it by an empty dict instead to make it easier for downstream code to handle
-    if results is None:
-        results = {}
-    return results
+    # if results is None:
+    #     results = {}
+    # return results
 
 
 @contextmanager

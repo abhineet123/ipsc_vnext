@@ -97,7 +97,7 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_
 <a id="on_september_5_2020___db3_2_to_17_except_6_large_huge_ytvis_swinl_mj_rocks_ido_l_"></a>
 #### on-september_5_2020       @ db3_2_to_17_except_6_large_huge_ytvis_swinL/mj_rocks/idol-->vnext
 ```
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_2_to_17_except_6_large_huge_ytvis_swinL.yaml --num-gpus 2 --eval-only MODEL.WEIGHTS log/idol-ytvis-mj_rock-db3_2_to_17_except_6_large_huge/model_0209999.pth SOLVER.IMS_PER_BATCH 2
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_2_to_17_except_6_large_huge_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ytvis-mj_rock-db3_2_to_17_except_6_large_huge/model_0209999.pth SOLVER.IMS_PER_BATCH 1
 ```
 
 <a id="seqformer_ipsc___seqforme_r_"></a>

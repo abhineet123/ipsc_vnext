@@ -615,7 +615,7 @@ Alternatively, you can call evaluation functions yourself (see Colab balloon tut
                     results[dataset_name] = {}
                     continue
             results_i = inference_on_dataset(model, data_loader, evaluator)
-            results[dataset_name] = results_i
+            # results[dataset_name] = results_i
             if comm.is_main_process():
                 assert isinstance(
                     results_i, dict
@@ -625,9 +625,9 @@ Alternatively, you can call evaluation functions yourself (see Colab balloon tut
                 logger.info("Evaluation results for {} in csv format:".format(dataset_name))
                 print_csv_format(results_i)
 
-        if len(results) == 1:
-            results = list(results.values())[0]
-        return results
+        # if len(results) == 1:
+        #     results = list(results.values())[0]
+        # return results
 
     @staticmethod
     def auto_scale_workers(cfg, num_workers: int):
