@@ -616,14 +616,14 @@ Alternatively, you can call evaluation functions yourself (see Colab balloon tut
                     continue
             results_i = inference_on_dataset(model, data_loader, evaluator)
             # results[dataset_name] = results_i
-            if comm.is_main_process():
-                assert isinstance(
-                    results_i, dict
-                ), "Evaluator must return a dict on the main process. Got {} instead.".format(
-                    results_i
-                )
-                logger.info("Evaluation results for {} in csv format:".format(dataset_name))
-                print_csv_format(results_i)
+            # if comm.is_main_process():
+            #     assert isinstance(
+            #         results_i, dict
+            #     ), "Evaluator must return a dict on the main process. Got {} instead.".format(
+            #         results_i
+            #     )
+            #     logger.info("Evaluation results for {} in csv format:".format(dataset_name))
+            #     print_csv_format(results_i)
 
         # if len(results) == 1:
         #     results = list(results.values())[0]

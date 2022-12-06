@@ -127,6 +127,7 @@ sudo apt-get install libgeos-dev
 
 <a id="cocoapi___instal_l_"></a>
 ## cocoapi       @ install-->vnext_setup
+python -m pip install pycocotools
 python -m pip uninstall pycocotools
 git clone https://github.com/youtubevos/cocoapi
 cd cocoapi/PythonAPI
@@ -185,6 +186,10 @@ line 322 of projects\IDOL\idol\data\datasets\ytvis.py
 segm = mask_util.frPyObjects(segm, *segm["size"])
 ```
 input json loading works with both uncompressed and compressed RLE
+
+`findContours TypeError: Expected Ptr<cv::UMat> for argument 'image'`
+copy image returned by mask_util.decode
+
 
 <a id="new_dataset_"></a>
 # new_dataset
