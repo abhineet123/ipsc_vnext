@@ -40,10 +40,12 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc
 __cc__
 salloc --nodes=1 --time=0:15:0 --account=def-nilanjan --gpus-per-node=1 --mem=16000M --cpus-per-task=4
 salloc --nodes=1 --time=0:15:0 --account=def-nilanjan --gpus-per-node=2 --mem=16000M --cpus-per-task=4
+exit
 
 ln -s ~/scratch/ipsc_vnext_log/idol-ipsc-all_frames_roi_g2_0_38/ .
 
 sbatch cmd/ipsc-all_frames_roi_g2_0_38_ytvis_swinL.sh
+scancel
 
 MAX_JOBS=1
 
