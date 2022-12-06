@@ -6,7 +6,9 @@
         - [all_frames_roi_g2_0_38_swinL-ytvis       @ ipsc/idol](#all_frames_roi_g2_0_38_swinl_ytvis___ipsc_ido_l_)
             - [on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/idol](#on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_idol_)
             - [on-all_frames_roi_g2_seq_1_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/idol](#on_all_frames_roi_g2_seq_1_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_idol_)
-        - [all_frames_roi_g2_0_38_swinL       @ ipsc/idol](#all_frames_roi_g2_0_38_swinl___ipsc_ido_l__1)
+        - [ext_reorg_roi_g2_0_38       @ ipsc/idol](#ext_reorg_roi_g2_0_38___ipsc_ido_l_)
+        - [ext_reorg_roi_g2_0_38-max_length-10       @ ipsc/idol](#ext_reorg_roi_g2_0_38_max_length_10___ipsc_ido_l_)
+        - [ext_reorg_roi_g2_0_38-max_length-20       @ ipsc/idol](#ext_reorg_roi_g2_0_38_max_length_20___ipsc_ido_l_)
     - [mj_rocks       @ idol](#mj_rocks___idol_)
         - [db3_part12_ytvis_swinL       @ mj_rocks/idol](#db3_part12_ytvis_swinl___mj_rocks_ido_l_)
         - [db3_2_to_17_except_6_with_syn_ytvis_swinL       @ mj_rocks/idol](#db3_2_to_17_except_6_with_syn_ytvis_swinl___mj_rocks_ido_l_)
@@ -32,6 +34,7 @@
 ```
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-all_frames_roi_g2_0_38_swinL.yaml --num-gpus 2 
 ```
+
 <a id="all_frames_roi_g2_0_38_swinl_ytvis___ipsc_ido_l_"></a>
 ### all_frames_roi_g2_0_38_swinL-ytvis       @ ipsc/idol-->vnext
 __cc__
@@ -60,10 +63,20 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_38/model_0056999.pth DATASETS.TEST ('ytvis-ipsc-all_frames_roi_g2_seq_1_39_53-test',)
 ```
 
-<a id="all_frames_roi_g2_0_38_swinl___ipsc_ido_l__1"></a>
-### all_frames_roi_g2_0_38_swinL       @ ipsc/idol-->vnext
+<a id="ext_reorg_roi_g2_0_38___ipsc_ido_l_"></a>
+### ext_reorg_roi_g2_0_38       @ ipsc/idol-->vnext
 ```
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2 
+```
+<a id="ext_reorg_roi_g2_0_38_max_length_10___ipsc_ido_l_"></a>
+### ext_reorg_roi_g2_0_38-max_length-10       @ ipsc/idol-->vnext
+```
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_38_max_length_10_ytvis_swinL.yaml --num-gpus 2 
+```
+<a id="ext_reorg_roi_g2_0_38_max_length_20___ipsc_ido_l_"></a>
+### ext_reorg_roi_g2_0_38-max_length-20       @ ipsc/idol-->vnext
+```
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_38_max_length_20_ytvis_swinL.yaml --num-gpus 2 
 ```
 
 <a id="mj_rocks___idol_"></a>
