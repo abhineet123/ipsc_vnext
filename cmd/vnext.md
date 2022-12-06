@@ -68,16 +68,22 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc
 ```
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2 
 ```
+sbatch cmd/ipsc-ext_reorg_roi_g2_0_38_ytvis_swinL.sh
+
 <a id="ext_reorg_roi_g2_0_38_max_length_10___ipsc_ido_l_"></a>
 ### ext_reorg_roi_g2_0_38-max_length-10       @ ipsc/idol-->vnext
 ```
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_38-max_length-10_ytvis_swinL.yaml --num-gpus 2 
 ```
+sbatch cmd/ipsc-ext_reorg_roi_g2_0_38-max_length-10_ytvis_swinL.sh
+
 <a id="ext_reorg_roi_g2_0_38_max_length_20___ipsc_ido_l_"></a>
 ### ext_reorg_roi_g2_0_38-max_length-20       @ ipsc/idol-->vnext
 ```
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_38-max_length-20_ytvis_swinL.yaml --num-gpus 2 
 ```
+sbatch cmd/ipsc-ext_reorg_roi_g2_0_38-max_length-20_ytvis_swinL.sh
+
 
 <a id="mj_rocks___idol_"></a>
 ## mj_rocks       @ idol-->vnext
