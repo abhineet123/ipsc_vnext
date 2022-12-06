@@ -84,6 +84,17 @@ _PREDEFINED_SPLITS_YTVIS_2019 = {
         "ipsc/well3/all_frames_roi",
         "ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_0_38.json"
     ),
+
+    "ytvis-ipsc-ext_reorg_roi_g2_0_38-max_length-10": (
+        "ipsc/well3/all_frames_roi",
+        "ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_0_38-max_length-10.json"
+    ),
+
+    "ytvis-ipsc-ext_reorg_roi_g2_0_38-max_length-20": (
+        "ipsc/well3/all_frames_roi",
+        "ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_0_38-max_length-20.json"
+    ),
+
     "ytvis-ipsc-ext_reorg_roi_g2_39_53": (
         "ipsc/well3/all_frames_roi",
         "ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_39_53.json"
@@ -92,7 +103,6 @@ _PREDEFINED_SPLITS_YTVIS_2019 = {
         "ipsc/well3/all_frames_roi",
         "ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_seq_1_39_53.json"
     ),
-
 }
 
 # ==== Predefined splits for YTVIS 2021 ===========
