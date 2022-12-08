@@ -19,7 +19,8 @@
 - [seqformer-ipsc       @ seqformer](#seqformer_ipsc___seqforme_r_)
     - [all_frames_roi_g2_0_38_swinL-ytvis       @ seqformer-ipsc](#all_frames_roi_g2_0_38_swinl_ytvis___seqformer_ipsc_)
         - [on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/seqformer-ipsc](#on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_seqformer_ips_c_)
-        - [on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/seqformer-ipsc](#on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_seqformer_ips_c__1)
+            - [model_0049999       @ on-all_frames_roi_g2_39_53/all_frames_roi_g2_0_38_swinL-ytvis/seqformer-ipsc](#model_0049999___on_all_frames_roi_g2_39_53_all_frames_roi_g2_0_38_swinl_ytvis_seqformer_ipsc_)
+    - [ext_reorg_roi_g2_0_38_swinL-ytvis       @ seqformer-ipsc](#ext_reorg_roi_g2_0_38_swinl_ytvis___seqformer_ipsc_)
 - [seqformer-mj_rocks       @ seqformer-ipsc](#seqformer_mj_rocks___seqformer_ipsc_)
         - [db3_2_to_17_except_6_ytvis_swinL       @ seqformer-mj_rocks/](#db3_2_to_17_except_6_ytvis_swinl___seqformer_mj_rocks__)
 
@@ -143,10 +144,17 @@ python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs
 python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only 
 ```
 
-<a id="on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_seqformer_ips_c__1"></a>
-### on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/seqformer-ipsc-->vnext
+<a id="model_0049999___on_all_frames_roi_g2_39_53_all_frames_roi_g2_0_38_swinl_ytvis_seqformer_ipsc_"></a>
+#### model_0049999       @ on-all_frames_roi_g2_39_53/all_frames_roi_g2_0_38_swinL-ytvis/seqformer-ipsc-->vnext
 ```
 python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/seqformer-ipsc-all_frames_roi_g2_0_38/model_0049999.pth
+```
+
+<a id="ext_reorg_roi_g2_0_38_swinl_ytvis___seqformer_ipsc_"></a>
+## ext_reorg_roi_g2_0_38_swinL-ytvis       @ seqformer-ipsc-->vnext
+sbatch cmd/seqformer-ipsc-ext_reorg_roi_g2_0_38_ytvis_swinL.sh
+```
+python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2
 ```
 
 <a id="seqformer_mj_rocks___seqformer_ipsc_"></a>
