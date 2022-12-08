@@ -25,8 +25,8 @@ MODEL:
     CLIP_LENGTH: 5
     CLIP_STRIDE: 1
 DATASETS:
-  TRAIN: ("ytvis-ipsc-ext_reorg_roi_roi_g2_0_38",)
-  TEST: ("ytvis-ipsc-ext_reorg_roi_roi_g2_39_53",)
+  TRAIN: ("ytvis-ipsc-ext_reorg_roi_g2_0_38",)
+  TEST: ("ytvis-ipsc-ext_reorg_roi_g2_39_53",)
 SOLVER:
   IMS_PER_BATCH: 2
   BASE_LR: 0.0002
