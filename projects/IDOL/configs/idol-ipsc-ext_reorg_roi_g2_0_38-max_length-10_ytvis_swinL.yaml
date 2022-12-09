@@ -23,7 +23,7 @@ MODEL:
 DATASETS:
   TRAIN: ("ytvis-ipsc-ext_reorg_roi_g2_0_38-max_length-10",)
   # TEST: ("ytvis-ipsc-all_frames_roi_g2_seq_1_39_53",)
-  TEST: ("ytvis-ipsc-all_frames_roi_g2_39_53",)
+  TEST: ("ytvis-ipsc-ext_reorg_roi_g2_39_53",)
 SOLVER:
   IMS_PER_BATCH: 4
   BASE_LR: 0.0001

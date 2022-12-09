@@ -62,7 +62,6 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc
 #### on-all_frames_roi_g2_seq_1_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/idol-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_38/model_0056999.pth DATASETS.TEST ('ytvis-ipsc-all_frames_roi_g2_seq_1_39_53-test',)
 
-
 <a id="ext_reorg_roi_g2_0_38___ipsc_ido_l_"></a>
 ### ext_reorg_roi_g2_0_38       @ ipsc/idol-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2 
@@ -71,7 +70,7 @@ sbatch cmd/ipsc-ext_reorg_roi_g2_0_38_ytvis_swinL.sh
 
 <a id="on_ext_reorg_roi_g2_39_53___ext_reorg_roi_g2_0_38_ipsc_ido_l_"></a>
 #### on-ext_reorg_roi_g2_39_53       @ ext_reorg_roi_g2_0_38/ipsc/idol-->vnext
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_0_38/model_0099999.pth
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_0_38/model_0098999.pth
 
 <a id="ext_reorg_roi_g2_0_38_max_length_10___ipsc_ido_l_"></a>
 ### ext_reorg_roi_g2_0_38-max_length-10       @ ipsc/idol-->vnext
@@ -87,8 +86,7 @@ sbatch cmd/ipsc-ext_reorg_roi_g2_0_38-max_length-20_ytvis_swinL.sh
 
 <a id="on_ext_reorg_roi_g2_39_53___ext_reorg_roi_g2_0_38_max_length_20_ipsc_ido_l_"></a>
 #### on-ext_reorg_roi_g2_39_53       @ ext_reorg_roi_g2_0_38-max_length-20/ipsc/idol-->vnext
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_38-max_length-20_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_0_38-max_length-20/model_0099999.pth
-
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_38-max_length-20_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_0_38-max_length-20/model_0098999.pth
 
 <a id="mj_rocks___idol_"></a>
 ## mj_rocks       @ idol-->vnext
