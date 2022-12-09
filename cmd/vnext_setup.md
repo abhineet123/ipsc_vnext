@@ -259,6 +259,10 @@ scp -r asingh1@narval.computecanada.ca:~/scratch/vnext_log/idol-ipsc-all_frames_
 
 scp -r asingh1@narval.computecanada.ca:~/scratch/vnext_log/seqformer-ipsc-all_frames_roi_g2_0_38/model_0049999.pth ./
 
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_0_38/model_0099999.pth ./
+
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_0_38-max_length-20/model_0099999.pth ./
+
 
 
 
