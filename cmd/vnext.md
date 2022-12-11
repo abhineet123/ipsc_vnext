@@ -57,7 +57,6 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc
 #### on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/idol-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-all_frames_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_38/model_0056999.pth
 
-
 <a id="on_all_frames_roi_g2_seq_1_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_idol_"></a>
 #### on-all_frames_roi_g2_seq_1_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/idol-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_38/model_0056999.pth DATASETS.TEST ('ytvis-ipsc-all_frames_roi_g2_seq_1_39_53-test',)
@@ -141,7 +140,7 @@ python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/
 ## ext_reorg_roi_g2_0_38_swinL-ytvis       @ seqformer-ipsc-->vnext
 sbatch cmd/seqformer-ipsc-ext_reorg_roi_g2_0_38_ytvis_swinL.sh
 
-python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2
+python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_0_38_ytvis_swinL.yaml --num-gpus 2 --resume
 
 <a id="seqformer_mj_rocks___seqformer_ipsc_"></a>
 # seqformer-mj_rocks       @ seqformer-ipsc-->vnext
