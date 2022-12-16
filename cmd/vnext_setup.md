@@ -31,7 +31,7 @@
         - [seqformer-all_frames_roi_g2_0_38       @ from_nrw/scp](#seqformer_all_frames_roi_g2_0_38___from_nrw_scp_)
         - [idol-ext_reorg_roi_g2_0_38       @ from_nrw/scp](#idol_ext_reorg_roi_g2_0_38___from_nrw_scp_)
         - [idol-ext_reorg_roi_g2_0_38-max_length-20       @ from_nrw/scp](#idol_ext_reorg_roi_g2_0_38_max_length_20___from_nrw_scp_)
-        - [idol-ext_reorg_roi_g2_0_38-max_length-20       @ from_nrw/scp](#idol_ext_reorg_roi_g2_0_38_max_length_20___from_nrw_scp__1)
+        - [seqformer-ipsc-ext_reorg_roi_g2_0_38       @ from_nrw/scp](#seqformer_ipsc_ext_reorg_roi_g2_0_38___from_nrw_scp_)
 
 <!-- /MarkdownTOC -->
 
@@ -278,13 +278,15 @@ scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reo
 scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_0_38-max_length-20/model_0099999.pth ./
 scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_0_38/events.out.** ./
 
-<a id="idol_ext_reorg_roi_g2_0_38_max_length_20___from_nrw_scp__1"></a>
-### idol-ext_reorg_roi_g2_0_38-max_length-20       @ from_nrw/scp-->vnext_setup
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_roi_g2_0_38/model_0046999.pth ./
+<a id="seqformer_ipsc_ext_reorg_roi_g2_0_38___from_nrw_scp_"></a>
+### seqformer-ipsc-ext_reorg_roi_g2_0_38       @ from_nrw/scp-->vnext_setup
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_38/model_0099999.pth ./
 
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_roi_g2_0_38./
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_38/model_0098999.pth ./
 
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_0_38/events.out.** ./
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_38 ./
+
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_38/events.out.** ./
 
 
 
