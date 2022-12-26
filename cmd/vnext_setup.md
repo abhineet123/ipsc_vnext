@@ -56,7 +56,6 @@ alias vnxt='workon vnext'
 
 <a id="cc___virtualenv_"></a>
 ## cc       @ virtualenv-->vnext_setup
-
 module load python/3.8
 module load gcc cuda cudnn
 virtualenv ~/venv/vnext
@@ -287,6 +286,9 @@ scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ex
 scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_38 ./
 
 scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_38/events.out.** ./
+
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_38 ./
+
 
 
 
