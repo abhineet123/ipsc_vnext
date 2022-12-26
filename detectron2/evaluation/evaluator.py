@@ -204,12 +204,13 @@ def inference_on_dataset(
         )
     )
 
-    # results = evaluator.evaluate()
+    results = evaluator.evaluate()
     # An evaluator may return None when not in main process.
     # Replace it by an empty dict instead to make it easier for downstream code to handle
-    # if results is None:
-    #     results = {}
-    # return results
+    if results is None:
+        print('empty results found')
+        results = {}
+    return results
 
 
 @contextmanager
