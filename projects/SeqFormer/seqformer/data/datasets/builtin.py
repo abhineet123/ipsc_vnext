@@ -49,45 +49,45 @@ _PREDEFINED_SPLITS_YTVIS_2019 = {
         "mojow_rock/rock_dataset3/ytvis19/mj_rock-db3_2_to_17_except_6-val.json"
     ),
 
-    "ytvis-ipsc-all_frames_roi_g2_0_38-train": (
+    "ytvis-ipsc-all_frames_roi_g2_0_37-train": (
         "ipsc/well3/all_frames_roi",
-        "ipsc/well3/all_frames_roi/ytvis19/ytvis-ipsc-all_frames_roi_g2_0_38-train.json"
+        "ipsc/well3/all_frames_roi/ytvis19/ytvis-ipsc-all_frames_roi_g2_0_37-train.json"
     ),
-    "ytvis-ipsc-all_frames_roi_g2_0_38-val": (
+    "ytvis-ipsc-all_frames_roi_g2_0_37-val": (
         "ipsc/well3/all_frames_roi",
-        "ipsc/well3/all_frames_roi/ytvis19/ytvis-ipsc-all_frames_roi_g2_0_38-val.json"
+        "ipsc/well3/all_frames_roi/ytvis19/ytvis-ipsc-all_frames_roi_g2_0_37-val.json"
     ),
-    "ytvis-ipsc-all_frames_roi_g2_39_53": (
+    "ytvis-ipsc-all_frames_roi_g2_38_53": (
         "ipsc/well3/all_frames_roi",
-        "ipsc/well3/all_frames_roi/ytvis19/ytvis-ipsc-all_frames_roi_g2_39_53.json"
+        "ipsc/well3/all_frames_roi/ytvis19/ytvis-ipsc-all_frames_roi_g2_38_53.json"
     ),
-    "ytvis-ipsc-all_frames_roi_g2_seq_1_39_53": (
+    "ytvis-ipsc-all_frames_roi_g2_seq_1_38_53": (
         "ipsc/well3/all_frames_roi",
-        "ipsc/well3/all_frames_roi/ytvis19/ytvis-ipsc-all_frames_roi_g2_seq_1_39_53.json"
-    ),
-
-    "ytvis-ipsc-ext_reorg_roi_g2_0_38": (
-        "ipsc/well3/all_frames_roi",
-        "ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_0_38.json"
+        "ipsc/well3/all_frames_roi/ytvis19/ytvis-ipsc-all_frames_roi_g2_seq_1_38_53.json"
     ),
 
-    "ytvis-ipsc-ext_reorg_roi_g2_0_38-max_length-10": (
+    "ytvis-ipsc-ext_reorg_roi_g2_0_37": (
         "ipsc/well3/all_frames_roi",
-        "ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_0_38-max_length-10.json"
+        "ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_0_37.json"
     ),
 
-    "ytvis-ipsc-ext_reorg_roi_g2_0_38-max_length-20": (
+    "ytvis-ipsc-ext_reorg_roi_g2_0_37-max_length-10": (
         "ipsc/well3/all_frames_roi",
-        "ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_0_38-max_length-20.json"
+        "ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_0_37-max_length-10.json"
     ),
 
-    "ytvis-ipsc-ext_reorg_roi_g2_39_53": (
+    "ytvis-ipsc-ext_reorg_roi_g2_0_37-max_length-20": (
         "ipsc/well3/all_frames_roi",
-        "ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_39_53.json"
+        "ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_0_37-max_length-20.json"
     ),
-    "ytvis-ipsc-ext_reorg_roi_g2_seq_1_39_53": (
+
+    "ytvis-ipsc-ext_reorg_roi_g2_38_53": (
         "ipsc/well3/all_frames_roi",
-        "ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_seq_1_39_53.json"
+        "ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_38_53.json"
+    ),
+    "ytvis-ipsc-ext_reorg_roi_g2_seq_1_38_53": (
+        "ipsc/well3/all_frames_roi",
+        "ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_seq_1_38_53.json"
     ),
 }
 
