@@ -60,4 +60,4 @@ DATALOADER:
   FILTER_EMPTY_ANNOTATIONS: True
   NUM_WORKERS: 2
 VERSION: 2
-OUTPUT_DIR: ./log/idol-ipsc-ext_reorg_roi_g2_0_38-max_length-10
+OUTPUT_DIR: ./log/idol-ipsc-ext_reorg_roi_g2_0_37-max_length-10

@@ -58,4 +58,4 @@ DATALOADER:
   FILTER_EMPTY_ANNOTATIONS: True
   NUM_WORKERS: 8
 VERSION: 2
-OUTPUT_DIR: ./log/ipsc-all_frames_roi_g2_0_38
+OUTPUT_DIR: ./log/ipsc-all_frames_roi_g2_0_37

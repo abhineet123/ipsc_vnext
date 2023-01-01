@@ -105,11 +105,9 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_
 ### db3_2_to_17_except_6_ytvis_swinL       @ mj_rocks/idol-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 2
 
-
 <a id="on_september_5_2020___db3_2_to_17_except_6_ytvis_swinl_mj_rocks_idol_"></a>
 #### on-september_5_2020       @ db3_2_to_17_except_6_ytvis_swinL/mj_rocks/idol-->vnext
 PYTORCH_NO_CUDA_MEMORY_CACHING=1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ytvis-mj_rock-db3_2_to_17_except_6/model_0151999.pth SOLVER.IMS_PER_BATCH 1
-
 
 <a id="db3_2_to_17_except_6_large_huge_ytvis_swinl___mj_rocks_ido_l_"></a>
 ### db3_2_to_17_except_6_large_huge_ytvis_swinL       @ mj_rocks/idol-->vnext
@@ -119,7 +117,6 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_
 <a id="on_september_5_2020___db3_2_to_17_except_6_large_huge_ytvis_swinl_mj_rocks_ido_l_"></a>
 #### on-september_5_2020       @ db3_2_to_17_except_6_large_huge_ytvis_swinL/mj_rocks/idol-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_2_to_17_except_6_large_huge_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ytvis-mj_rock-db3_2_to_17_except_6_large_huge/model_0209999.pth SOLVER.IMS_PER_BATCH 1
-
 
 <a id="seqformer_ipsc___seqforme_r_"></a>
 # seqformer-ipsc       @ seqformer-->vnext
@@ -145,7 +142,7 @@ python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs
 
 <a id="on_ext_reorg_roi_g2_38_53___ext_reorg_roi_g2_0_37_swinl_ytvis_seqformer_ipsc_"></a>
 #### on-ext_reorg_roi_g2_38_53       @ ext_reorg_roi_g2_0_37_swinL-ytvis/seqformer-ipsc-->vnext
-python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_0_37_ytvis_swinL.yaml --num-gpus 2 --eval-only MODEL.WEIGHTS log/seqformer-ipsc-ext_reorg_roi_g2_0_37/model_final.pth
+CUDA_VISIBLE_DEVICES=1 python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_0_37_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/seqformer-ipsc-ext_reorg_roi_g2_0_37/model_final.pth
 
 <a id="seqformer_mj_rocks___seqformer_ipsc_"></a>
 # seqformer-mj_rocks       @ seqformer-ipsc-->vnext
