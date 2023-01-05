@@ -1,23 +1,22 @@
 <!-- MarkdownTOC -->
 
-- [idol](#ido_l_)
-    - [ipsc       @ idol](#ipsc___idol_)
-        - [all_frames_roi_g2_0_37_swinL       @ ipsc/idol](#all_frames_roi_g2_0_37_swinl___ipsc_ido_l_)
-        - [all_frames_roi_g2_0_37_swinL-ytvis       @ ipsc/idol](#all_frames_roi_g2_0_37_swinl_ytvis___ipsc_ido_l_)
-            - [on-all_frames_roi_g2_38_53       @ all_frames_roi_g2_0_37_swinL-ytvis/ipsc/idol](#on_all_frames_roi_g2_38_53___all_frames_roi_g2_0_37_swinl_ytvis_ipsc_idol_)
-            - [on-all_frames_roi_g2_seq_1_38_53       @ all_frames_roi_g2_0_37_swinL-ytvis/ipsc/idol](#on_all_frames_roi_g2_seq_1_38_53___all_frames_roi_g2_0_37_swinl_ytvis_ipsc_idol_)
-        - [ext_reorg_roi_g2_0_37       @ ipsc/idol](#ext_reorg_roi_g2_0_37___ipsc_ido_l_)
-            - [on-ext_reorg_roi_g2_38_53       @ ext_reorg_roi_g2_0_37/ipsc/idol](#on_ext_reorg_roi_g2_38_53___ext_reorg_roi_g2_0_37_ipsc_ido_l_)
-        - [ext_reorg_roi_g2_0_37-max_length-10       @ ipsc/idol](#ext_reorg_roi_g2_0_37_max_length_10___ipsc_ido_l_)
-        - [ext_reorg_roi_g2_0_37-max_length-20       @ ipsc/idol](#ext_reorg_roi_g2_0_37_max_length_20___ipsc_ido_l_)
-            - [on-ext_reorg_roi_g2_38_53       @ ext_reorg_roi_g2_0_37-max_length-20/ipsc/idol](#on_ext_reorg_roi_g2_38_53___ext_reorg_roi_g2_0_37_max_length_20_ipsc_ido_l_)
-    - [mj_rocks       @ idol](#mj_rocks___idol_)
-        - [db3_part12_ytvis_swinL       @ mj_rocks/idol](#db3_part12_ytvis_swinl___mj_rocks_ido_l_)
-        - [db3_2_to_17_except_6_with_syn_ytvis_swinL       @ mj_rocks/idol](#db3_2_to_17_except_6_with_syn_ytvis_swinl___mj_rocks_ido_l_)
-        - [db3_2_to_17_except_6_ytvis_swinL       @ mj_rocks/idol](#db3_2_to_17_except_6_ytvis_swinl___mj_rocks_ido_l_)
-            - [on-september_5_2020       @ db3_2_to_17_except_6_ytvis_swinL/mj_rocks/idol](#on_september_5_2020___db3_2_to_17_except_6_ytvis_swinl_mj_rocks_idol_)
-        - [db3_2_to_17_except_6_large_huge_ytvis_swinL       @ mj_rocks/idol](#db3_2_to_17_except_6_large_huge_ytvis_swinl___mj_rocks_ido_l_)
-            - [on-september_5_2020       @ db3_2_to_17_except_6_large_huge_ytvis_swinL/mj_rocks/idol](#on_september_5_2020___db3_2_to_17_except_6_large_huge_ytvis_swinl_mj_rocks_ido_l_)
+- [idol-ipsc](#idol_ipsc_)
+    - [all_frames_roi_g2_0_37_swinL       @ idol-ipsc](#all_frames_roi_g2_0_37_swinl___idol_ips_c_)
+    - [all_frames_roi_g2_0_37_swinL-ytvis       @ idol-ipsc](#all_frames_roi_g2_0_37_swinl_ytvis___idol_ips_c_)
+        - [on-all_frames_roi_g2_38_53       @ all_frames_roi_g2_0_37_swinL-ytvis/idol-ipsc](#on_all_frames_roi_g2_38_53___all_frames_roi_g2_0_37_swinl_ytvis_idol_ipsc_)
+        - [on-all_frames_roi_g2_seq_1_38_53       @ all_frames_roi_g2_0_37_swinL-ytvis/idol-ipsc](#on_all_frames_roi_g2_seq_1_38_53___all_frames_roi_g2_0_37_swinl_ytvis_idol_ipsc_)
+    - [ext_reorg_roi_g2_0_37       @ idol-ipsc](#ext_reorg_roi_g2_0_37___idol_ips_c_)
+        - [on-ext_reorg_roi_g2_38_53       @ ext_reorg_roi_g2_0_37/idol-ipsc](#on_ext_reorg_roi_g2_38_53___ext_reorg_roi_g2_0_37_idol_ips_c_)
+    - [ext_reorg_roi_g2_0_37-max_length-10       @ idol-ipsc](#ext_reorg_roi_g2_0_37_max_length_10___idol_ips_c_)
+    - [ext_reorg_roi_g2_0_37-max_length-20       @ idol-ipsc](#ext_reorg_roi_g2_0_37_max_length_20___idol_ips_c_)
+        - [on-ext_reorg_roi_g2_38_53       @ ext_reorg_roi_g2_0_37-max_length-20/idol-ipsc](#on_ext_reorg_roi_g2_38_53___ext_reorg_roi_g2_0_37_max_length_20_idol_ips_c_)
+- [idol-mj_rocks       @ idol](#idol_mj_rocks___idol_)
+    - [db3_part12_ytvis_swinL       @ idol-mj_rocks](#db3_part12_ytvis_swinl___idol_mj_rock_s_)
+    - [db3_2_to_17_except_6_with_syn_ytvis_swinL       @ idol-mj_rocks](#db3_2_to_17_except_6_with_syn_ytvis_swinl___idol_mj_rock_s_)
+    - [db3_2_to_17_except_6_ytvis_swinL       @ idol-mj_rocks](#db3_2_to_17_except_6_ytvis_swinl___idol_mj_rock_s_)
+        - [on-september_5_2020       @ db3_2_to_17_except_6_ytvis_swinL/idol-mj_rocks](#on_september_5_2020___db3_2_to_17_except_6_ytvis_swinl_idol_mj_rocks_)
+    - [db3_2_to_17_except_6_large_huge_ytvis_swinL       @ idol-mj_rocks](#db3_2_to_17_except_6_large_huge_ytvis_swinl___idol_mj_rock_s_)
+        - [on-september_5_2020       @ db3_2_to_17_except_6_large_huge_ytvis_swinL/idol-mj_rocks](#on_september_5_2020___db3_2_to_17_except_6_large_huge_ytvis_swinl_idol_mj_rock_s_)
 - [seqformer-ipsc       @ seqformer](#seqformer_ipsc___seqforme_r_)
     - [all_frames_roi_g2_0_37_swinL-ytvis       @ seqformer-ipsc](#all_frames_roi_g2_0_37_swinl_ytvis___seqformer_ipsc_)
         - [on-all_frames_roi_g2_38_53       @ all_frames_roi_g2_0_37_swinL-ytvis/seqformer-ipsc](#on_all_frames_roi_g2_38_53___all_frames_roi_g2_0_37_swinl_ytvis_seqformer_ips_c_)
@@ -28,17 +27,15 @@
         - [db3_2_to_17_except_6_ytvis_swinL       @ seqformer-mj_rocks/](#db3_2_to_17_except_6_ytvis_swinl___seqformer_mj_rocks__)
 
 <!-- /MarkdownTOC -->
-<a id="ido_l_"></a>
-# idol
+<a id="idol_ipsc_"></a>
+# idol-ipsc
 
-<a id="ipsc___idol_"></a>
-## ipsc       @ idol-->vnext
-<a id="all_frames_roi_g2_0_37_swinl___ipsc_ido_l_"></a>
-### all_frames_roi_g2_0_37_swinL       @ ipsc/idol-->vnext
+<a id="all_frames_roi_g2_0_37_swinl___idol_ips_c_"></a>
+## all_frames_roi_g2_0_37_swinL       @ idol-ipsc-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-all_frames_roi_g2_0_37_swinL.yaml --num-gpus 2 
 
-<a id="all_frames_roi_g2_0_37_swinl_ytvis___ipsc_ido_l_"></a>
-### all_frames_roi_g2_0_37_swinL-ytvis       @ ipsc/idol-->vnext
+<a id="all_frames_roi_g2_0_37_swinl_ytvis___idol_ips_c_"></a>
+## all_frames_roi_g2_0_37_swinL-ytvis       @ idol-ipsc-->vnext
 __cc__
 ```
 salloc --nodes=1 --time=0:15:0 --account=def-nilanjan --gpus-per-node=1 --mem=16000M --cpus-per-task=4
@@ -54,68 +51,67 @@ MAX_JOBS=1
 ```
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-all_frames_roi_g2_0_37_ytvis_swinL.yaml --num-gpus 1 --resume
 
-<a id="on_all_frames_roi_g2_38_53___all_frames_roi_g2_0_37_swinl_ytvis_ipsc_idol_"></a>
-#### on-all_frames_roi_g2_38_53       @ all_frames_roi_g2_0_37_swinL-ytvis/ipsc/idol-->vnext
+<a id="on_all_frames_roi_g2_38_53___all_frames_roi_g2_0_37_swinl_ytvis_idol_ipsc_"></a>
+### on-all_frames_roi_g2_38_53       @ all_frames_roi_g2_0_37_swinL-ytvis/idol-ipsc-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-all_frames_roi_g2_0_37_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_37/model_0056999.pth
 
-<a id="on_all_frames_roi_g2_seq_1_38_53___all_frames_roi_g2_0_37_swinl_ytvis_ipsc_idol_"></a>
-#### on-all_frames_roi_g2_seq_1_38_53       @ all_frames_roi_g2_0_37_swinL-ytvis/ipsc/idol-->vnext
+<a id="on_all_frames_roi_g2_seq_1_38_53___all_frames_roi_g2_0_37_swinl_ytvis_idol_ipsc_"></a>
+### on-all_frames_roi_g2_seq_1_38_53       @ all_frames_roi_g2_0_37_swinL-ytvis/idol-ipsc-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_37_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-all_frames_roi_g2_0_37/model_0056999.pth DATASETS.TEST ('ytvis-ipsc-all_frames_roi_g2_seq_1_38_53-test',)
 
-<a id="ext_reorg_roi_g2_0_37___ipsc_ido_l_"></a>
-### ext_reorg_roi_g2_0_37       @ ipsc/idol-->vnext
+<a id="ext_reorg_roi_g2_0_37___idol_ips_c_"></a>
+## ext_reorg_roi_g2_0_37       @ idol-ipsc-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_37_ytvis_swinL.yaml --num-gpus 2 
 ```
 sbatch cmd/ipsc-ext_reorg_roi_g2_0_37_ytvis_swinL.sh
 ```
-<a id="on_ext_reorg_roi_g2_38_53___ext_reorg_roi_g2_0_37_ipsc_ido_l_"></a>
-#### on-ext_reorg_roi_g2_38_53       @ ext_reorg_roi_g2_0_37/ipsc/idol-->vnext
+<a id="on_ext_reorg_roi_g2_38_53___ext_reorg_roi_g2_0_37_idol_ips_c_"></a>
+### on-ext_reorg_roi_g2_38_53       @ ext_reorg_roi_g2_0_37/idol-ipsc-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_37_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_0_37/model_0098999.pth
 
-<a id="ext_reorg_roi_g2_0_37_max_length_10___ipsc_ido_l_"></a>
-### ext_reorg_roi_g2_0_37-max_length-10       @ ipsc/idol-->vnext
+<a id="ext_reorg_roi_g2_0_37_max_length_10___idol_ips_c_"></a>
+## ext_reorg_roi_g2_0_37-max_length-10       @ idol-ipsc-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_37-max_length-10_ytvis_swinL.yaml --num-gpus 2 
 ```
 sbatch cmd/ipsc-ext_reorg_roi_g2_0_37-max_length-10_ytvis_swinL.sh
 ```
-<a id="ext_reorg_roi_g2_0_37_max_length_20___ipsc_ido_l_"></a>
-### ext_reorg_roi_g2_0_37-max_length-20       @ ipsc/idol-->vnext
+<a id="ext_reorg_roi_g2_0_37_max_length_20___idol_ips_c_"></a>
+## ext_reorg_roi_g2_0_37-max_length-20       @ idol-ipsc-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_37-max_length-20_ytvis_swinL.yaml --num-gpus 2 
 ```
 sbatch cmd/ipsc-ext_reorg_roi_g2_0_37-max_length-20_ytvis_swinL.sh
 ```
-<a id="on_ext_reorg_roi_g2_38_53___ext_reorg_roi_g2_0_37_max_length_20_ipsc_ido_l_"></a>
-#### on-ext_reorg_roi_g2_38_53       @ ext_reorg_roi_g2_0_37-max_length-20/ipsc/idol-->vnext
+<a id="on_ext_reorg_roi_g2_38_53___ext_reorg_roi_g2_0_37_max_length_20_idol_ips_c_"></a>
+### on-ext_reorg_roi_g2_38_53       @ ext_reorg_roi_g2_0_37-max_length-20/idol-ipsc-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_37-max_length-20_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_0_37-max_length-20/model_0098999.pth
 
-<a id="mj_rocks___idol_"></a>
-## mj_rocks       @ idol-->vnext
+<a id="idol_mj_rocks___idol_"></a>
+# idol-mj_rocks       @ idol-->vnext
 
-<a id="db3_part12_ytvis_swinl___mj_rocks_ido_l_"></a>
-### db3_part12_ytvis_swinL       @ mj_rocks/idol-->vnext
+<a id="db3_part12_ytvis_swinl___idol_mj_rock_s_"></a>
+## db3_part12_ytvis_swinL       @ idol-mj_rocks-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_part12_ytvis_swinL.yaml --num-gpus 2
 
 CUDA_VISIBLE_DEVICES=1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_part12_ytvis_swinL.yaml --num-gpus 1 
 
-<a id="db3_2_to_17_except_6_with_syn_ytvis_swinl___mj_rocks_ido_l_"></a>
-### db3_2_to_17_except_6_with_syn_ytvis_swinL       @ mj_rocks/idol-->vnext
+<a id="db3_2_to_17_except_6_with_syn_ytvis_swinl___idol_mj_rock_s_"></a>
+## db3_2_to_17_except_6_with_syn_ytvis_swinL       @ idol-mj_rocks-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_2_to_17_except_6_with_syn_ytvis_swinL.yaml --num-gpus 2
 
-<a id="db3_2_to_17_except_6_ytvis_swinl___mj_rocks_ido_l_"></a>
-### db3_2_to_17_except_6_ytvis_swinL       @ mj_rocks/idol-->vnext
+<a id="db3_2_to_17_except_6_ytvis_swinl___idol_mj_rock_s_"></a>
+## db3_2_to_17_except_6_ytvis_swinL       @ idol-mj_rocks-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 2
 
-<a id="on_september_5_2020___db3_2_to_17_except_6_ytvis_swinl_mj_rocks_idol_"></a>
-#### on-september_5_2020       @ db3_2_to_17_except_6_ytvis_swinL/mj_rocks/idol-->vnext
+<a id="on_september_5_2020___db3_2_to_17_except_6_ytvis_swinl_idol_mj_rocks_"></a>
+### on-september_5_2020       @ db3_2_to_17_except_6_ytvis_swinL/idol-mj_rocks-->vnext
 PYTORCH_NO_CUDA_MEMORY_CACHING=1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_2_to_17_except_6_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ytvis-mj_rock-db3_2_to_17_except_6/model_0151999.pth SOLVER.IMS_PER_BATCH 1
 
-<a id="db3_2_to_17_except_6_large_huge_ytvis_swinl___mj_rocks_ido_l_"></a>
-### db3_2_to_17_except_6_large_huge_ytvis_swinL       @ mj_rocks/idol-->vnext
+<a id="db3_2_to_17_except_6_large_huge_ytvis_swinl___idol_mj_rock_s_"></a>
+## db3_2_to_17_except_6_large_huge_ytvis_swinL       @ idol-mj_rocks-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_2_to_17_except_6_large_huge_ytvis_swinL.yaml --num-gpus 2
 
-
-<a id="on_september_5_2020___db3_2_to_17_except_6_large_huge_ytvis_swinl_mj_rocks_ido_l_"></a>
-#### on-september_5_2020       @ db3_2_to_17_except_6_large_huge_ytvis_swinL/mj_rocks/idol-->vnext
+<a id="on_september_5_2020___db3_2_to_17_except_6_large_huge_ytvis_swinl_idol_mj_rock_s_"></a>
+### on-september_5_2020       @ db3_2_to_17_except_6_large_huge_ytvis_swinL/idol-mj_rocks-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-db3_2_to_17_except_6_large_huge_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ytvis-mj_rock-db3_2_to_17_except_6_large_huge/model_0209999.pth SOLVER.IMS_PER_BATCH 1
 
 <a id="seqformer_ipsc___seqforme_r_"></a>

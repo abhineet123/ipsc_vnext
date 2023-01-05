@@ -30,8 +30,6 @@ from .models.clip_output import Videos, Clips
 __all__ = ["SeqFormer"]
 
 
-
-
 class MaskedBackbone(nn.Module):
     """ This is a thin wrapper around D2's backbone to provide padding masking"""
 
@@ -40,11 +38,11 @@ class MaskedBackbone(nn.Module):
         self.backbone = build_backbone(cfg)
         backbone_shape = self.backbone.output_shape()
         self.feature_strides = [backbone_shape[f].stride for f in backbone_shape.keys()]
-        
+
         self.num_channels = [backbone_shape[f].channels for f in backbone_shape.keys()]
 
     def forward(self, tensor_list):
-      
+
         xs = self.backbone(tensor_list.tensors)
         out: Dict[str, NestedTensor] = {}
         for name, x in xs.items():
@@ -63,9 +61,9 @@ class MaskedBackbone(nn.Module):
             masks_per_feature_level = torch.ones((N, H, W), dtype=torch.bool, device=device)
             for img_idx, (h, w) in enumerate(image_sizes):
                 masks_per_feature_level[
-                    img_idx,
-                    : int(np.ceil(float(h) / self.feature_strides[idx])),
-                    : int(np.ceil(float(w) / self.feature_strides[idx])),
+                img_idx,
+                : int(np.ceil(float(h) / self.feature_strides[idx])),
+                : int(np.ceil(float(w) / self.feature_strides[idx])),
                 ] = 0
             masks.append(masks_per_feature_level)
         return masks
@@ -85,6 +83,7 @@ class SeqFormer(nn.Module):
         self.device = torch.device(cfg.MODEL.DEVICE)
 
         ### inference setting
+        self.n_topk = cfg.MODEL.SeqFormer.N_TOPK
         self.merge_on_cpu = cfg.MODEL.SeqFormer.MERGE_ON_CPU
         self.is_multi_cls = cfg.MODEL.SeqFormer.MULTI_CLS_ON
         self.apply_cls_thres = cfg.MODEL.SeqFormer.APPLY_CLS_THRES
@@ -128,50 +127,47 @@ class SeqFormer(nn.Module):
         set_cost_bbox = cfg.MODEL.SeqFormer.SET_COST_BOX
         set_cost_giou = cfg.MODEL.SeqFormer.SET_COST_GIOU
 
-
         N_steps = hidden_dim // 2
         d2_backbone = MaskedBackbone(cfg)
         backbone = Joiner(d2_backbone, PositionEmbeddingSine(N_steps, normalize=True))
         backbone.num_channels = d2_backbone.num_channels[1:]  # only take [c3 c4 c5] from resnet and gengrate c6 later
         backbone.strides = d2_backbone.feature_strides[1:]
 
-        
         transformer = DeformableTransformer(
-        d_model= hidden_dim,
-        nhead=nheads,
-        num_encoder_layers=enc_layers,
-        num_decoder_layers=dec_layers,
-        dim_feedforward=dim_feedforward,
-        dropout=dropout,
-        activation="relu",
-        return_intermediate_dec=True,
-        num_frames=self.num_frames,
-        num_feature_levels=num_feature_levels,
-        dec_n_points=dec_n_points,
-        enc_n_points=enc_n_points,)
-        
-        
+            d_model=hidden_dim,
+            nhead=nheads,
+            num_encoder_layers=enc_layers,
+            num_decoder_layers=dec_layers,
+            dim_feedforward=dim_feedforward,
+            dropout=dropout,
+            activation="relu",
+            return_intermediate_dec=True,
+            num_frames=self.num_frames,
+            num_feature_levels=num_feature_levels,
+            dec_n_points=dec_n_points,
+            enc_n_points=enc_n_points, )
+
         model = DeformableDETR(
-        backbone,
-        transformer,
-        num_classes=self.num_classes,
-        num_frames=self.num_frames,
-        num_queries=num_queries,
-        num_feature_levels=num_feature_levels,
-        aux_loss=deep_supervision,
-        with_box_refine=True )
+            backbone,
+            transformer,
+            num_classes=self.num_classes,
+            num_frames=self.num_frames,
+            num_queries=num_queries,
+            num_feature_levels=num_feature_levels,
+            aux_loss=deep_supervision,
+            with_box_refine=True)
 
         self.detr = CondInst_segm(model, freeze_detr=False, rel_coord=True)
-        
+
         self.detr.to(self.device)
 
         # building criterion
-        matcher = HungarianMatcher(multi_frame=True, # True, False
-                            cost_class=set_cost_class,
-                            cost_bbox=set_cost_bbox,
-                            cost_giou=set_cost_giou)
+        matcher = HungarianMatcher(multi_frame=True,  # True, False
+                                   cost_class=set_cost_class,
+                                   cost_bbox=set_cost_bbox,
+                                   cost_giou=set_cost_giou)
 
-        weight_dict = {"loss_ce": class_weight, "loss_bbox": l1_weight, "loss_giou":giou_weight}
+        weight_dict = {"loss_ce": class_weight, "loss_bbox": l1_weight, "loss_giou": giou_weight}
         weight_dict["loss_mask"] = mask_weight
         weight_dict["loss_dice"] = dice_weight
 
@@ -181,14 +177,12 @@ class SeqFormer(nn.Module):
                 aux_weight_dict.update({k + f"_{i}": v for k, v in weight_dict.items()})
             weight_dict.update(aux_weight_dict)
 
-
         losses = ['labels', 'boxes', 'masks']
-        
 
-        self.criterion = SetCriterion(self.num_classes, matcher, weight_dict, losses, 
-                             mask_out_stride=self.mask_stride,
-                             focal_alpha=focal_alpha,
-                             num_frames = self.num_frames)
+        self.criterion = SetCriterion(self.num_classes, matcher, weight_dict, losses,
+                                      mask_out_stride=self.mask_stride,
+                                      focal_alpha=focal_alpha,
+                                      num_frames=self.num_frames)
         self.criterion.to(self.device)
 
         pixel_mean = torch.Tensor(cfg.MODEL.PIXEL_MEAN).to(self.device).view(3, 1, 1)
@@ -224,16 +218,17 @@ class SeqFormer(nn.Module):
                     loss_dict[k] *= weight_dict[k]
             return loss_dict
         else:
-            
+
             video_length = len(batched_inputs[0]['file_names'])
-            if not self.clip_matching: # take the whole video as input
+            if not self.clip_matching:  # take the whole video as input
                 images = self.preprocess_image(batched_inputs)
                 self.detr.detr.num_frames = video_length
                 output = self.detr.inference(images)
                 ori_height = batched_inputs[0]['height']
                 ori_width = batched_inputs[0]['width']
-                video_output = self.whole_video_inference(output, (ori_height, ori_width), images.image_sizes[0])  # images.image_sizes[0] is resized size
-            else: # clip matching used in IFC
+                video_output = self.whole_video_inference(output, (ori_height, ori_width), images.image_sizes[
+                    0])  # images.image_sizes[0] is resized size
+            else:  # clip matching used in IFC
                 video_output = None
                 is_last_clip = False
                 for start_idx in range(0, video_length, self.clip_stride):
@@ -247,22 +242,22 @@ class SeqFormer(nn.Module):
                     self.detr.detr.num_frames = len(clip_frames)
                     output = self.detr.inference(clip_frames)
                     if video_output is None:
-                        interim_size = (output['pred_masks'].shape[-2],output['pred_masks'].shape[-1])
+                        interim_size = (output['pred_masks'].shape[-2], output['pred_masks'].shape[-1])
                         video_output = Videos(
                             self.clip_length, video_length, self.num_classes, interim_size, self.merge_device
                         )
-                    _clip_results = self.inference_clip(output,  image_size )
+                    _clip_results = self.inference_clip(output, image_size)
                     clip_results = Clips(frame_idx, _clip_results.to(self.merge_device))
                     video_output.update(clip_results)
                     if is_last_clip:
                         break
                 ori_height = batched_inputs[0].get("height", image_size[0])
                 ori_width = batched_inputs[0].get("width", image_size[1])
-                pred_cls, pred_masks_logits = video_output.get_result() # NxHxW / NxC.
-                video_output = self.clip_matching_postprocess(pred_cls, pred_masks_logits, (ori_height, ori_width), image_size)
+                pred_cls, pred_masks_logits = video_output.get_result()  # NxHxW / NxC.
+                video_output = self.clip_matching_postprocess(pred_cls, pred_masks_logits, (ori_height, ori_width),
+                                                              image_size)
 
             return video_output
-
 
     def prepare_targets(self, batched_inputs):
         targets_for_clip_prediction = []
@@ -272,42 +267,40 @@ class SeqFormer(nn.Module):
             clip_classes = []
 
             for frame_target in video["instances"]:  # per frame annotations
-                frame_target=frame_target.to(self.device)
-                
+                frame_target = frame_target.to(self.device)
+
                 h, w = frame_target.image_size
                 image_size_xyxy = torch.as_tensor([w, h, w, h], dtype=torch.float, device=self.device)
-                
+
                 gt_classes = frame_target.gt_classes
                 gt_boxes = frame_target.gt_boxes.tensor / image_size_xyxy
                 gt_boxes = box_xyxy_to_cxcywh(gt_boxes)
                 gt_masks = frame_target.gt_masks.tensor
                 inst_ids = frame_target.gt_ids
-                valid_id = inst_ids!=-1  # if an object is now show on this frame, gt_ids = -1
+                valid_id = inst_ids != -1  # if an object is now show on this frame, gt_ids = -1
 
                 clip_boxes.append(gt_boxes)
                 clip_masks.append(gt_masks)
-                clip_classes.append(gt_classes*valid_id)
-            
-            targets_for_clip_prediction.append({"labels": torch.stack(clip_classes,dim=0).max(0)[0], 
-                                "boxes": torch.stack(clip_boxes,dim=1),   # [num_inst,num_frame,4]
-                                'masks': torch.stack(clip_masks,dim=1),   # [num_inst,num_frame,H,W]
-                                'size': torch.as_tensor([h, w], dtype=torch.long, device=self.device),
-                                # 'inst_id':inst_ids, 
-                                # 'valid':valid_id
-                                })
- 
-        return targets_for_clip_prediction
+                clip_classes.append(gt_classes * valid_id)
 
+            targets_for_clip_prediction.append({"labels": torch.stack(clip_classes, dim=0).max(0)[0],
+                                                "boxes": torch.stack(clip_boxes, dim=1),  # [num_inst,num_frame,4]
+                                                'masks': torch.stack(clip_masks, dim=1),  # [num_inst,num_frame,H,W]
+                                                'size': torch.as_tensor([h, w], dtype=torch.long, device=self.device),
+                                                # 'inst_id':inst_ids,
+                                                # 'valid':valid_id
+                                                })
+
+        return targets_for_clip_prediction
 
     def inference_clip(self, output, image_size):
         mask_cls = output["pred_logits"][0].sigmoid()
         mask_pred = output["pred_masks"][0]
 
         # For all 300 masks, we select top 10 as valid masks.
-        
-        
+
         scores, labels = mask_cls.max(-1)
-        topkv, indices10 = torch.topk(mask_cls.max(1)[0],k=10)
+        topkv, indices10 = torch.topk(mask_cls.max(1)[0], k=10)
         valid = indices10.tolist()
         scores = scores[valid]
         labels = labels[valid]
@@ -323,7 +316,7 @@ class SeqFormer(nn.Module):
         return results
 
     def clip_matching_postprocess(self, pred_cls, pred_masks, ori_size, image_sizes):
-        
+
         if len(pred_cls) > 0:
             if self.is_multi_cls:
                 is_above_thres = torch.where(pred_cls > self.apply_cls_thres)
@@ -333,12 +326,11 @@ class SeqFormer(nn.Module):
             else:
                 scores, labels = pred_cls.max(-1)
 
-
             output_h, output_w = pred_masks.shape[-2:]
-            pred_masks =F.interpolate(pred_masks,  size=(output_h*self.mask_stride, output_w*self.mask_stride) 
-                ,mode="bilinear", align_corners=False).sigmoid()
+            pred_masks = F.interpolate(pred_masks, size=(output_h * self.mask_stride, output_w * self.mask_stride)
+                                       , mode="bilinear", align_corners=False).sigmoid()
 
-            pred_masks = pred_masks[:,:,:image_sizes[0],:image_sizes[1]] #crop padding area
+            pred_masks = pred_masks[:, :, :image_sizes[0], :image_sizes[1]]  # crop padding area
             pred_masks = F.interpolate(pred_masks, size=(ori_size[0], ori_size[1]), mode='nearest')
 
             masks = pred_masks > 0.5
@@ -371,44 +363,54 @@ class SeqFormer(nn.Module):
 
         logits = outputs['pred_logits'][0]
         output_mask = outputs['pred_masks'][0]
-        output_boxes = outputs['pred_boxes'][0]
+        # output_boxes = outputs['pred_boxes'][0]
         output_h, output_w = output_mask.shape[-2:]
-        topkv, indices10 = torch.topk(logits.sigmoid().max(1)[0],k=10)
+        logits_sigmoid = logits.sigmoid()
+        logits_probs = logits_sigmoid.softmax(1)
+        logits_sigmoid_max = logits_sigmoid.max(1)
+        topkv, indices10 = torch.topk(logits_sigmoid_max[0], k=self.n_topk)
         indices10 = indices10.tolist()
-        valid_logits = logits[indices10].sigmoid()
+        # valid_sigmoid = logits[indices10].sigmoid()
+        valid_sigmoid = logits_sigmoid[indices10]
+        valid_probs = logits_probs[indices10]
         output_mask = output_mask[indices10]
 
-        pred_masks =F.interpolate(output_mask,  size=(output_h*self.mask_stride, output_w*self.mask_stride) ,mode="bilinear", align_corners=False).sigmoid()
-        if len(valid_logits) > 0:
+        pred_masks = F.interpolate(output_mask, size=(output_h * self.mask_stride, output_w * self.mask_stride),
+                                   mode="bilinear", align_corners=False).sigmoid()
+        if len(valid_sigmoid) > 0:
             if self.is_multi_cls:
-                is_above_thres = torch.where(valid_logits > self.apply_cls_thres)
-                scores = valid_logits[is_above_thres]
+                is_above_thres = torch.where(valid_sigmoid > self.apply_cls_thres)
+                scores = valid_sigmoid[is_above_thres]
+                probs = valid_probs[is_above_thres]
                 labels = is_above_thres[1]
                 pred_masks = pred_masks[is_above_thres[0]]
             else:
-                scores, labels = valid_logits.max(-1)
+                scores, labels = valid_sigmoid.max(-1)
+                probs = valid_probs.max(-1)
 
-            pred_masks = pred_masks[:,:,:image_sizes[0],:image_sizes[1]] 
+            pred_masks = pred_masks[:, :, :image_sizes[0], :image_sizes[1]]
             pred_masks = F.interpolate(pred_masks, size=(ori_size[0], ori_size[1]), mode='nearest')
 
             masks = pred_masks > 0.5
-            
+
+            out_probs = probs.tolist()
             out_scores = scores.tolist()
             out_labels = labels.tolist()
             out_masks = [m for m in masks.cpu()]
         else:
+            out_probs = []
             out_scores = []
             out_labels = []
             out_masks = []
         video_output = {
             "image_size": ori_size,
-            "pred_scores": out_scores,
+            "pred_scores": out_probs,
             "pred_labels": out_labels,
             "pred_masks": out_masks,
+            # "pred_probs": out_probs,
         }
 
         return video_output
-
 
     def preprocess_image(self, batched_inputs, clip_idx=None):
         """
@@ -427,5 +429,3 @@ class SeqFormer(nn.Module):
                     images.append(self.normalizer(video["image"][idx].to(self.device)))
             images = ImageList.from_tensors(images)
         return images
-
-

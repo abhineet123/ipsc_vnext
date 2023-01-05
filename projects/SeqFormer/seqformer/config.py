@@ -51,6 +51,7 @@ def add_seqformer_config(cfg):
 
     # Evaluation
     
+    cfg.MODEL.SeqFormer.N_TOPK = 10
     cfg.MODEL.SeqFormer.MERGE_ON_CPU = True
     cfg.MODEL.SeqFormer.MULTI_CLS_ON = True
     cfg.MODEL.SeqFormer.APPLY_CLS_THRES = 0.05
