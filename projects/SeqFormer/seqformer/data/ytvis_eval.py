@@ -31,13 +31,14 @@ class YTVISEvaluator(DatasetEvaluator):
     """
 
     def __init__(
-        self,
-        dataset_name,
-        tasks=None,
-        distributed=True,
-        output_dir=None,
-        *,
-        use_fast_impl=True,
+            self,
+            dataset_name,
+            tasks=None,
+            distributed=True,
+            output_dir=None,
+            use_probs=0,
+            *,
+            use_fast_impl=True,
     ):
         """
         Args:
@@ -69,6 +70,11 @@ class YTVISEvaluator(DatasetEvaluator):
         self._logger = logging.getLogger(__name__)
         self._distributed = distributed
         self._output_dir = output_dir
+        self._use_probs = use_probs
+
+        if use_probs:
+            print('\nusing probabilities instead of sigmoids as scores\n')
+
         self._use_fast_impl = use_fast_impl
 
         if tasks is not None and isinstance(tasks, CfgNode):
@@ -104,7 +110,7 @@ class YTVISEvaluator(DatasetEvaluator):
             outputs: the outputs of a COCO model. It is a list of dicts with key
                 "instances" that contains :class:`Instances`.
         """
-        prediction = instances_to_coco_json_video(inputs, outputs)
+        prediction = instances_to_coco_json_video(inputs, outputs, self._use_probs)
         self._predictions.extend(prediction)
 
     def evaluate(self):
@@ -171,7 +177,7 @@ class YTVISEvaluator(DatasetEvaluator):
         return
 
 
-def instances_to_coco_json_video(inputs, outputs):
+def instances_to_coco_json_video(inputs, outputs, use_probs):
     """
     Dump an "Instances" object to a COCO-format json that's used for evaluation.
 
@@ -187,7 +193,11 @@ def instances_to_coco_json_video(inputs, outputs):
     video_id = inputs[0]["video_id"]
     video_length = inputs[0]["length"]
 
-    scores = outputs["pred_scores"]
+    if use_probs:
+        scores = outputs["pred_probs"]
+    else:
+        scores = outputs["pred_scores"]
+
     labels = outputs["pred_labels"]
     masks = outputs["pred_masks"]
 

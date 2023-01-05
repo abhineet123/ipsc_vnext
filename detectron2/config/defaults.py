@@ -611,6 +611,9 @@ _C.TEST.PRECISE_BN.NUM_ITER = 200
 # ---------------------------------------------------------------------------- #
 
 # suffix for inference output folder
+_C.USE_PROBS = ""
+
+# suffix for inference output folder
 _C.OUT_SUFFIX = ""
 
 # Directory where output files are written

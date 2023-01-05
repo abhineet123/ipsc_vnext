@@ -404,10 +404,10 @@ class SeqFormer(nn.Module):
             out_masks = []
         video_output = {
             "image_size": ori_size,
-            "pred_scores": out_probs,
+            "pred_scores": out_scores,
             "pred_labels": out_labels,
             "pred_masks": out_masks,
-            # "pred_probs": out_probs,
+            "pred_probs": out_probs,
         }
 
         return video_output

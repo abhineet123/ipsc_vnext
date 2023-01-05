@@ -132,8 +132,9 @@ python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/
 
 <a id="ext_reorg_roi_g2_0_37_swinl_ytvis___seqformer_ipsc_"></a>
 ## ext_reorg_roi_g2_0_37_swinL-ytvis       @ seqformer-ipsc-->vnext
+```
 sbatch cmd/seqformer-ipsc-ext_reorg_roi_g2_0_37_ytvis_swinL.sh
-
+```
 python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_0_37_ytvis_swinL.yaml --num-gpus 2
 
 <a id="on_ext_reorg_roi_g2_38_53___ext_reorg_roi_g2_0_37_swinl_ytvis_seqformer_ipsc_"></a>

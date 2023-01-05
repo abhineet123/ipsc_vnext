@@ -222,7 +222,8 @@ class IDOL(nn.Module):
                 if k in weight_dict:
                     loss_dict[k] *= weight_dict[k]
             return loss_dict
-        elif self.coco_pretrain:  # evluate during coco pretrain
+
+        if self.coco_pretrain:  # evluate during coco pretrain
             images = self.preprocess_coco_image(batched_inputs)
             output = self.detr.inference_forward(images, size_divisib=32)  #
             box_cls = output["pred_logits"]
@@ -236,56 +237,56 @@ class IDOL(nn.Module):
                 r = segmentation_postprocess(results_per_image, height, width)
                 processed_results.append({"instances": r})
             return processed_results
+
+        images = self.preprocess_image(batched_inputs)
+        video_len = len(batched_inputs[0]['file_names'])
+        clip_length = self.batch_infer_len
+        # split long video into clips to form a batch input
+        if video_len > clip_length:
+            num_clips = math.ceil(video_len / clip_length)
+            logits_list, boxes_list, embed_list, points_list, masks_list = [], [], [], [], []
+            for c in range(num_clips):
+                start_idx = c * clip_length
+                end_idx = (c + 1) * clip_length
+                clip_inputs = [{'image': batched_inputs[0]['image'][start_idx:end_idx]}]
+                clip_images = self.preprocess_image(clip_inputs)
+                clip_output = self.detr.inference_forward(clip_images)
+                logits_list.append(clip_output['pred_logits'])
+                boxes_list.append(clip_output['pred_boxes'])
+                embed_list.append(clip_output['pred_inst_embed'])
+                # points_list.append(clip_output['reference_points'])
+                masks_list.append(clip_output['pred_masks'].to(self.merge_device))
+                pause=1
+            output = {
+                'pred_logits': torch.cat(logits_list, dim=0),
+                'pred_boxes': torch.cat(boxes_list, dim=0),
+                'pred_inst_embed': torch.cat(embed_list, dim=0),
+                # 'reference_points':torch.cat(points_list,dim=0),
+                'pred_masks': torch.cat(masks_list, dim=0),
+            }
         else:
             images = self.preprocess_image(batched_inputs)
-            video_len = len(batched_inputs[0]['file_names'])
-            clip_length = self.batch_infer_len
-            # split long video into clips to form a batch input
-            if video_len > clip_length:
-                num_clips = math.ceil(video_len / clip_length)
-                logits_list, boxes_list, embed_list, points_list, masks_list = [], [], [], [], []
-                for c in range(num_clips):
-                    start_idx = c * clip_length
-                    end_idx = (c + 1) * clip_length
-                    clip_inputs = [{'image': batched_inputs[0]['image'][start_idx:end_idx]}]
-                    clip_images = self.preprocess_image(clip_inputs)
-                    clip_output = self.detr.inference_forward(clip_images)
-                    logits_list.append(clip_output['pred_logits'])
-                    boxes_list.append(clip_output['pred_boxes'])
-                    embed_list.append(clip_output['pred_inst_embed'])
-                    # points_list.append(clip_output['reference_points'])
-                    masks_list.append(clip_output['pred_masks'].to(self.merge_device))
-                    pause=1
-                output = {
-                    'pred_logits': torch.cat(logits_list, dim=0),
-                    'pred_boxes': torch.cat(boxes_list, dim=0),
-                    'pred_inst_embed': torch.cat(embed_list, dim=0),
-                    # 'reference_points':torch.cat(points_list,dim=0),
-                    'pred_masks': torch.cat(masks_list, dim=0),
-                }
-            else:
-                images = self.preprocess_image(batched_inputs)
-                output = self.detr.inference_forward(images)
+            output = self.detr.inference_forward(images)
 
-            idol_tracker = IDOL_Tracker(
-                init_score_thr=0.2,
-                obj_score_thr=0.1,
-                nms_thr_pre=0.5,
-                nms_thr_post=0.05,
-                addnew_score_thr=0.2,
-                memo_tracklet_frames=10,
-                memo_momentum=0.8,
-                long_match=self.inference_tw,
-                frame_weight=(self.inference_tw | self.inference_fw),
-                temporal_weight=self.inference_tw,
-                memory_len=self.memory_len
-            )
-            height = batched_inputs[0]['height']
-            width = batched_inputs[0]['width']
-            video_output = self.inference(output, idol_tracker, (height, width), images.image_sizes[
-                0])  # (height, width) is resized size,images. image_sizes[0] is original size
+        idol_tracker = IDOL_Tracker(
+            init_score_thr=0.2,
+            obj_score_thr=0.1,
+            nms_thr_pre=0.5,
+            nms_thr_post=0.05,
+            addnew_score_thr=0.2,
+            memo_tracklet_frames=10,
+            memo_momentum=0.8,
+            long_match=self.inference_tw,
+            frame_weight=(self.inference_tw | self.inference_fw),
+            temporal_weight=self.inference_tw,
+            memory_len=self.memory_len
+        )
+        height = batched_inputs[0]['height']
+        width = batched_inputs[0]['width']
+        video_output = self.inference(output, idol_tracker, (height, width), images.image_sizes[
+            0])  # (height, width) is resized size,images. image_sizes[0] is original size
 
-            return video_output
+        return video_output
 
     def prepare_targets(self, targets):
         new_targets = []
@@ -320,11 +321,6 @@ class IDOL(nn.Module):
     def inference(self, outputs, tracker, ori_size, image_sizes):
         """
         Arguments:
-            box_cls (Tensor): tensor of shape (batch_size, num_queries, K).
-                The tensor predicts the classification probability for each query.
-            box_pred (Tensor): tensors of shape (batch_size, num_queries, 4).
-                The tensor predicts 4-vector (x,y,w,h) box
-                regression values for every queryx
             image_sizes (List[torch.Size]): the input image sizes
 
         Returns:
@@ -332,32 +328,37 @@ class IDOL(nn.Module):
         """
         # results = []
         video_dict = {}
-        vido_logits = outputs['pred_logits']
+        video_logits = outputs['pred_logits']
         video_output_masks = outputs['pred_masks']
         output_h, output_w = video_output_masks.shape[-2:]
         video_output_boxes = outputs['pred_boxes']
         video_output_embeds = outputs['pred_inst_embed']
-        vid_len = len(vido_logits)
+        vid_len = len(video_logits)
         for i_frame, (logits, output_mask, output_boxes, output_embed) in enumerate(zip(
-                vido_logits, video_output_masks, video_output_boxes, video_output_embeds
+                video_logits, video_output_masks, video_output_boxes, video_output_embeds
         )):
-            scores = logits.sigmoid().cpu().detach()  # [300,42]
-            max_score, _ = torch.max(logits.sigmoid(), 1)
+            logits_sigmoid = logits.sigmoid()
+            max_score, _ = torch.max(logits_sigmoid, 1)
+            scores = logits_sigmoid.cpu().detach()
+            probs = scores.softmax(dim=1)
+
             indices = torch.nonzero(max_score > self.inference_select_thres, as_tuple=False).squeeze(1)
             if len(indices) == 0:
                 topkv, indices_top1 = torch.topk(scores.max(1)[0], k=1)
                 indices_top1 = indices_top1[torch.argmax(topkv)]
                 indices = [indices_top1.tolist()]
             else:
-                nms_scores, idxs = torch.max(logits.sigmoid()[indices], 1)
+                nms_scores, idxs = torch.max(logits_sigmoid[indices], 1)
                 boxes_before_nms = box_cxcywh_to_xyxy(output_boxes[indices])
                 keep_indices = ops.batched_nms(boxes_before_nms, nms_scores, idxs, 0.9)  # .tolist()
                 indices = indices[keep_indices]
-            box_score = torch.max(logits.sigmoid()[indices], 1)[0]
+            box_score = torch.max(logits_sigmoid[indices], 1)[0]
             det_bboxes = torch.cat([output_boxes[indices], box_score.unsqueeze(1)], dim=1)
-            det_labels = torch.argmax(logits.sigmoid()[indices], dim=1)
+            det_labels = torch.argmax(logits_sigmoid[indices], dim=1)
             track_feats = output_embed[indices]
             det_masks = output_mask[indices]
+
+            """this is what reduces the raw 300 boxes from detr to 50 "tracked" objects"""
             bboxes, labels, ids, indices = tracker.match(
                 bboxes=det_bboxes,
                 labels=det_labels,
@@ -365,36 +366,44 @@ class IDOL(nn.Module):
                 track_feats=track_feats,
                 frame_id=i_frame,
                 indices=indices)
+
             indices = torch.tensor(indices)[ids > -1].tolist()
             ids = ids[ids > -1]
             ids = ids.tolist()
+
+            """id is the target ID of each tracked object"""
             for query_i, id in zip(indices, ids):
                 if id in video_dict.keys():
                     video_dict[id]['masks'].append(output_mask[query_i])
                     video_dict[id]['boxes'].append(output_boxes[query_i])
                     video_dict[id]['scores'].append(scores[query_i])
+                    video_dict[id]['probs'].append(probs[query_i])
                     video_dict[id]['valid'] = video_dict[id]['valid'] + 1
                 else:
                     video_dict[id] = {
                         'masks': [None for fi in range(i_frame)],
                         'boxes': [None for fi in range(i_frame)],
                         'scores': [None for fi in range(i_frame)],
+                        'probs': [None for fi in range(i_frame)],
                         'valid': 0}
                     video_dict[id]['masks'].append(output_mask[query_i])
                     video_dict[id]['boxes'].append(output_boxes[query_i])
                     video_dict[id]['scores'].append(scores[query_i])
+                    video_dict[id]['probs'].append(probs[query_i])
                     video_dict[id]['valid'] = video_dict[id]['valid'] + 1
 
             for k, v in video_dict.items():
                 if len(v['masks']) < i_frame + 1:  # padding None for unmatched ID
                     v['masks'].append(None)
                     v['scores'].append(None)
+                    v['probs'].append(None)
                     v['boxes'].append(None)
-            check_len = [len(v['masks']) for k, v in video_dict.items()]
+
+            # check_len = [len(v['masks']) for k, v in video_dict.items()]
             # print('check_len',check_len)
 
-            #  filtering sequences that are too short in video_dict (noise)，the rule is: if the first two frames are
-            #  None and valid is less than 3
+            #  filtering sequences that are too short in video_dict (noise)，
+            #  the rule is: if the first two frames are None and valid is less than 3
             if i_frame > 8:
                 del_list = []
                 for k, v in video_dict.items():
@@ -405,24 +414,41 @@ class IDOL(nn.Module):
 
         del outputs
         logits_list = []
+        probs_list = []
         masks_list = []
 
         for inst_id, m in enumerate(video_dict.keys()):
+            """all scores for each object over all video frames excluding frames where 
+            it was not matched (so doesn't exist)"""
             score_list_ori = video_dict[m]['scores']
             scores_temporal = []
             for k in score_list_ori:
                 if k is not None:
                     scores_temporal.append(k)
+
+            probs_list_ori = video_dict[m]['probs']
+            probs_temporal = []
+            for k in probs_list_ori:
+                if k is not None:
+                    probs_temporal.append(k)
+
             logits_i = torch.stack(scores_temporal)
+            probs_i = torch.stack(probs_temporal)
+
+            """mean over all images in video"""
             if self.temporal_score_type == 'mean':
                 logits_i = logits_i.mean(0)
+                probs_i = probs_i.mean(0)
             elif self.temporal_score_type == 'max':
                 logits_i = logits_i.max(0)[0]
+                probs_i = probs_i.max(0)[0]
             else:
                 print('non valid temporal_score_type')
                 import sys
                 sys.exit(0)
+
             logits_list.append(logits_i)
+            probs_list.append(probs_i)
 
             # category_id = np.argmax(logits_i.mean(0))
             masks_list_i = []
@@ -441,33 +467,43 @@ class IDOL(nn.Module):
 
         if len(logits_list) > 0:
             pred_cls = torch.stack(logits_list)
+            pred_probs = torch.stack(probs_list)
             pred_masks = torch.cat(masks_list, dim=0)
         else:
             pred_cls = []
+            pred_probs = []
 
         if len(pred_cls) > 0:
             if self.is_multi_cls:
+                """apparently each of the 50 tracked objects can lead to as many objects 
+                as the number of classes if the sigmoids for these classes individually exceed 0.05"""
                 is_above_thres = torch.where(pred_cls > self.apply_cls_thres)
                 scores = pred_cls[is_above_thres]
+                probs = pred_probs[is_above_thres]
                 labels = is_above_thres[1]
                 pred_masks = pred_masks[is_above_thres[0]]
             else:
                 scores, labels = pred_cls.max(-1)
+                probs, _ = pred_probs.max(-1)
 
             pred_masks = pred_masks[:, :, :image_sizes[0], :image_sizes[1]]  # crop the padding area
             pred_masks = F.interpolate(pred_masks, size=(ori_size[0], ori_size[1]), mode='nearest')
 
             masks = pred_masks > 0.5
 
+            out_probs = probs.tolist()
             out_scores = scores.tolist()
             out_labels = labels.tolist()
             out_masks = [m for m in masks.cpu()]
         else:
+            out_probs = []
             out_scores = []
             out_labels = []
             out_masks = []
+
         video_output = {
             "image_size": ori_size,
+            "pred_probs": out_probs,
             "pred_scores": out_scores,
             "pred_labels": out_labels,
             "pred_masks": out_masks,
