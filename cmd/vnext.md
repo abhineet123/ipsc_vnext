@@ -138,7 +138,7 @@ python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs
 
 <a id="on_ext_reorg_roi_g2_38_53___ext_reorg_roi_g2_0_37_swinl_ytvis_seqformer_ipsc_"></a>
 #### on-ext_reorg_roi_g2_38_53       @ ext_reorg_roi_g2_0_37_swinL-ytvis/seqformer-ipsc-->vnext
-CUDA_VISIBLE_DEVICES=1 python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_0_37_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/seqformer-ipsc-ext_reorg_roi_g2_0_37/model_final.pth
+CUDA_VISIBLE_DEVICES=1 python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_0_37_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/seqformer-ipsc-ext_reorg_roi_g2_0_37/model_final.pth OUT_SUFFIX topk-100 MODEL.SeqFormer.N_TOPK 100
 
 <a id="seqformer_mj_rocks___seqformer_ipsc_"></a>
 # seqformer-mj_rocks       @ seqformer-ipsc-->vnext

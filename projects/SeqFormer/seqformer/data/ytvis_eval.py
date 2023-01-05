@@ -73,7 +73,7 @@ class YTVISEvaluator(DatasetEvaluator):
 
         if tasks is not None and isinstance(tasks, CfgNode):
             self._logger.warning(
-                "COCO Evaluator instantiated using config, this is deprecated behavior."
+                "COCO Evaluator instantiated using 7config, this is deprecated behavior."
                 " Please pass in explicit arguments instead."
             )
             self._tasks = None  # Infering it from predictions should be better

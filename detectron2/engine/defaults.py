@@ -64,7 +64,8 @@ def create_ddp_model(model, *, fp16_compression=False, **kwargs):
     Args:
         model: a torch.nn.Module
         fp16_compression: add fp16 compression hooks to the ddp object.
-            See more at https://pytorch.org/docs/stable/ddp_comm_hooks.html#torch.distributed.algorithms.ddp_comm_hooks.default_hooks.fp16_compress_hook
+            See more at https://pytorch.org/docs/stable/ddp_comm_hooks.html#torch.distributed.algorithms
+            .ddp_comm_hooks.default_hooks.fp16_compress_hook
         kwargs: other arguments of :module:`torch.nn.parallel.DistributedDataParallel`.
     """  # noqa
     if comm.get_world_size() == 1:
@@ -91,7 +92,7 @@ def default_argument_parser(epilog=None):
     """
     parser = argparse.ArgumentParser(
         epilog=epilog
-        or f"""
+               or f"""
 Examples:
 
 Run on single machine:
@@ -111,7 +112,7 @@ Run on multiple machines:
         "--resume",
         action="store_true",
         help="Whether to attempt to resume from the checkpoint directory. "
-        "See documentation of `DefaultTrainer.resume_or_load()` for what it means.",
+             "See documentation of `DefaultTrainer.resume_or_load()` for what it means.",
     )
     parser.add_argument("--eval-only", action="store_true", help="perform evaluation only")
     parser.add_argument("--num-gpus", type=int, default=1, help="number of gpus *per machine*")
@@ -128,7 +129,7 @@ Run on multiple machines:
         "--dist-url",
         default="tcp://127.0.0.1:{}".format(port),
         help="initialization URL for pytorch distributed backend. See "
-        "https://pytorch.org/docs/stable/distributed.html for details.",
+             "https://pytorch.org/docs/stable/distributed.html for details.",
     )
     parser.add_argument(
         "opts",
@@ -597,6 +598,14 @@ Alternatively, you can call evaluation functions yourself (see Colab balloon tut
                 len(cfg.DATASETS.TEST), len(evaluators)
             )
 
+        output_nane = 'inference'
+        if cfg.OUT_SUFFIX:
+            output_nane = f'{output_nane}_{cfg.OUT_SUFFIX}'
+        output_folder = os.path.join(cfg.OUTPUT_DIR, output_nane)
+        os.makedirs(output_folder)
+
+        print(f'\noutput_folder: {output_folder}\n')
+
         results = OrderedDict()
         for idx, dataset_name in enumerate(cfg.DATASETS.TEST):
             data_loader = cls.build_test_loader(cfg, dataset_name)
@@ -606,7 +615,7 @@ Alternatively, you can call evaluation functions yourself (see Colab balloon tut
                 evaluator = evaluators[idx]
             else:
                 try:
-                    evaluator = cls.build_evaluator(cfg, dataset_name)
+                    evaluator = cls.build_evaluator(cfg, dataset_name, output_folder=output_folder)
                 except NotImplementedError:
                     logger.warn(
                         "No evaluator found. Use `DefaultTrainer.test(evaluators=)`, "
@@ -679,7 +688,7 @@ Alternatively, you can call evaluation functions yourself (see Colab balloon tut
         cfg.defrost()
 
         assert (
-            cfg.SOLVER.IMS_PER_BATCH % old_world_size == 0
+                cfg.SOLVER.IMS_PER_BATCH % old_world_size == 0
         ), "Invalid REFERENCE_WORLD_SIZE in config!"
         scale = num_workers / old_world_size
         bs = cfg.SOLVER.IMS_PER_BATCH = int(round(cfg.SOLVER.IMS_PER_BATCH * scale))

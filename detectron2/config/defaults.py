@@ -609,6 +609,10 @@ _C.TEST.PRECISE_BN.NUM_ITER = 200
 # ---------------------------------------------------------------------------- #
 # Misc options
 # ---------------------------------------------------------------------------- #
+
+# suffix for inference output folder
+_C.OUT_SUFFIX = ""
+
 # Directory where output files are written
 _C.OUTPUT_DIR = "./output"
 # Set seed to negative to fully randomize everything.
