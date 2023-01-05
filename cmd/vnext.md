@@ -7,6 +7,7 @@
         - [on-all_frames_roi_g2_seq_1_38_53       @ all_frames_roi_g2_0_37_swinL-ytvis/idol-ipsc](#on_all_frames_roi_g2_seq_1_38_53___all_frames_roi_g2_0_37_swinl_ytvis_idol_ipsc_)
     - [ext_reorg_roi_g2_0_37       @ idol-ipsc](#ext_reorg_roi_g2_0_37___idol_ips_c_)
         - [on-ext_reorg_roi_g2_38_53       @ ext_reorg_roi_g2_0_37/idol-ipsc](#on_ext_reorg_roi_g2_38_53___ext_reorg_roi_g2_0_37_idol_ips_c_)
+            - [probs       @ on-ext_reorg_roi_g2_38_53/ext_reorg_roi_g2_0_37/idol-ipsc](#probs___on_ext_reorg_roi_g2_38_53_ext_reorg_roi_g2_0_37_idol_ips_c_)
     - [ext_reorg_roi_g2_0_37-max_length-10       @ idol-ipsc](#ext_reorg_roi_g2_0_37_max_length_10___idol_ips_c_)
     - [ext_reorg_roi_g2_0_37-max_length-20       @ idol-ipsc](#ext_reorg_roi_g2_0_37_max_length_20___idol_ips_c_)
         - [on-ext_reorg_roi_g2_38_53       @ ext_reorg_roi_g2_0_37-max_length-20/idol-ipsc](#on_ext_reorg_roi_g2_38_53___ext_reorg_roi_g2_0_37_max_length_20_idol_ips_c_)
@@ -68,6 +69,10 @@ sbatch cmd/ipsc-ext_reorg_roi_g2_0_37_ytvis_swinL.sh
 <a id="on_ext_reorg_roi_g2_38_53___ext_reorg_roi_g2_0_37_idol_ips_c_"></a>
 ### on-ext_reorg_roi_g2_38_53       @ ext_reorg_roi_g2_0_37/idol-ipsc-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_37_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_0_37/model_0098999.pth
+
+<a id="probs___on_ext_reorg_roi_g2_38_53_ext_reorg_roi_g2_0_37_idol_ips_c_"></a>
+#### probs       @ on-ext_reorg_roi_g2_38_53/ext_reorg_roi_g2_0_37/idol-ipsc-->vnext
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_0_37_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_0_37/model_0098999.pth USE_PROBS 1 OUT_SUFFIX probs
 
 <a id="ext_reorg_roi_g2_0_37_max_length_10___idol_ips_c_"></a>
 ## ext_reorg_roi_g2_0_37-max_length-10       @ idol-ipsc-->vnext
