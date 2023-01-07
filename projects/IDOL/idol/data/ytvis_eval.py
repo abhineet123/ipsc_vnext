@@ -69,7 +69,7 @@ class YTVISEvaluator(DatasetEvaluator):
         """
         self._logger = logging.getLogger(__name__)
         self._distributed = distributed
-        self.use_probs = use_probs
+        self._use_probs = use_probs
 
         if use_probs:
             print('\nusing probabilities instead of sigmoids as scores\n')
@@ -110,7 +110,7 @@ class YTVISEvaluator(DatasetEvaluator):
             outputs: the outputs of a COCO model. It is a list of dicts with key
                 "instances" that contains :class:`Instances`.
         """
-        prediction = instances_to_coco_json_video(inputs, outputs, self.use_probs)
+        prediction = instances_to_coco_json_video(inputs, outputs, self._use_probs)
         # self._predictions.extend(prediction)
 
         if self.output_dir:

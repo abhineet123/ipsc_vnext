@@ -21,17 +21,19 @@
 - [new_dataset](#new_dataset_)
     - [ytvis19       @ new_dataset](#ytvis19___new_datase_t_)
     - [ipsc       @ new_dataset](#ipsc___new_datase_t_)
-        - [all_frames_roi_g2_0_38_swinL-ytvis       @ ipsc/new_dataset](#all_frames_roi_g2_0_38_swinl_ytvis___ipsc_new_dataset_)
-            - [on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/new_dataset](#on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_new_datase_t_)
+        - [all_frames_roi_g2_0_37_swinL-ytvis       @ ipsc/new_dataset](#all_frames_roi_g2_0_37_swinl_ytvis___ipsc_new_dataset_)
+            - [on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_37_swinL-ytvis/ipsc/new_dataset](#on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_37_swinl_ytvis_ipsc_new_datase_t_)
     - [mj_rocks       @ new_dataset](#mj_rocks___new_datase_t_)
 - [scp       @ cc/virtualenv](#scp___cc_virtualen_v_)
     - [from_grs       @ scp](#from_grs___sc_p_)
+        - [ext_reorg_roi_g2_16_53       @ from_grs/scp](#ext_reorg_roi_g2_16_53___from_grs_scp_)
+        - [all_frames_roi_g2_0_37       @ from_grs/scp](#all_frames_roi_g2_0_37___from_grs_scp_)
     - [from_nrw       @ scp](#from_nrw___sc_p_)
-        - [idol-all_frames_roi_g2_0_38       @ from_nrw/scp](#idol_all_frames_roi_g2_0_38___from_nrw_scp_)
-        - [seqformer-all_frames_roi_g2_0_38       @ from_nrw/scp](#seqformer_all_frames_roi_g2_0_38___from_nrw_scp_)
-        - [idol-ext_reorg_roi_g2_0_38       @ from_nrw/scp](#idol_ext_reorg_roi_g2_0_38___from_nrw_scp_)
-        - [idol-ext_reorg_roi_g2_0_38-max_length-20       @ from_nrw/scp](#idol_ext_reorg_roi_g2_0_38_max_length_20___from_nrw_scp_)
-        - [seqformer-ipsc-ext_reorg_roi_g2_0_38       @ from_nrw/scp](#seqformer_ipsc_ext_reorg_roi_g2_0_38___from_nrw_scp_)
+        - [idol-all_frames_roi_g2_0_37       @ from_nrw/scp](#idol_all_frames_roi_g2_0_37___from_nrw_scp_)
+        - [seqformer-all_frames_roi_g2_0_37       @ from_nrw/scp](#seqformer_all_frames_roi_g2_0_37___from_nrw_scp_)
+        - [idol-ext_reorg_roi_g2_0_37       @ from_nrw/scp](#idol_ext_reorg_roi_g2_0_37___from_nrw_scp_)
+        - [idol-ext_reorg_roi_g2_0_37-max_length-20       @ from_nrw/scp](#idol_ext_reorg_roi_g2_0_37_max_length_20___from_nrw_scp_)
+        - [seqformer-ipsc-ext_reorg_roi_g2_0_37       @ from_nrw/scp](#seqformer_ipsc_ext_reorg_roi_g2_0_37___from_nrw_scp_)
 
 <!-- /MarkdownTOC -->
 
@@ -215,16 +217,16 @@ ln -s /data/ipsc/well3/all_frames_roi /data/ipsc/well3/all_frames_roi
 __cc__
 ln -s ~/projects/def-nilanjan/asingh1/data/ipsc ./datasets/ipsc
 ln -s  ~/projects/def-nilanjan/asingh1/data/ipsc/well3/all_frames_roi  ~/projects/def-nilanjan/asingh1/data/ipsc/well3/all_frames_roi
-Running scp -r -i ~/.ssh/id_rsa -P 22 asingh1@narval.computecanada.ca:"/home/asingh1/ipsc-all_frames_roi_g2_0_38_ytvis_swinL_10278087.out" "/home/Tommy"
+Running scp -r -i ~/.ssh/id_rsa -P 22 asingh1@narval.computecanada.ca:"/home/asingh1/ipsc-all_frames_roi_g2_0_37_ytvis_swinL_10278087.out" "/home/Tommy"
 
-<a id="all_frames_roi_g2_0_38_swinl_ytvis___ipsc_new_dataset_"></a>
-### all_frames_roi_g2_0_38_swinL-ytvis       @ ipsc/new_dataset-->vnext_setup
-mv ipsc/well3/all_frames_roi/ytvis19/all_frames_roi_g2_0_38-train.json ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_38-train.json
+<a id="all_frames_roi_g2_0_37_swinl_ytvis___ipsc_new_dataset_"></a>
+### all_frames_roi_g2_0_37_swinL-ytvis       @ ipsc/new_dataset-->vnext_setup
+mv ipsc/well3/all_frames_roi/ytvis19/all_frames_roi_g2_0_37-train.json ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_37-train.json
 
-mv ipsc/well3/all_frames_roi/ytvis19/all_frames_roi_g2_0_38-val.json ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_38-val.json
+mv ipsc/well3/all_frames_roi/ytvis19/all_frames_roi_g2_0_37-val.json ipsc/well3/all_frames_roi/ytvis19/ipsc-all_frames_roi_g2_0_37-val.json
 
-<a id="on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_38_swinl_ytvis_ipsc_new_datase_t_"></a>
-#### on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_38_swinL-ytvis/ipsc/new_dataset-->vnext_setup
+<a id="on_all_frames_roi_g2_39_53___all_frames_roi_g2_0_37_swinl_ytvis_ipsc_new_datase_t_"></a>
+#### on-all_frames_roi_g2_39_53       @ all_frames_roi_g2_0_37_swinL-ytvis/ipsc/new_dataset-->vnext_setup
 mv ipsc-all_frames_roi_g2_39_53-train.json ipsc-all_frames_roi_g2_39_53-test.json
 
 <a id="mj_rocks___new_datase_t_"></a>
@@ -237,57 +239,65 @@ ln -s ~/data/mojow_rock/rock_dataset3 ~/data/mojow_rock/rock_dataset3/ytvis19/JP
 # scp       @ cc/virtualenv-->vnext_setup
 <a id="from_grs___sc_p_"></a>
 ## from_grs       @ scp-->vnext_setup
- scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/all_frames_roi_grs_221007.zip ./
- scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19 ./
- scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/scripts ~/
- scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/ipsc_vnext/pretrained ./
- scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19 ./
+scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/all_frames_roi_grs_221007.zip ./
+scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/scripts ~/
+scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:~/ipsc_vnext/pretrained ./
 
- scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3 ./
- scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/vnext_log/idol-ipsc-all_frames_roi_g2_0_38/model_0056999.pth ./
- scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/vnext_log/idol-ipsc-all_frames_roi_g2_0_38 ./
+scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3 ./
+scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19 ./
+
+<a id="ext_reorg_roi_g2_16_53___from_grs_scp_"></a>
+### ext_reorg_roi_g2_16_53       @ from_grs/scp-->vnext_setup
+scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_16_53.json ./
+scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/ipsc/well3/all_frames_roi/ytvis19/ipsc-ext_reorg_roi_g2_0_15.json ./
+
+<a id="all_frames_roi_g2_0_37___from_grs_scp_"></a>
+### all_frames_roi_g2_0_37       @ from_grs/scp-->vnext_setup
+scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/vnext_log/idol-ipsc-all_frames_roi_g2_0_37/model_0056999.pth ./
+scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/vnext_log/idol-ipsc-all_frames_roi_g2_0_37 ./
  
- scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/vnext_log/seqformer-ipsc-all_frames_roi_g2_0_38/model_0049999.pth ./
+scp -r -P 9738 abhineet@greyshark.cs.ualberta.ca:/data/vnext_log/seqformer-ipsc-all_frames_roi_g2_0_37/model_0049999.pth ./
+
 
 <a id="from_nrw___sc_p_"></a>
 ## from_nrw       @ scp-->vnext_setup
 mkdir /data/vnxt_log
 cd /data/vnxt_log
 
-<a id="idol_all_frames_roi_g2_0_38___from_nrw_scp_"></a>
-### idol-all_frames_roi_g2_0_38       @ from_nrw/scp-->vnext_setup
-mkdir idol-ipsc-all_frames_roi_g2_0_38
-scp -r asingh1@narval.computecanada.ca:~/scratch/ipsc_vnext_log/idol-ipsc-all_frames_roi_g2_0_38/model_0099999.pth ./
+<a id="idol_all_frames_roi_g2_0_37___from_nrw_scp_"></a>
+### idol-all_frames_roi_g2_0_37       @ from_nrw/scp-->vnext_setup
+mkdir idol-ipsc-all_frames_roi_g2_0_37
+scp -r asingh1@narval.computecanada.ca:~/scratch/ipsc_vnext_log/idol-ipsc-all_frames_roi_g2_0_37/model_0099999.pth ./
 
-ln -s /data/vnxt_log/idol-ipsc-all_frames_roi_g2_0_38 ./
+ln -s /data/vnxt_log/idol-ipsc-all_frames_roi_g2_0_37 ./
 
-scp -r asingh1@narval.computecanada.ca:~/scratch/vnext_log/idol-ipsc-all_frames_roi_g2_0_38/model_0056999.pth ./
+scp -r asingh1@narval.computecanada.ca:~/scratch/vnext_log/idol-ipsc-all_frames_roi_g2_0_37/model_0056999.pth ./
 
-<a id="seqformer_all_frames_roi_g2_0_38___from_nrw_scp_"></a>
-### seqformer-all_frames_roi_g2_0_38       @ from_nrw/scp-->vnext_setup
-scp -r asingh1@narval.computecanada.ca:~/scratch/vnext_log/seqformer-ipsc-all_frames_roi_g2_0_38/model_0049999.pth ./
+<a id="seqformer_all_frames_roi_g2_0_37___from_nrw_scp_"></a>
+### seqformer-all_frames_roi_g2_0_37       @ from_nrw/scp-->vnext_setup
+scp -r asingh1@narval.computecanada.ca:~/scratch/vnext_log/seqformer-ipsc-all_frames_roi_g2_0_37/model_0049999.pth ./
 
-<a id="idol_ext_reorg_roi_g2_0_38___from_nrw_scp_"></a>
-### idol-ext_reorg_roi_g2_0_38       @ from_nrw/scp-->vnext_setup
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_0_38/model_0099999.pth ./
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_0_38/events.out.** ./
+<a id="idol_ext_reorg_roi_g2_0_37___from_nrw_scp_"></a>
+### idol-ext_reorg_roi_g2_0_37       @ from_nrw/scp-->vnext_setup
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_0_37/model_0099999.pth ./
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_0_37/events.out.** ./
 
-<a id="idol_ext_reorg_roi_g2_0_38_max_length_20___from_nrw_scp_"></a>
-### idol-ext_reorg_roi_g2_0_38-max_length-20       @ from_nrw/scp-->vnext_setup
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_0_38-max_length-20/model_0099999.pth ./
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_0_38/events.out.** ./
+<a id="idol_ext_reorg_roi_g2_0_37_max_length_20___from_nrw_scp_"></a>
+### idol-ext_reorg_roi_g2_0_37-max_length-20       @ from_nrw/scp-->vnext_setup
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_0_37-max_length-20/model_0099999.pth ./
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_0_37/events.out.** ./
 
-<a id="seqformer_ipsc_ext_reorg_roi_g2_0_38___from_nrw_scp_"></a>
-### seqformer-ipsc-ext_reorg_roi_g2_0_38       @ from_nrw/scp-->vnext_setup
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_38/model_0099999.pth ./
+<a id="seqformer_ipsc_ext_reorg_roi_g2_0_37___from_nrw_scp_"></a>
+### seqformer-ipsc-ext_reorg_roi_g2_0_37       @ from_nrw/scp-->vnext_setup
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_37/model_0099999.pth ./
 
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_38/model_0098999.pth ./
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_37/model_0098999.pth ./
 
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_38 ./
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_37 ./
 
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_38/events.out.** ./
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_37/events.out.** ./
 
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_38 ./
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_37 ./
 
 
 
