@@ -74,7 +74,7 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc
 sbatch cmd/ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL.sh
 ```
 
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL.yaml --num-gpus 2 
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL.yaml --num-gpus 2 --resume
 
 <a id="on_ext_reorg_roi_g2_0_15___ext_reorg_roi_g2_16_53_idol_ipsc_"></a>
 ### on-ext_reorg_roi_g2_0_15       @ ext_reorg_roi_g2_16_53/idol-ipsc-->vnext

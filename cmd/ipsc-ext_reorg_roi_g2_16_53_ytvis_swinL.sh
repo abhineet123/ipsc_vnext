@@ -5,7 +5,7 @@
 #SBATCH --gpus-per-node=2
 #SBATCH --cpus-per-task=4
 
-#SBATCH --job-name=ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL
+#SBATCH --job-name=idol-ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL
 #SBATCH --output=%x_%j.out
 
 #SBATCH --time=0-48:00            # time (DD-HH:MM)
@@ -19,5 +19,5 @@ source ~/venv/vnext/bin/activate
 
 nvidia-smi
 
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL.yaml --num-gpus 2 
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL.yaml --num-gpus 2  --resume
 
