@@ -19,7 +19,7 @@ source ~/venv/vnext/bin/activate
 
 nvidia-smi
 
-python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL.yaml --num-gpus 2
+python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL.yaml --num-gpus 2 --resume
 
 
 

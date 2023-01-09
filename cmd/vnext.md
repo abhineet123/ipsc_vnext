@@ -164,7 +164,7 @@ python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/
 ```
 sbatch cmd/seqformer-ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL.sh
 ```
-python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL.yaml --num-gpus 2
+python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL.yaml --num-gpus 2 --resume
 
 <a id="on_ext_reorg_roi_g2_38_53___ext_reorg_roi_g2_16_53_swinl_ytvis_seqformer_ips_c_"></a>
 #### on-ext_reorg_roi_g2_38_53       @ ext_reorg_roi_g2_16_53_swinL-ytvis/seqformer-ipsc-->vnext
