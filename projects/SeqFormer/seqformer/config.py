@@ -6,6 +6,8 @@ def add_seqformer_config(cfg):
     """
     Add config for SeqFormer.
     """
+    cfg.TEST_NAME = ''
+
     cfg.MODEL.SeqFormer = CN()
     cfg.MODEL.SeqFormer.NUM_CLASSES = 80
 
@@ -15,7 +17,7 @@ def add_seqformer_config(cfg):
     cfg.INPUT.SAMPLING_FRAME_RANGE = 10
     cfg.INPUT.SAMPLING_INTERVAL = 1
     cfg.INPUT.SAMPLING_FRAME_SHUFFLE = False
-    cfg.INPUT.AUGMENTATIONS = [] # "brightness", "contrast", "saturation", "rotation"
+    cfg.INPUT.AUGMENTATIONS = []  # "brightness", "contrast", "saturation", "rotation"
 
     cfg.INPUT.COCO_PRETRAIN = False
     cfg.INPUT.PRETRAIN_SAME_CROP = False
@@ -48,7 +50,6 @@ def add_seqformer_config(cfg):
     cfg.MODEL.SeqFormer.ENC_N_POINTS = 4
     cfg.MODEL.SeqFormer.NUM_FEATURE_LEVELS = 4
 
-
     # Evaluation
     cfg.MODEL.SeqFormer.N_TOPK = 10
     cfg.MODEL.SeqFormer.MERGE_ON_CPU = True
@@ -58,7 +59,6 @@ def add_seqformer_config(cfg):
     cfg.MODEL.SeqFormer.CLIP_MATCHING = False
     cfg.MODEL.SeqFormer.CLIP_LENGTH = 5
     cfg.MODEL.SeqFormer.CLIP_STRIDE = 1
-
 
     cfg.SOLVER.OPTIMIZER = "ADAMW"
     cfg.SOLVER.BACKBONE_MULTIPLIER = 0.1

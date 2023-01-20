@@ -62,7 +62,11 @@ class Trainer(DefaultTrainer):
 
     @classmethod
     def build_train_loader(cls, cfg):
-        dataset_name = cfg.DATASETS.TRAIN[0]
+        if cfg.TEST_NAME:
+            dataset_name = cfg.TEST_NAME
+        else:
+            dataset_name = cfg.DATASETS.TEST[0]
+
         if dataset_name.startswith('coco'):
             mapper = DetrDatasetMapper(cfg, is_train=True)  # IFC version
         elif dataset_name.startswith('ytvis'):

@@ -6,6 +6,8 @@ def add_idol_config(cfg):
     """
     Add config for IDOL.
     """
+    cfg.TEST_NAME=''
+
     cfg.MODEL.IDOL = CN()
     cfg.MODEL.IDOL.NUM_CLASSES = 80
 
