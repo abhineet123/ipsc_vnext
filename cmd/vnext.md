@@ -80,6 +80,8 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc
 ### on-ext_reorg_roi_g2_0_15       @ ext_reorg_roi_g2_16_53/idol-ipsc-->vnext
 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_16_53/model_0254999.pth
 
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_16_53/model_0254999.pth TEST_NAME ytvis-ipsc-ext_reorg_roi_g2_0_15-incremental OUT_SUFFIX incremental
+
 <a id="probs___on_ext_reorg_roi_g2_0_15_ext_reorg_roi_g2_16_53_idol_ips_c_"></a>
 #### probs       @ on-ext_reorg_roi_g2_0_15/ext_reorg_roi_g2_16_53/idol-ipsc-->vnext
 CUDA_VISIBLE_DEVICES=1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_16_53/model_0254999.pth USE_PROBS 1 OUT_SUFFIX probs
