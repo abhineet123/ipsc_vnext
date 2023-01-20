@@ -599,8 +599,14 @@ Alternatively, you can call evaluation functions yourself (see Colab balloon tut
             )
 
         output_nane = 'inference'
-        if cfg.OUT_SUFFIX:
-            output_nane = f'{output_nane}_{cfg.OUT_SUFFIX}'
+        out_suffix = cfg.OUT_SUFFIX
+        wts_path = cfg.MODEL.WEIGHTS
+        if wts_path and not out_suffix:
+            out_suffix = os.path.splitext(os.path.basename(wts_path))[0]
+
+        if out_suffix:
+            output_nane = f'{output_nane}_{out_suffix}'
+
         output_folder = os.path.join(cfg.OUTPUT_DIR, output_nane)
         os.makedirs(output_folder, exist_ok=1)
 
