@@ -281,9 +281,15 @@ class DefaultPredictor:
     def __init__(self, cfg):
         self.cfg = cfg.clone()  # cfg can be modified by model
         self.model = build_model(self.cfg)
+
+        if cfg.TEST_NAME:
+            self.test_sets = (cfg.TEST_NAME,)
+        else:
+            self.test_sets = cfg.DATASETS.TEST
+
         self.model.eval()
-        if len(cfg.DATASETS.TEST):
-            self.metadata = MetadataCatalog.get(cfg.DATASETS.TEST[0])
+        if len(self.test_sets):
+            self.metadata = MetadataCatalog.get(self.test_sets[0])
 
         checkpointer = DetectionCheckpointer(self.model)
         checkpointer.load(cfg.MODEL.WEIGHTS)
@@ -590,12 +596,18 @@ Alternatively, you can call evaluation functions yourself (see Colab balloon tut
         Returns:
             dict: a dict of result metrics
         """
+
+        if cfg.TEST_NAME:
+            test_sets = (cfg.TEST_NAME,)
+        else:
+            test_sets = cfg.DATASETS.TEST
+
         logger = logging.getLogger(__name__)
         if isinstance(evaluators, DatasetEvaluator):
             evaluators = [evaluators]
         if evaluators is not None:
-            assert len(cfg.DATASETS.TEST) == len(evaluators), "{} != {}".format(
-                len(cfg.DATASETS.TEST), len(evaluators)
+            assert len(test_sets) == len(evaluators), "{} != {}".format(
+                len(test_sets), len(evaluators)
             )
 
         output_nane = 'inference'
@@ -617,7 +629,7 @@ Alternatively, you can call evaluation functions yourself (see Colab balloon tut
         print(f'\noutput_folder: {output_folder}\n')
 
         results = OrderedDict()
-        for idx, dataset_name in enumerate(cfg.DATASETS.TEST):
+        for idx, dataset_name in enumerate(test_sets):
             data_loader = cls.build_test_loader(cfg, dataset_name)
             # When evaluators are passed in as arguments,
             # implicitly assume that evaluators can be created before data_loader.
