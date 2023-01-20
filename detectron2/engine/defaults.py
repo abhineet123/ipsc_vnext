@@ -599,10 +599,13 @@ Alternatively, you can call evaluation functions yourself (see Colab balloon tut
             )
 
         output_nane = 'inference'
-        out_suffix = cfg.OUT_SUFFIX
+        out_suffix = ''
         wts_path = cfg.MODEL.WEIGHTS
-        if wts_path and not out_suffix:
+        if wts_path:
             out_suffix = os.path.splitext(os.path.basename(wts_path))[0]
+
+        if not cfg.OUT_SUFFIX:
+            out_suffix = f'{out_suffix}_{cfg.OUT_SUFFIX}'
 
         if out_suffix:
             output_nane = f'{output_nane}_{out_suffix}'
