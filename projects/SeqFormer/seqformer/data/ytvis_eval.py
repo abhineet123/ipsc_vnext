@@ -72,8 +72,11 @@ class YTVISEvaluator(DatasetEvaluator):
         self._output_dir = output_dir
         self._use_probs = use_probs
 
-        if use_probs:
-            print('\nusing probabilities instead of sigmoids as scores\n')
+        if self._use_probs:
+            print('\nusing probabilities as scores\n')
+        else:
+            print('\nusing sigmoids as scores\n')
+
 
         self._use_fast_impl = use_fast_impl
 
