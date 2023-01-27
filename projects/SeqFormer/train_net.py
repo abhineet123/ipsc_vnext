@@ -48,7 +48,7 @@ class Trainer(DefaultTrainer):
         if evaluator_type == "coco":
             evaluator_list.append(COCOEvaluator(dataset_name, cfg, True, output_folder))
         elif evaluator_type == "ytvis":
-            evaluator_list.append(YTVISEvaluator(dataset_name, cfg, True, output_folder))
+            evaluator_list.append(YTVISEvaluator(dataset_name, cfg, True, output_folder, cfg.USE_PROBS))
 
         if len(evaluator_list) == 0:
             raise NotImplementedError(
