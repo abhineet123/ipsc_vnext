@@ -197,10 +197,10 @@ def instances_to_coco_json_video(inputs, outputs, use_probs):
     video_length = inputs[0]["length"]
 
     if use_probs:
-        print('\nusing probabilities as scores\n')
+        # print('\nusing probabilities as scores\n')
         scores = outputs["pred_probs"]
     else:
-        print('\nusing sigmoids as scores\n')
+        # print('\nusing sigmoids as scores\n')
         scores = outputs["pred_scores"]
 
     labels = outputs["pred_labels"]
