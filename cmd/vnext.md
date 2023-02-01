@@ -200,9 +200,8 @@ CUDA_VISIBLE_DEVICES=1 python projects/SeqFormer/train_net.py --config-file proj
 
 <a id="ext_reorg_roi_g2_16_53___seqformer_ipsc_"></a>
 ## ext_reorg_roi_g2_16_53       @ seqformer-ipsc-->vnext
-```
 sbatch cmd/seqformer-ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL.sh
-```
+
 python3 projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_16_53_ytvis_swinL.yaml --num-gpus 2 --resume
 
 <a id="on_ext_reorg_roi_g2_0_15___ext_reorg_roi_g2_16_53_seqformer_ips_c_"></a>

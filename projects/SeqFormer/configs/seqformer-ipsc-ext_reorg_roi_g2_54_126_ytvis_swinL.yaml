@@ -14,8 +14,8 @@ MODEL:
     DROP_PATH_RATE: 0.3
     PATCH_NORM: True
     PRETRAIN_IMG_SIZE: 384
-  #WEIGHTS: "pretrained/seqformer_swinl_joint.pth"
-  WEIGHTS: "pretrained/cocopretrain_SWINL.pth"
+  WEIGHTS: "pretrained/seqformer_swinl_joint.pth"
+  # WEIGHTS: "pretrained/cocopretrain_SWINL.pth"
   #WEIGHTS: "pretrained/converted_IDOL_full_coco_swinv1.pth"
   SeqFormer:
     NUM_CLASSES: 2
