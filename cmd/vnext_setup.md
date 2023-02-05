@@ -34,8 +34,10 @@
         - [idol-ext_reorg_roi_g2_0_37       @ from_nrw/scp](#idol_ext_reorg_roi_g2_0_37___from_nrw_scp_)
         - [idol-ext_reorg_roi_g2_0_37-max_length-20       @ from_nrw/scp](#idol_ext_reorg_roi_g2_0_37_max_length_20___from_nrw_scp_)
         - [idol-ipsc-ext_reorg_roi_g2_16_53       @ from_nrw/scp](#idol_ipsc_ext_reorg_roi_g2_16_53___from_nrw_scp_)
+        - [idol-ipsc-ext_reorg_roi_g2_54_126       @ from_nrw/scp](#idol_ipsc_ext_reorg_roi_g2_54_126___from_nrw_scp_)
         - [seqformer-ipsc-ext_reorg_roi_g2_0_37       @ from_nrw/scp](#seqformer_ipsc_ext_reorg_roi_g2_0_37___from_nrw_scp_)
         - [seqformer-ipsc-ext_reorg_roi_g2_16_53       @ from_nrw/scp](#seqformer_ipsc_ext_reorg_roi_g2_16_53___from_nrw_scp_)
+        - [seqformer-ipsc-ext_reorg_roi_g2_54_126       @ from_nrw/scp](#seqformer_ipsc_ext_reorg_roi_g2_54_126___from_nrw_scp_)
 
 <!-- /MarkdownTOC -->
 
@@ -299,6 +301,15 @@ scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reo
 
 scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_16_53/events.out.** ./
 
+<a id="idol_ipsc_ext_reorg_roi_g2_54_126___from_nrw_scp_"></a>
+### idol-ipsc-ext_reorg_roi_g2_54_126       @ from_nrw/scp-->vnext_setup
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0099999.pth ./
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0254999.pth ./
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0253999.pth ./
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0252999.pth ./
+
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_54_126/events.out.** ./
+
 <a id="seqformer_ipsc_ext_reorg_roi_g2_0_37___from_nrw_scp_"></a>
 ### seqformer-ipsc-ext_reorg_roi_g2_0_37       @ from_nrw/scp-->vnext_setup
 scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_0_37/model_0099999.pth ./
@@ -320,6 +331,16 @@ scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ex
 scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_16_53/model_0240999.pth ./
 
 scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_16_53/events.out.** ./
+
+<a id="seqformer_ipsc_ext_reorg_roi_g2_54_126___from_nrw_scp_"></a>
+### seqformer-ipsc-ext_reorg_roi_g2_54_126       @ from_nrw/scp-->vnext_setup
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_54_126/model_0099999.pth ./
+
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_54_126/model_0241999.pth ./
+
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_54_126/model_0240999.pth ./
+
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_54_126/events.out.** ./
 
 
 
