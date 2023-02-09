@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash
 #SBATCH --account=def-nilanjan
 #SBATCH --nodes=1
 #SBATCH --mem=16000M
