@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash
 #SBATCH --account=def-nilanjan
 #SBATCH --nodes=1
 #SBATCH --mem=16000M
@@ -19,5 +19,5 @@ source ~/venv/vnext/bin/activate
 
 nvidia-smi
 
-python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 2
+python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 2 --resume
 
