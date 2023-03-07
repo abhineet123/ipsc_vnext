@@ -462,14 +462,14 @@ class IDOL(nn.Module):
                     pred_mask_i = F.interpolate(mask_i[:, None, :, :], size=(output_h * 4, output_w * 4),
                                                 mode="bilinear", align_corners=False).sigmoid().to(self.merge_device)
                     masks_list_i.append(pred_mask_i)
-            # masks_list_i = torch.cat(masks_list_i, dim=1)
+            masks_list_i = torch.cat(masks_list_i, dim=1)
             masks_list.append(masks_list_i)
 
         if len(logits_list) > 0:
             pred_cls = torch.stack(logits_list)
             pred_probs = torch.stack(probs_list)
-            # pred_masks = torch.cat(masks_list, dim=0)
-            pred_masks = masks_list
+            pred_masks = torch.cat(masks_list, dim=0)
+            # pred_masks = masks_list
         else:
             pred_cls = []
             pred_probs = []
