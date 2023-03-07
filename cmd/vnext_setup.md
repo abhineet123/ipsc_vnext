@@ -303,10 +303,9 @@ scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reo
 
 <a id="idol_ipsc_ext_reorg_roi_g2_54_126___from_nrw_scp_"></a>
 ### idol-ipsc-ext_reorg_roi_g2_54_126       @ from_nrw/scp-->vnext_setup
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0099999.pth ./
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0254999.pth ./
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0253999.pth ./
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0252999.pth ./
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0293999.pth ./
+
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0596999.pth ./
 
 scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/idol-ipsc-ext_reorg_roi_g2_54_126/events.out.** ./
 
@@ -334,11 +333,13 @@ scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ex
 
 <a id="seqformer_ipsc_ext_reorg_roi_g2_54_126___from_nrw_scp_"></a>
 ### seqformer-ipsc-ext_reorg_roi_g2_54_126       @ from_nrw/scp-->vnext_setup
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_54_126/model_0099999.pth ./
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_54_126/model_0495999.pth ./
 
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_54_126/model_0241999.pth ./
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_54_126/model_0040999.pth ./
 
-scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_54_126/model_0240999.pth ./
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_54_126/model_0239999.pth ./
+
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_54_126/model_0495999.pth ./
 
 scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_54_126/events.out.** ./
 
