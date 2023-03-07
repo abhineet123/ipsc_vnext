@@ -416,6 +416,7 @@ class IDOL(nn.Module):
         logits_list = []
         probs_list = []
         masks_list = []
+        is_zero_list = []
 
         zero_mask = torch.zeros(1, 1, output_h * 4, output_w * 4).to(video_output_masks).to(
             self.merge_device)
@@ -455,30 +456,36 @@ class IDOL(nn.Module):
 
             # category_id = np.argmax(logits_i.mean(0))
             masks_list_i = []
+            is_zero_list_i = []
             for n in range(vid_len):
                 mask_i = masks_list_ori[n]
                 if mask_i is None:
                     masks_list_i.append(zero_mask)
-                    probs_i[n] = 0
-                    logits_i[n] = 0
+                    is_zero_list_i[n] = 1
                 else:
                     pred_mask_i = F.interpolate(mask_i[:, None, :, :], size=(output_h * 4, output_w * 4),
                                                 mode="bilinear", align_corners=False).sigmoid().to(self.merge_device)
                     masks_list_i.append(pred_mask_i)
+                    is_zero_list_i[n] = 0
+
             masks_list_i = torch.cat(masks_list_i, dim=1)
+            is_zero_list_i = torch.stack(is_zero_list_i)
 
             logits_list.append(logits_i)
             probs_list.append(probs_i)
             masks_list.append(masks_list_i)
+            is_zero_list.append(is_zero_list_i)
 
         if len(logits_list) > 0:
             pred_cls = torch.stack(logits_list)
             pred_probs = torch.stack(probs_list)
+            is_zero_list = torch.stack(is_zero_list)
             pred_masks = torch.cat(masks_list, dim=0)
             # pred_masks = masks_list
         else:
             pred_cls = []
             pred_probs = []
+            pred_masks = []
 
         if len(pred_cls) > 0:
             if self.is_multi_cls:
@@ -489,6 +496,7 @@ class IDOL(nn.Module):
                 probs = pred_probs[is_above_thres]
                 labels = is_above_thres[1]
                 pred_masks = pred_masks[is_above_thres[0]]
+                is_zero_list = is_zero_list[is_above_thres[0]]
             else:
                 scores, labels = pred_cls.max(-1)
                 probs, _ = pred_probs.max(-1)
@@ -500,12 +508,14 @@ class IDOL(nn.Module):
             out_probs = probs.tolist()
             out_scores = scores.tolist()
             out_labels = labels.tolist()
+            is_zero_list = is_zero_list.tolist()
             out_masks = [m for m in pred_masks]
         else:
             out_probs = []
             out_scores = []
             out_labels = []
             out_masks = []
+            is_zero_list = []
 
         video_output = {
             "image_size": ori_size,
@@ -513,6 +523,7 @@ class IDOL(nn.Module):
             "pred_scores": out_scores,
             "pred_labels": out_labels,
             "pred_masks": out_masks,
+            "is_zero": is_zero_list,
         }
 
         return video_output

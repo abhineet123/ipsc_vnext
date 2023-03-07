@@ -201,7 +201,7 @@ class YTVISEvaluator(DatasetEvaluator):
 
 def instances_to_coco_json_video(inputs, outputs, use_probs):
     """
-    Dump an "Instances" object to a COCO-format json that's used for evaluation.
+    Dump an "Instances" object to a COCO-format json that'score used for evaluation.
 
     Args:
         instances (Instances):
@@ -222,6 +222,7 @@ def instances_to_coco_json_video(inputs, outputs, use_probs):
 
     labels = outputs["pred_labels"]
     masks = outputs["pred_masks"]
+    is_zero_list = outputs["is_zero"]
 
     height = inputs[0]['height']
     width = inputs[0]['width']
@@ -232,12 +233,12 @@ def instances_to_coco_json_video(inputs, outputs, use_probs):
     )
 
     ytvis_results = []
-    for instance_id, (s, l, m) in enumerate(tqdm(
-            zip(scores, labels, masks), desc=f'video_id: {video_id}', total=video_length, ncols=75)):
+    for instance_id, (score, label, mask, is_zero) in enumerate(tqdm(
+            zip(scores, labels, masks, is_zero_list), desc=f'video_id: {video_id}', total=video_length, ncols=75)):
         segms = []
-        for _mask in m:
+        for _is_zero, _mask in zip(is_zero, mask):
 
-            if s == 0:
+            if _is_zero:
                 segms.append(zero_mask_encoded)
                 continue
 
@@ -249,8 +250,7 @@ def instances_to_coco_json_video(inputs, outputs, use_probs):
             _mask = torch.unsqueeze(_mask, 0)
             _mask = torch.unsqueeze(_mask, 0)
 
-            _mask_res = F.interpolate(_mask, size=(height, width), mode='nearest')
-            _mask_res = _mask_res.squeeze()
+            _mask_res = F.interpolate(_mask, size=(height, width), mode='nearest').squeeze()
 
             _mask_res_bool = _mask_res > 0.5
 
@@ -271,8 +271,8 @@ def instances_to_coco_json_video(inputs, outputs, use_probs):
 
         res = {
             "video_id": video_id,
-            "score": s,
-            "category_id": l,
+            "score": score,
+            "category_id": label,
             "segmentations": segms,
         }
         ytvis_results.append(res)
