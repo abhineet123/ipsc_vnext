@@ -221,12 +221,15 @@ def instances_to_coco_json_video(inputs, outputs, use_probs):
     labels = outputs["pred_labels"]
     masks = outputs["pred_masks"]
 
+    height = inputs[0]['height']
+    width = inputs[0]['width']
+
     ytvis_results = []
     for instance_id, (s, l, m) in enumerate(zip(scores, labels, masks)):
         segms = []
         for _mask in m:
 
-            _mask_res = F.interpolate(_mask, size=(ori_size[0], ori_size[1]), mode='nearest')
+            _mask_res = F.interpolate(_mask, size=(height, width), mode='nearest')
             _mask_res_bool = _mask_res > 0.5
 
             _mask_res_bool = _mask_res_bool.cpu()
