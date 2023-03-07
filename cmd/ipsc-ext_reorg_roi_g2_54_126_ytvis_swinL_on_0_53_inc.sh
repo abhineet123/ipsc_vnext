@@ -2,7 +2,7 @@
 #SBATCH --account=def-nilanjan
 #SBATCH --nodes=1
 #SBATCH --mem=32000M
-#SBATCH --gpus-per-node=2
+#SBATCH --gpus-per-node=1
 #SBATCH --cpus-per-task=4
 
 #SBATCH --job-name=idol-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL
