@@ -8,7 +8,7 @@
 #SBATCH --job-name=seqformer-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL
 #SBATCH --output=%x_%j.out
 
-#SBATCH --time=0-6:00            # time (DD-HH:MM)
+#SBATCH --time=0-06:00            # time (DD-HH:MM)
 
 #SBATCH --mail-user=asingh1@ualberta.ca
 #SBATCH --mail-type=ALL
