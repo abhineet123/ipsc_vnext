@@ -23,9 +23,10 @@ from detectron2.engine import DefaultTrainer, default_argument_parser, default_s
 from detectron2.evaluation import COCOEvaluator, verify_results, DatasetEvaluators
 from detectron2.solver.build import maybe_add_gradient_clipping
 
-from detectron2.projects.seqformer import add_seqformer_config, build_detection_train_loader, build_detection_test_loader
+from detectron2.projects.seqformer import add_seqformer_config, build_detection_train_loader, \
+    build_detection_test_loader
 from detectron2.projects.seqformer.data import (
-  YTVISDatasetMapper, YTVISEvaluator, get_detection_dataset_dicts,DetrDatasetMapper,)
+    YTVISDatasetMapper, YTVISEvaluator, get_detection_dataset_dicts, DetrDatasetMapper, )
 
 
 class Trainer(DefaultTrainer):
@@ -110,9 +111,9 @@ class Trainer(DefaultTrainer):
             # detectron2 doesn't have full model gradient clipping now
             clip_norm_val = cfg.SOLVER.CLIP_GRADIENTS.CLIP_VALUE
             enable = (
-                cfg.SOLVER.CLIP_GRADIENTS.ENABLED
-                and cfg.SOLVER.CLIP_GRADIENTS.CLIP_TYPE == "full_model"
-                and clip_norm_val > 0.0
+                    cfg.SOLVER.CLIP_GRADIENTS.ENABLED
+                    and cfg.SOLVER.CLIP_GRADIENTS.CLIP_TYPE == "full_model"
+                    and clip_norm_val > 0.0
             )
 
             class FullModelGradientClippingOptimizer(optim):
