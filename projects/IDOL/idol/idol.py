@@ -456,17 +456,16 @@ class IDOL(nn.Module):
 
             # category_id = np.argmax(logits_i.mean(0))
             masks_list_i = []
-            is_zero_list_i = []
+            is_zero_list_i = torch.zeros(vid_len, dtype=torch.bool)
             for n in range(vid_len):
                 mask_i = masks_list_ori[n]
                 if mask_i is None:
                     masks_list_i.append(zero_mask)
-                    is_zero_list_i.append(1)
+                    is_zero_list_i[n] = True
                 else:
                     pred_mask_i = F.interpolate(mask_i[:, None, :, :], size=(output_h * 4, output_w * 4),
                                                 mode="bilinear", align_corners=False).sigmoid().to(self.merge_device)
                     masks_list_i.append(pred_mask_i)
-                    is_zero_list_i.append(0)
 
             masks_list_i = torch.cat(masks_list_i, dim=1)
             is_zero_list_i = torch.stack(is_zero_list_i)
