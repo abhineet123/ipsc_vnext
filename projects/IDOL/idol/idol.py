@@ -468,7 +468,7 @@ class IDOL(nn.Module):
                     masks_list_i.append(pred_mask_i)
 
             masks_list_i = torch.cat(masks_list_i, dim=1)
-            is_zero_list_i = torch.stack(is_zero_list_i)
+            # is_zero_list_i = torch.stack(is_zero_list_i)
 
             logits_list.append(logits_i)
             probs_list.append(probs_i)
