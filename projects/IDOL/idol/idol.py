@@ -459,8 +459,8 @@ class IDOL(nn.Module):
                 mask_i = masks_list_ori[n]
                 if mask_i is None:
                     masks_list_i.append(zero_mask)
-                    probs_i[i] = 0
-                    logits_i[i] = 0
+                    probs_i[n] = 0
+                    logits_i[n] = 0
                 else:
                     pred_mask_i = F.interpolate(mask_i[:, None, :, :], size=(output_h * 4, output_w * 4),
                                                 mode="bilinear", align_corners=False).sigmoid().to(self.merge_device)
