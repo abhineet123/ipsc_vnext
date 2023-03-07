@@ -256,7 +256,7 @@ class IDOL(nn.Module):
                 embed_list.append(clip_output['pred_inst_embed'])
                 # points_list.append(clip_output['reference_points'])
                 masks_list.append(clip_output['pred_masks'].to(self.merge_device))
-                pause=1
+                pause = 1
             output = {
                 'pred_logits': torch.cat(logits_list, dim=0),
                 'pred_boxes': torch.cat(boxes_list, dim=0),
@@ -417,16 +417,22 @@ class IDOL(nn.Module):
         probs_list = []
         masks_list = []
 
+        zero_mask = torch.zeros(1, 1, output_h * 4, output_w * 4).to(video_output_masks).to(
+            self.merge_device)
+
         for inst_id, m in enumerate(video_dict.keys()):
+            curr_video_dict = video_dict[m]
             """all scores for each object over all video frames excluding frames where 
             it was not matched (so doesn't exist)"""
-            score_list_ori = video_dict[m]['scores']
+            score_list_ori = curr_video_dict['scores']
+            probs_list_ori = curr_video_dict['probs']
+            masks_list_ori = curr_video_dict['masks']
+
             scores_temporal = []
             for k in score_list_ori:
                 if k is not None:
                     scores_temporal.append(k)
 
-            probs_list_ori = video_dict[m]['probs']
             probs_temporal = []
             for k in probs_list_ori:
                 if k is not None:
@@ -447,22 +453,22 @@ class IDOL(nn.Module):
                 import sys
                 sys.exit(0)
 
-            logits_list.append(logits_i)
-            probs_list.append(probs_i)
-
             # category_id = np.argmax(logits_i.mean(0))
             masks_list_i = []
             for n in range(vid_len):
-                mask_i = video_dict[m]['masks'][n]
+                mask_i = masks_list_ori[n]
                 if mask_i is None:
-                    zero_mask = torch.zeros(1, 1, output_h * 4, output_w * 4).to(video_output_masks).to(
-                        self.merge_device)
                     masks_list_i.append(zero_mask)
+                    probs_i[i] = 0
+                    logits_i[i] = 0
                 else:
                     pred_mask_i = F.interpolate(mask_i[:, None, :, :], size=(output_h * 4, output_w * 4),
                                                 mode="bilinear", align_corners=False).sigmoid().to(self.merge_device)
                     masks_list_i.append(pred_mask_i)
             masks_list_i = torch.cat(masks_list_i, dim=1)
+
+            logits_list.append(logits_i)
+            probs_list.append(probs_i)
             masks_list.append(masks_list_i)
 
         if len(logits_list) > 0:

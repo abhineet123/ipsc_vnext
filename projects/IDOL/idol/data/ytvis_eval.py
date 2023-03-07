@@ -19,6 +19,8 @@ from detectron2.data import MetadataCatalog
 from detectron2.evaluation import DatasetEvaluator
 from detectron2.utils.file_io import PathManager
 
+from tqdm import tqdm
+
 
 class YTVISEvaluator(DatasetEvaluator):
     """
@@ -224,10 +226,25 @@ def instances_to_coco_json_video(inputs, outputs, use_probs):
     height = inputs[0]['height']
     width = inputs[0]['width']
 
+    zero_mask_encoded = dict(
+        size=[height, width],
+        counts='Xjil6',
+    )
+
     ytvis_results = []
-    for instance_id, (s, l, m) in enumerate(zip(scores, labels, masks)):
+    for instance_id, (s, l, m) in enumerate(tqdm(
+            zip(scores, labels, masks), desc=f'video_id: {video_id}', total=video_length, ncols=75)):
         segms = []
         for _mask in m:
+
+            if s == 0:
+                segms.append(zero_mask_encoded)
+                continue
+
+            _mask_bool = _mask > 0.5
+            if torch.count_nonzero(_mask_bool) == 0:
+                segms.append(zero_mask_encoded)
+                continue
 
             _mask = torch.unsqueeze(_mask, 0)
             _mask = torch.unsqueeze(_mask, 0)
