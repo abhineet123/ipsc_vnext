@@ -242,7 +242,7 @@ CUDA_VISIBLE_DEVICES=1 python projects/SeqFormer/train_net.py --config-file proj
 CUDA_VISIBLE_DEVICES=1 python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/seqformer-ipsc-ext_reorg_roi_g2_54_126/model_0495999.pth USE_PROBS 1 OUT_SUFFIX probs 
 __incremental__
 ```
-sbatch cmd/ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL_on_0_53_inc.sh
+sbatch cmd/seqformer-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL_on_0_53_inc.sh
 ```
 CUDA_VISIBLE_DEVICES=1 python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/seqformer-ipsc-ext_reorg_roi_g2_54_126/model_0495999.pth USE_PROBS 1 TEST_NAME ytvis-ipsc-ext_reorg_roi_g2_0_53-incremental OUT_SUFFIX incremental_probs 
 
