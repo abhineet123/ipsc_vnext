@@ -25,7 +25,7 @@ DATASETS:
   TEST: ("ytvis-ipsc-ext_reorg_roi_g2_0_53",)
 
 SOLVER:
-  IMS_PER_BATCH: 4
+  IMS_PER_BATCH: 1
   BASE_LR: 0.0001
   STEPS: (8000,)
   MAX_ITER: 1000000
@@ -59,6 +59,6 @@ INPUT:
   FORMAT: "RGB"
 DATALOADER:
   FILTER_EMPTY_ANNOTATIONS: True
-  NUM_WORKERS: 2
+  NUM_WORKERS: 0
 VERSION: 2
 OUTPUT_DIR: ./log/idol-ipsc-ext_reorg_roi_g2_54_126

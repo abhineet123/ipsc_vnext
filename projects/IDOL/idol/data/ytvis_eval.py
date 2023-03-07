@@ -11,6 +11,7 @@ from collections import OrderedDict
 import pycocotools.mask as mask_util
 import torch
 from pycocotools.ytvos import YTVOS
+import torch.nn.functional as F
 
 import detectron2.utils.comm as comm
 from detectron2.config import CfgNode
@@ -224,18 +225,24 @@ def instances_to_coco_json_video(inputs, outputs, use_probs):
     for instance_id, (s, l, m) in enumerate(zip(scores, labels, masks)):
         segms = []
         for _mask in m:
-            mask_bool = np.array(_mask[:, :, None], order="F", dtype="uint8")
+
+            _mask_res = F.interpolate(_mask, size=(ori_size[0], ori_size[1]), mode='nearest')
+            _mask_res_bool = _mask_res > 0.5
+
+            _mask_res_bool = _mask_res_bool.cpu()
+
+            mask_bool = np.array(_mask_res_bool[:, :, None], order="F", dtype="uint8")
             mask_encoded_out = mask_util.encode(mask_bool)
             mask_encoded = mask_encoded_out[0]
+
+            rle_orig = mask_encoded["counts"]
+            rle_decoded = rle_orig.decode("utf-8")
+
+            mask_encoded["counts"] = rle_decoded
+
             segms.append(mask_encoded)
 
             # print()
-
-        for rle in segms:
-            rle_orig = rle["counts"]
-            rle_decoded = rle_orig.decode("utf-8")
-
-            rle["counts"] = rle_decoded
 
         res = {
             "video_id": video_id,

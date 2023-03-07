@@ -462,13 +462,14 @@ class IDOL(nn.Module):
                     pred_mask_i = F.interpolate(mask_i[:, None, :, :], size=(output_h * 4, output_w * 4),
                                                 mode="bilinear", align_corners=False).sigmoid().to(self.merge_device)
                     masks_list_i.append(pred_mask_i)
-            masks_list_i = torch.cat(masks_list_i, dim=1)
+            # masks_list_i = torch.cat(masks_list_i, dim=1)
             masks_list.append(masks_list_i)
 
         if len(logits_list) > 0:
             pred_cls = torch.stack(logits_list)
             pred_probs = torch.stack(probs_list)
-            pred_masks = torch.cat(masks_list, dim=0)
+            # pred_masks = torch.cat(masks_list, dim=0)
+            pred_masks = masks_list
         else:
             pred_cls = []
             pred_probs = []
@@ -487,14 +488,13 @@ class IDOL(nn.Module):
                 probs, _ = pred_probs.max(-1)
 
             pred_masks = pred_masks[:, :, :image_sizes[0], :image_sizes[1]]  # crop the padding area
-            pred_masks = F.interpolate(pred_masks, size=(ori_size[0], ori_size[1]), mode='nearest')
-
-            masks = pred_masks > 0.5
+            # pred_masks = F.interpolate(pred_masks, size=(ori_size[0], ori_size[1]), mode='nearest')
+            # masks = pred_masks > 0.5
 
             out_probs = probs.tolist()
             out_scores = scores.tolist()
             out_labels = labels.tolist()
-            out_masks = [m for m in masks.cpu()]
+            out_masks = [m for m in pred_masks]
         else:
             out_probs = []
             out_scores = []
