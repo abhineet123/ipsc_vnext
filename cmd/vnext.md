@@ -163,6 +163,9 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc
 sbatch cmd/ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL_on_0_53_inc.sh
 ```
 CUDA_VISIBLE_DEVICES=0 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0596999.pth USE_PROBS 1 TEST_NAME ytvis-ipsc-ext_reorg_roi_g2_0_53-incremental OUT_SUFFIX incremental_probs
+```
+bash cmd/batch/idol-54_126_on_0_53__0_15_max_length_inc.sh
+```
 <a id="max_length_2___on_ext_reorg_roi_g2_0_53_ext_reorg_roi_g2_54_126_idol_ipsc_"></a>
 #### max_length-2       @ on-ext_reorg_roi_g2_0_53/ext_reorg_roi_g2_54_126/idol-ipsc-->vnext
 CUDA_VISIBLE_DEVICES=0 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0596999.pth USE_PROBS 1 TEST_NAME ytvis-ipsc-ext_reorg_roi_g2_0_53-max_length-2-incremental OUT_SUFFIX incremental_probs-max_length-2
