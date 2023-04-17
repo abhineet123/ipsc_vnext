@@ -19,9 +19,7 @@
                 - [g2_0_53       @ probs/on-ext_reorg_roi_g2_0_15/ext_reorg_roi_g2_16_53/idol-ipsc](#g2_0_53___probs_on_ext_reorg_roi_g2_0_15_ext_reorg_roi_g2_16_53_idol_ips_c_)
     - [ext_reorg_roi_g2_54_126       @ idol-ipsc](#ext_reorg_roi_g2_54_126___idol_ips_c_)
         - [on-ext_reorg_roi_g2_0_53       @ ext_reorg_roi_g2_54_126/idol-ipsc](#on_ext_reorg_roi_g2_0_53___ext_reorg_roi_g2_54_126_idol_ips_c_)
-            - [max_length-2       @ on-ext_reorg_roi_g2_0_53/ext_reorg_roi_g2_54_126/idol-ipsc](#max_length_2___on_ext_reorg_roi_g2_0_53_ext_reorg_roi_g2_54_126_idol_ipsc_)
-            - [max_length-10       @ on-ext_reorg_roi_g2_0_53/ext_reorg_roi_g2_54_126/idol-ipsc](#max_length_10___on_ext_reorg_roi_g2_0_53_ext_reorg_roi_g2_54_126_idol_ipsc_)
-            - [max_length-20       @ on-ext_reorg_roi_g2_0_53/ext_reorg_roi_g2_54_126/idol-ipsc](#max_length_20___on_ext_reorg_roi_g2_0_53_ext_reorg_roi_g2_54_126_idol_ipsc_)
+            - [incremental       @ on-ext_reorg_roi_g2_0_53/ext_reorg_roi_g2_54_126/idol-ipsc](#incremental___on_ext_reorg_roi_g2_0_53_ext_reorg_roi_g2_54_126_idol_ipsc_)
         - [on-ext_reorg_roi_g2_0_15       @ ext_reorg_roi_g2_54_126/idol-ipsc](#on_ext_reorg_roi_g2_0_15___ext_reorg_roi_g2_54_126_idol_ips_c_)
             - [max_length-2       @ on-ext_reorg_roi_g2_0_15/ext_reorg_roi_g2_54_126/idol-ipsc](#max_length_2___on_ext_reorg_roi_g2_0_15_ext_reorg_roi_g2_54_126_idol_ipsc_)
 - [seqformer-ipsc       @ seqformer](#seqformer_ipsc___seqforme_r_)
@@ -161,6 +159,19 @@ python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc
 
 <a id="on_ext_reorg_roi_g2_0_53___ext_reorg_roi_g2_54_126_idol_ips_c_"></a>
 ### on-ext_reorg_roi_g2_0_53       @ ext_reorg_roi_g2_54_126/idol-ipsc-->vnext
+CUDA_VISIBLE_DEVICES=0 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0596999.pth USE_PROBS 1 TEST_NAME ytvis-ipsc-ext_reorg_roi_g2_0_53 
+
+__max_length-1__
+CUDA_VISIBLE_DEVICES=0 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0596999.pth USE_PROBS 1 TEST_NAME ytvis-ipsc-ext_reorg_roi_g2_0_53-max_length-1 OUT_SUFFIX max_length-1
+__max_length-2__
+CUDA_VISIBLE_DEVICES=0 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0596999.pth USE_PROBS 1 TEST_NAME ytvis-ipsc-ext_reorg_roi_g2_0_53-max_length-2 OUT_SUFFIX max_length-2
+__max_length-4__
+CUDA_VISIBLE_DEVICES=1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0596999.pth USE_PROBS 1 TEST_NAME ytvis-ipsc-ext_reorg_roi_g2_0_53-max_length-4 OUT_SUFFIX max_length-4
+__max_length-8__
+CUDA_VISIBLE_DEVICES=1 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0596999.pth USE_PROBS 1 TEST_NAME ytvis-ipsc-ext_reorg_roi_g2_0_53-max_length-8 OUT_SUFFIX max_length-8
+
+<a id="incremental___on_ext_reorg_roi_g2_0_53_ext_reorg_roi_g2_54_126_idol_ipsc_"></a>
+#### incremental       @ on-ext_reorg_roi_g2_0_53/ext_reorg_roi_g2_54_126/idol-ipsc-->vnext
 ```
 sbatch cmd/ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL_on_0_53_inc.sh
 ```
@@ -169,14 +180,11 @@ CUDA_VISIBLE_DEVICES=0 python3 projects/IDOL/train_net.py --config-file projects
 ```
 bash cmd/batch/idol-54_126_on_0_53__0_15_max_length_inc.sh
 ```
-<a id="max_length_2___on_ext_reorg_roi_g2_0_53_ext_reorg_roi_g2_54_126_idol_ipsc_"></a>
-#### max_length-2       @ on-ext_reorg_roi_g2_0_53/ext_reorg_roi_g2_54_126/idol-ipsc-->vnext
+__max_length-2__
 CUDA_VISIBLE_DEVICES=0 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0596999.pth USE_PROBS 1 TEST_NAME ytvis-ipsc-ext_reorg_roi_g2_0_53-max_length-2-incremental OUT_SUFFIX max_length-2-incremental_probs
-<a id="max_length_10___on_ext_reorg_roi_g2_0_53_ext_reorg_roi_g2_54_126_idol_ipsc_"></a>
-#### max_length-10       @ on-ext_reorg_roi_g2_0_53/ext_reorg_roi_g2_54_126/idol-ipsc-->vnext
+__max_length-10__
 CUDA_VISIBLE_DEVICES=0 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0596999.pth USE_PROBS 1 TEST_NAME ytvis-ipsc-ext_reorg_roi_g2_0_53-max_length-10-incremental OUT_SUFFIX max_length-10-incremental_probs
-<a id="max_length_20___on_ext_reorg_roi_g2_0_53_ext_reorg_roi_g2_54_126_idol_ipsc_"></a>
-#### max_length-20       @ on-ext_reorg_roi_g2_0_53/ext_reorg_roi_g2_54_126/idol-ipsc-->vnext
+__max_length-20__
 CUDA_VISIBLE_DEVICES=0 python3 projects/IDOL/train_net.py --config-file projects/IDOL/configs/idol-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/idol-ipsc-ext_reorg_roi_g2_54_126/model_0596999.pth USE_PROBS 1 TEST_NAME ytvis-ipsc-ext_reorg_roi_g2_0_53-max_length-20-incremental OUT_SUFFIX max_length-20-incremental_probs
 
 <a id="on_ext_reorg_roi_g2_0_15___ext_reorg_roi_g2_54_126_idol_ips_c_"></a>
