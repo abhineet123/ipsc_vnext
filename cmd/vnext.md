@@ -42,6 +42,7 @@
                 - [max_length-20       @ on-ext_reorg_roi_g2_0_53/ext_reorg_roi_g2_54_126/seqformer-ipsc](#max_length_20___on_ext_reorg_roi_g2_0_53_ext_reorg_roi_g2_54_126_seqformer_ips_c_)
             - [on-ext_reorg_roi_g2_0_15       @ ext_reorg_roi_g2_54_126/seqformer-ipsc](#on_ext_reorg_roi_g2_0_15___ext_reorg_roi_g2_54_126_seqformer_ipsc_)
                 - [max_length-2       @ on-ext_reorg_roi_g2_0_15/ext_reorg_roi_g2_54_126/seqformer-ipsc](#max_length_2___on_ext_reorg_roi_g2_0_15_ext_reorg_roi_g2_54_126_seqformer_ips_c_)
+                - [max_length-4       @ on-ext_reorg_roi_g2_0_15/ext_reorg_roi_g2_54_126/seqformer-ipsc](#max_length_4___on_ext_reorg_roi_g2_0_15_ext_reorg_roi_g2_54_126_seqformer_ips_c_)
                 - [max_length-10       @ on-ext_reorg_roi_g2_0_15/ext_reorg_roi_g2_54_126/seqformer-ipsc](#max_length_10___on_ext_reorg_roi_g2_0_15_ext_reorg_roi_g2_54_126_seqformer_ips_c_)
 - [idol-mj_rocks       @ idol](#idol_mj_rocks___idol_)
     - [db3_part12_ytvis_swinL       @ idol-mj_rocks](#db3_part12_ytvis_swinl___idol_mj_rock_s_)
@@ -284,6 +285,9 @@ CUDA_VISIBLE_DEVICES=1 python projects/SeqFormer/train_net.py --config-file proj
 <a id="max_length_2___on_ext_reorg_roi_g2_0_15_ext_reorg_roi_g2_54_126_seqformer_ips_c_"></a>
 ##### max_length-2       @ on-ext_reorg_roi_g2_0_15/ext_reorg_roi_g2_54_126/seqformer-ipsc-->vnext
 CUDA_VISIBLE_DEVICES=1 python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/seqformer-ipsc-ext_reorg_roi_g2_54_126/model_0495999.pth USE_PROBS 1 TEST_NAME ytvis-ipsc-ext_reorg_roi_g2_0_15-max_length-2-incremental OUT_SUFFIX g2_0_15-max_length-2-incremental_probs
+<a id="max_length_4___on_ext_reorg_roi_g2_0_15_ext_reorg_roi_g2_54_126_seqformer_ips_c_"></a>
+##### max_length-4       @ on-ext_reorg_roi_g2_0_15/ext_reorg_roi_g2_54_126/seqformer-ipsc-->vnext
+CUDA_VISIBLE_DEVICES=0 python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/seqformer-ipsc-ext_reorg_roi_g2_54_126/model_0495999.pth USE_PROBS 1 TEST_NAME ytvis-ipsc-ext_reorg_roi_g2_0_15-max_length-4-incremental OUT_SUFFIX g2_0_15-max_length-4-incremental_probs
 <a id="max_length_10___on_ext_reorg_roi_g2_0_15_ext_reorg_roi_g2_54_126_seqformer_ips_c_"></a>
 ##### max_length-10       @ on-ext_reorg_roi_g2_0_15/ext_reorg_roi_g2_54_126/seqformer-ipsc-->vnext
 CUDA_VISIBLE_DEVICES=1 python projects/SeqFormer/train_net.py --config-file projects/SeqFormer/configs/seqformer-ipsc-ext_reorg_roi_g2_54_126_ytvis_swinL.yaml --num-gpus 1 --eval-only MODEL.WEIGHTS log/seqformer-ipsc-ext_reorg_roi_g2_54_126/model_0495999.pth USE_PROBS 1 TEST_NAME ytvis-ipsc-ext_reorg_roi_g2_0_15-max_length-10-incremental OUT_SUFFIX g2_0_15-max_length-10-incremental_probs
