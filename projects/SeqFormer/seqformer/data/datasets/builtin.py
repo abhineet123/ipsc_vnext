@@ -87,7 +87,7 @@ for db in (
 
         }
     )
-    for k in (1, 2, 4, 8, 10, 20):
+    for k in (1, 2, 4, 8, 10, 19, 20):
         _PREDEFINED_SPLITS_YTVIS_2019.update(
             {
                 f"ytvis-ipsc-{db}-max_length-{k}": (
