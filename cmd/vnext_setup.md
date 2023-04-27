@@ -343,6 +343,8 @@ scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ex
 
 scp -r asingh1@narval.computecanada.ca:/home/asingh1/vnext/log/seqformer-ipsc-ext_reorg_roi_g2_54_126/events.out.** ./
 
+scp -r asingh1@narval.computecanada.ca:/home/asingh1/__log_seqformer-ipsc-ext_reorg_roi_g2_54_126_inference_model_0495999_max_length-19_results_json_nrw_230420_134050.zip ./
+
 
 
 
